@@ -56,6 +56,8 @@
     <Compile Include="ControladorExamen.cs" />
     <Compile Include="ExamenDbContext.cs" />
     <Compile Include="Examen.cs" />
+    <Compile Include="IEstrategiaObtenerPreguntas.cs" />
+    <Compile Include="OpentDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
