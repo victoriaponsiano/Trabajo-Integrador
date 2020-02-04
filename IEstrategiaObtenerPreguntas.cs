@@ -9,8 +9,8 @@ namespace Trabajo_Integrador
     /// <summary>
     /// Interface que especifica los metodos para poder obtener preguntas 
     /// </summary>
-    interface IEstrategiaObtenerPreguntas
+    public interface IEstrategiaObtenerPreguntas
     {
-        List<Pregunta> getPreguntas(int pCantidad, Dificultad pDificultad, Categoria pCategoria);
+       List<Pregunta> getPreguntas(string pCantidad, string pDificultad, string pCategoria);
     }
 }

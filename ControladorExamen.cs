@@ -15,7 +15,6 @@ namespace Trabajo_Integrador
                 db.Examenes.Add(pExamen);
                 db.SaveChanges();
                 }
-            
            
         }
     }
