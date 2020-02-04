@@ -13,10 +13,17 @@ namespace Trabajo_Integrador
     /// <summary>
     /// Clase que obtiene y procesa los datos obtenidos en OpentDb para transformarlos en preguntas
     /// </summary>
-    class OpentDB : IEstrategiaObtenerPreguntas
+    public class OpentDB : EstrategiaObtenerPreguntas
     {
         List<Pregunta> listaPreguntas = new List<Pregunta>();
-        public List<Pregunta> getPreguntas(int pCantidad, Dificultad pDificultad, Categoria pCategoria)
+
+        public OpentDB():base ("OpentDB")
+        {
+
+        }
+
+        //metodo para obtener preguntas
+        public override List<Pregunta> getPreguntas(string pCantidad, string pDificultad, string pCategoria)
         {
             {
                 // Establecimiento del protocolo ssl de transporte
@@ -25,7 +32,7 @@ namespace Trabajo_Integrador
                 // Creacion de URL
                 var mUrl =CrearURL(pCantidad,pDificultad,pCategoria);
 
-
+                
                 // Se crea el request http
                 HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
 
@@ -81,8 +88,7 @@ namespace Trabajo_Integrador
         }
         public string CrearURL(string pCantidad, string pDificultad, string pCategoria)
         {
-            string url="https://opentdb.com/api.php?amount="+pCantidad+"&category="+pCategoria+"&difficulty="+pDificultad+"&type=multiple";
-
+            return ("https://opentdb.com/api.php?amount=" + pCantidad + "&category=" + pCategoria + "&difficulty=" + pDificultad + "&type=multiple");
         }
     }
 }
