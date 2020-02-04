@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
+    /// <summary>
+    /// Interface que especifica los metodos para poder obtener preguntas 
+    /// </summary>
     interface IEstrategiaObtenerPreguntas
     {
-        void Prueba();
+        List<Pregunta> getPreguntas(int pCantidad, Dificultad pDificultad, Categoria pCategoria);
     }
 }
