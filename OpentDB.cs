@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
-    class OpentDB:IEstrategiaObtenerPreguntas
+    class OpentDB : IEstrategiaObtenerPreguntas
     {
-
+        public void Prueba()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

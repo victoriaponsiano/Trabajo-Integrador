@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
-    class ControladorExamen
+    public class ControladorExamen
     {
         public void GuardarExamen(Examen pExamen) {
-            try
-            {
+            
                 using (var db = new ExamenDbContext())
                 {
-                   //Falta implementar
+                db.Examenes.Add(pExamen);
+                db.SaveChanges();
                 }
-            }
+            
+           
         }
     }
 }
