@@ -8,6 +8,7 @@ namespace Trabajo_Integrador
 {
     public class Examen
     {
+        public int Id { get; set; }
         public int Puntaje { set; get; }
     }
 }
