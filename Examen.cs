@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
-    class Examen
+    public class Examen
     {
-        
+        public int Puntaje { set; get; }
     }
 }
