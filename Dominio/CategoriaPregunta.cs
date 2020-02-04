@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
-    public class Categoria
+    public class CategoriaPregunta
     {
         string iCategoria;
 
-        public Categoria(string pCategoria)
+        public CategoriaPregunta(string pCategoria)
         {
             iCategoria = pCategoria;
         }
