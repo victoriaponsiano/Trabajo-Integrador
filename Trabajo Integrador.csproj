@@ -89,7 +89,9 @@
     <Compile Include="Dominio\Categoria.cs" />
     <Compile Include="Dominio\Conjunto.cs" />
     <Compile Include="ControladorExamen.cs" />
+    <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="EntityFramework\ExamenRepository.cs" />
+    <Compile Include="EntityFramework\RepositorioUsuarios.cs" />
     <Compile Include="EntityFramework\Repository.cs" />
     <Compile Include="EntityFramework\TrabajoDbContext.cs" />
     <Compile Include="Dominio\Examen.cs" />
