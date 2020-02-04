@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Trabajo_Integrador
+namespace Trabajo_Integrador.EntityFramework
 {
     /// <summary>
     /// Representa una conexion con la base de datos para acceder a los examenes.
     /// </summary>
-    class ExamenDbContext : DbContext
+    class TrabajoDbContext : DbContext
     {
-        public DbSet<Examen> Examenes { get; set; }
+        public DbSet<Examen> Examenes { get; set; } 
     }
 }
