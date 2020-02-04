@@ -7,24 +7,24 @@ using Trabajo_Integrador;
 
 namespace Trabajo_Integrador
 {
-    public class RepositorioPreguntas
+    public class ControladorPreguntas
     {
-        private static RepositorioPreguntas cinstancia = null;
+        private static ControladorPreguntas cinstancia = null;
         private IEstrategiaObtenerPreguntas iEstrategiaObtenerPreguntas;
         private List<IEstrategiaObtenerPreguntas> iEstrategias;
-        public static RepositorioPreguntas Instance
+        public static ControladorPreguntas Instance
         //Implementacion del patron singleton
         {
             get
             {
                 if (cinstancia == null)
                 {
-                    cinstancia = new RepositorioPreguntas();
+                    cinstancia = new ControladorPreguntas();
                 }
                 return cinstancia;
             }
         }
-        private RepositorioPreguntas()
+        private ControladorPreguntas()
         //Constructor
         {
             iEstrategias = new List<IEstrategiaObtenerPreguntas>();
