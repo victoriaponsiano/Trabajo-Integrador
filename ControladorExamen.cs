@@ -9,6 +9,7 @@ namespace Trabajo_Integrador
 {
     public class ControladorExamen
     {
+
         public void GuardarExamen(Examen pExamen) 
         {
             /*
@@ -17,6 +18,8 @@ namespace Trabajo_Integrador
 
             ex.Add(pExamen);
             */
+
+        
            
         }
     }
