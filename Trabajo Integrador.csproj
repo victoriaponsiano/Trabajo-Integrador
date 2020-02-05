@@ -91,7 +91,9 @@
     <Compile Include="ControladorExamen.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="EntityFramework\ExamenRepository.cs" />
+    <Compile Include="EntityFramework\RepositorioCategorias.cs" />
     <Compile Include="EntityFramework\RepositorioConjuntoPregunta.cs" />
+    <Compile Include="EntityFramework\RepositorioDificultades.cs" />
     <Compile Include="EntityFramework\RepositorioPreguntas.cs" />
     <Compile Include="EntityFramework\RepositorioUsuarios.cs" />
     <Compile Include="EntityFramework\Repository.cs" />
@@ -102,6 +104,11 @@
     <Compile Include="EstrategiaNula.cs" />
     <Compile Include="EstrategiaObtenerPreguntas.cs" />
     <Compile Include="IEstrategiaObtenerPreguntas.cs" />
+    <Compile Include="Migrations\202002041255522_InitialCreate.cs" />
+    <Compile Include="Migrations\202002041255522_InitialCreate.designer.cs">
+      <DependentUpon>202002041255522_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OpentDB.cs" />
     <Compile Include="Dominio\Pregunta.cs" />
     <Compile Include="Program.cs" />
@@ -114,6 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002041255522_InitialCreate.resx">
+      <DependentUpon>202002041255522_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

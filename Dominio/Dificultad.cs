@@ -8,10 +8,24 @@ namespace Trabajo_Integrador
 {
     public class Dificultad
     {
+
         string iDificultad;
-        public Dificultad(string pDificultad)
+
+
+        public string Id
         {
-            iDificultad = pDificultad;
+            get { return iDificultad; }
+            set { iDificultad = value; }
         }
+
+
+
+        public Dificultad(string pDificultad)
+
+        {
+            Id = pDificultad;
+        }
+        public Dificultad()
+        { }
     }
 }

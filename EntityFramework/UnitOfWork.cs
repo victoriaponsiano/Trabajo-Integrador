@@ -28,6 +28,11 @@ namespace Trabajo_Integrador.EntityFramework
         public RepositorioUsuarios RepositorioUsuarios { get; private set; }
         public RepositorioConjuntoPregunta RepositorioConjuntoPregunta { get; private set; }
 
+        public RepositorioDificultades RepositorioDificultades { get; private set; }
+
+        public RepositorioCategorias RepositorioCategorias { get; private set; }
+
+
 
         protected virtual void Dispose(bool pDisposing)
         {
@@ -71,6 +76,8 @@ namespace Trabajo_Integrador.EntityFramework
             this.RepositorioPreguntas = new RepositorioPreguntas(pDbContext);
             this.RepositorioUsuarios = new RepositorioUsuarios(pDbContext);
             this.ExamenRepository = new ExamenRepository(pDbContext);
+            this.RepositorioCategorias = new RepositorioCategorias(pDbContext);
+            this.RepositorioDificultades = new RepositorioDificultades(pDbContext);
         }
 
 

@@ -13,18 +13,6 @@ namespace Trabajo_Integrador
         private static ControladorPreguntas cinstancia = null;
         private IEstrategiaObtenerPreguntas iEstrategiaObtenerPreguntas;
         private List<IEstrategiaObtenerPreguntas> iEstrategias;
-        public static ControladorPreguntas Instance
-        //Implementacion del patron singleton
-        {
-            get
-            {
-                if (cinstancia == null)
-                {
-                    cinstancia = new ControladorPreguntas();
-                }
-                return cinstancia;
-            }
-        }
  
 
 
@@ -51,15 +39,50 @@ namespace Trabajo_Integrador
         /// </summary>
         public void CargarPreguntas(List<Pregunta> pPreguntas)
         {
-
+            
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-
+                                    
                     foreach (Pregunta pre in pPreguntas)
                     {
-                        UoW.RepositorioPreguntas.Add(pre);
+
+                        if (db.Preguntas.Find(pre.Id) == null)
+                        {
+                            CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
+                            Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
+
+                            ///Si la categoria esta en la base de datos la referencia,
+                            ///sino crea una nueva y la inserta en la db
+                            if (categoria == null)
+                            {
+                                CategoriaPregunta categoriaNueva = new CategoriaPregunta(pre.Categoria.Id);
+                                Console.WriteLine($"agrego: {categoriaNueva.Id}");
+                            }
+                            else
+                            {
+                                //db.Categorias.Attach(categoria);
+                                pre.Categoria = categoria;
+                            }
+
+
+                            ///Si la dificultad esta en la base de datos la referencia,
+                            ///sino crea una nueva y la inserta en la db
+                            if (dificultad == null)
+                            {
+                                Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
+                            }
+                            else
+                            {
+                                //db.Dificultades.Attach(dificultad);
+                                pre.Dificultad = dificultad;
+                            }
+
+
+
+                            UoW.RepositorioPreguntas.Add(pre);
+                        }
                     }
                     UoW.Complete();
                 }
@@ -77,10 +100,55 @@ namespace Trabajo_Integrador
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public List<Pregunta> GetPreguntas(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
+        public List<Pregunta> GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
+           
             return iEstrategiaObtenerPreguntas.getPreguntas(pCantidad, pDificultad, pCategoria);
         }
+
+
+
+
+
+        /// <summary>
+        /// Obtiene preguntas random de la base de datos
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        /// <returns></returns>
+        public List<Pregunta> GetPreguntas(int pCantidad, string pCategoria, string pDificultad)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    return UoW.RepositorioPreguntas.GetRandom(pCantidad, pCategoria, pDificultad);
+                }
+            }
+                
+        }
+
+
+
+
+
+        /// <summary>
+        /// Implementacion del patron singleton
+        /// </summary>
+        public static ControladorPreguntas Instance
+        {
+            get
+            {
+                if (cinstancia == null)
+                {
+                    cinstancia = new ControladorPreguntas();
+                }
+                return cinstancia;
+            }
+        }
+
+
 
 
         /// <summary>
@@ -91,6 +159,8 @@ namespace Trabajo_Integrador
             iEstrategias = new List<IEstrategiaObtenerPreguntas>();
             iEstrategias.Add(new OpentDB());
             iEstrategiaObtenerPreguntas = this.GetEstrategia("OpentDB");
+            
+
         }
     }
 }

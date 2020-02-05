@@ -30,6 +30,7 @@ namespace Trabajo_Integrador.EntityFramework
         public void Add(TEntity pEntity)
         {
             iDBSet.Add(pEntity);
+            
             iDbContext.SaveChanges();
         }
 

@@ -21,6 +21,7 @@ namespace Trabajo_Integrador
             Id = pDescripcion;
             iTiempoEsperadoRespuesta = 20;
         }
-        
+
+        public ConjuntoPreguntas() { }
     }
 }

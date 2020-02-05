@@ -8,11 +8,17 @@ namespace Trabajo_Integrador
 {
     public class CategoriaPregunta
     {
-        string iCategoria;
+
+        public string Id { get { return iCategoria; }
+            set { iCategoria = value; }
+        }
+        public string iCategoria { get; set; }
 
         public CategoriaPregunta(string pCategoria)
         {
             iCategoria = pCategoria;
         }
+        public CategoriaPregunta()
+        { }
     }
 }
