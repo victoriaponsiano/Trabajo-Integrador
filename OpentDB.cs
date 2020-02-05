@@ -53,16 +53,15 @@ namespace Trabajo_Integrador
                         foreach (var bResponseItem in mResponseJSON.results)
                         {
                             // De esta manera se accede a los componentes de cada item
-                            string pregunta = bResponseItem.question.ToString();
-                            string respuestaCorrecta = bResponseItem.correct_answer.ToString();
+                            string pregunta = HttpUtility.HtmlDecode(bResponseItem.question.ToString());
+                            string respuestaCorrecta = HttpUtility.HtmlDecode(bResponseItem.correct_answer.ToString());
                             CategoriaPregunta categoria = new CategoriaPregunta(bResponseItem.category.ToString());
-                            Dificultad dificultad = new Dificultad(bResponseItem.difficulty.ToString());
+                            Dificultad dificultad = new Dificultad(HttpUtility.HtmlDecode(bResponseItem.difficulty.ToString()));
                             List<string> respIncorrectas = bResponseItem.incorrect_answers.ToObject<List<string>>();
 
                             Pregunta preg = new Pregunta(pregunta, respuestaCorrecta, respIncorrectas, dificultad, categoria);
 
                             //se agrega cada una de las preguntas a la lista
-
                             listaPreguntas.Add(preg);
                         }           
                     }
