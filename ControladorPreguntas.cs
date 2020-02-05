@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Trabajo_Integrador.EntityFramework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,9 @@ namespace Trabajo_Integrador
                 return cinstancia;
             }
         }
-        private ControladorPreguntas()
-        //Constructor
-        {
-            iEstrategias = new List<IEstrategiaObtenerPreguntas>();
-            iEstrategias.Add(new OpentDB());
-        }
+ 
+
+
 
 
         public IEstrategiaObtenerPreguntas GetEstrategia(String nombre)
@@ -46,13 +44,53 @@ namespace Trabajo_Integrador
             }
             return estrategiaRetorno;
         }
-        public void CargarPreguntas(string pCantidad,string pCategoriaPregunta,string Dificultad)
+
+
+        /// <summary>
+        /// Dada una lista de preguntas, las inserta en la base de datos
+        /// </summary>
+        public void CargarPreguntas(List<Pregunta> pPreguntas)
         {
 
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+
+                    foreach (Pregunta pre in pPreguntas)
+                    {
+                        UoW.RepositorioPreguntas.Add(pre);
+                    }
+                    UoW.Complete();
+                }
+
+            }
+
         }
+
+
+        /// <summary>
+        /// Obtiene las preguntas de internet y devuelve una lista con preguntas
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        /// <returns></returns>
         public List<Pregunta> GetPreguntas(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
             return iEstrategiaObtenerPreguntas.getPreguntas(pCantidad, pDificultad, pCategoria);
+        }
+
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ControladorPreguntas()
+        {
+            iEstrategias = new List<IEstrategiaObtenerPreguntas>();
+            iEstrategias.Add(new OpentDB());
+            iEstrategiaObtenerPreguntas = this.GetEstrategia("OpentDB");
         }
     }
 }

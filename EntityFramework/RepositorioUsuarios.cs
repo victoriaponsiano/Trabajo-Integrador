@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador.EntityFramework
 {
-    class RepositorioUsuarios : Repository<Usuario,TrabajoDbContext>
+    public class RepositorioUsuarios : Repository<Usuario,TrabajoDbContext>
     {
         public RepositorioUsuarios(TrabajoDbContext pContext) : base(pContext) { }
     }

@@ -55,7 +55,7 @@ namespace Trabajo_Integrador
                             // De esta manera se accede a los componentes de cada item
                             string pregunta = bResponseItem.question.ToString();
                             string respuestaCorrecta = bResponseItem.correct_answer.ToString();
-                            Categoria categoria = new Categoria(bResponseItem.category.ToString());
+                            CategoriaPregunta categoria = new CategoriaPregunta(bResponseItem.category.ToString());
                             Dificultad dificultad = new Dificultad(bResponseItem.difficulty.ToString());
                             List<string> respIncorrectas = bResponseItem.incorrect_answers.ToObject<List<string>>();
 

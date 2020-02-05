@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
-    class Conjunto
+    public class ConjuntoPreguntas
     {
-        string iDescripcion;
         float iTiempoEsperadoRespuesta;
 
-        public Conjunto(string pDescripcion, float pTiempoEsperadoRespuesta)
+        public string Id { get; set; }
+        public ConjuntoPreguntas(string pDescripcion, float pTiempoEsperadoRespuesta)
         {
-            iDescripcion = pDescripcion;
+            Id = pDescripcion;
             iTiempoEsperadoRespuesta = pTiempoEsperadoRespuesta;
         }
-        public Conjunto(string pDescripcion)
+        public ConjuntoPreguntas(string pDescripcion)
         {
-            iDescripcion = pDescripcion;
+            Id = pDescripcion;
             iTiempoEsperadoRespuesta = 20;
         }
         

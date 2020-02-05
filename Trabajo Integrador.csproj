@@ -87,15 +87,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\CategoriaPregunta.cs" />
-    <Compile Include="Dominio\Conjunto.cs" />
+    <Compile Include="Dominio\ConjuntoPreguntas.cs" />
     <Compile Include="ControladorExamen.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="EntityFramework\ExamenRepository.cs" />
+    <Compile Include="EntityFramework\RepositorioConjuntoPregunta.cs" />
+    <Compile Include="EntityFramework\RepositorioPreguntas.cs" />
     <Compile Include="EntityFramework\RepositorioUsuarios.cs" />
     <Compile Include="EntityFramework\Repository.cs" />
     <Compile Include="EntityFramework\TrabajoDbContext.cs" />
     <Compile Include="Dominio\Examen.cs" />
     <Compile Include="Dominio\Dificultad.cs" />
+    <Compile Include="EntityFramework\UnitOfWork.cs" />
     <Compile Include="EstrategiaNula.cs" />
     <Compile Include="EstrategiaObtenerPreguntas.cs" />
     <Compile Include="IEstrategiaObtenerPreguntas.cs" />

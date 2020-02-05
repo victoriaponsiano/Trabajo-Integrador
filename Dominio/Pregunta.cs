@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trabajo_Integrador.Dominio;
 
 namespace Trabajo_Integrador
 {
     public class Pregunta
     {
-        string iPregunta, iRespuestaCorrecta;
+        string iRespuestaCorrecta;
         List<string> iRespuestasIncorrectas;
         Dificultad iDificultad;
-        Categoria iCategoria;
-        public Pregunta(string pPregunta, string pRespuestaCorrecta,List<string> pRespuestasIncorrectas,Dificultad pDificultad,Categoria pCategoria)
+        CategoriaPregunta iCategoria;
+
+        public string Id
+        { get; set; }
+        public Pregunta(string pPregunta, string pRespuestaCorrecta,List<string> pRespuestasIncorrectas,Dificultad pDificultad,CategoriaPregunta pCategoria)
         {
-            iPregunta = pPregunta;
+            Id = pPregunta;
             iRespuestaCorrecta = pRespuestaCorrecta;
             iRespuestasIncorrectas = pRespuestasIncorrectas;
             iDificultad = pDificultad;

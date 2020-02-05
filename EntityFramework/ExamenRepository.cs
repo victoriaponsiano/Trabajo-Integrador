@@ -7,7 +7,7 @@ using Trabajo_Integrador.EntityFramework;
 
 namespace Trabajo_Integrador.EntityFramework
 {
-    class ExamenRepository : Repository<Examen,TrabajoDbContext>{
+    public class ExamenRepository : Repository<Examen,TrabajoDbContext>{
         public ExamenRepository(TrabajoDbContext pContext) : base(pContext)
             { }
         
