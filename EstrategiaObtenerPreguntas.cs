@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
+    /// <summary>
+    /// Clase abstracta que brinda metodo abstracto para cualquier implementacion de seleccion de preguntas.
+    /// </summary>
     public abstract class EstrategiaObtenerPreguntas:IEstrategiaObtenerPreguntas
     {
         //atributos
