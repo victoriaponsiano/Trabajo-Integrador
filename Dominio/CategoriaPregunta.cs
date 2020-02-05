@@ -9,11 +9,20 @@ namespace Trabajo_Integrador
 {
     public class CategoriaPregunta
     {
-        string iCategoria;
+
+        public int OpentDbId
+        { get; set; }
+
+        public string Id { get { return iCategoria; }
+            set { iCategoria = value; }
+        }
+        public string iCategoria { get; set; }
 
         public CategoriaPregunta(string pCategoria)
         {
             iCategoria = pCategoria;
         }
+        public CategoriaPregunta()
+        { }
     }
 }

@@ -9,28 +9,59 @@ namespace Trabajo_Integrador
 {
     public class Pregunta
     {
-        string iRespuestaCorrecta;
-        List<string> iRespuestasIncorrectas;
-        Dificultad iDificultad;
-        CategoriaPregunta iCategoria;
 
-        public string Id
-        { get; set; }
+        /// <summary>
+        /// Atributos
+        /// </summary>
+        
+
+
+        //Propiedades
+        public string Id { get; set; }
+        public virtual Dificultad Dificultad { get; set; }
+        public virtual CategoriaPregunta Categoria { get; set; }
+
+        public string RespuestaCorrecta { get; set; }
+        public string RespuestaIncorrecta1 { get; set; }
+        public string RespuestaIncorrecta2 { get; set; }
+        public string RespuestaIncorrecta3 { get; set; }
+
+
+
+        /// <summary>
+        /// Constructor de la pregunta
+        /// </summary>
+        /// <param name="pPregunta"></param>
+        /// <param name="pRespuestaCorrecta"></param>
+        /// <param name="pRespuestasIncorrectas"></param>
+        /// <param name="pDificultad"></param>
+        /// <param name="pCategoria"></param>
         public Pregunta(string pPregunta, string pRespuestaCorrecta,List<string> pRespuestasIncorrectas,Dificultad pDificultad,CategoriaPregunta pCategoria)
         {
             Id = pPregunta;
-            iRespuestaCorrecta = pRespuestaCorrecta;
-            iRespuestasIncorrectas = pRespuestasIncorrectas;
-            iDificultad = pDificultad;
-            iCategoria = pCategoria;
+            RespuestaCorrecta = pRespuestaCorrecta;
+            Dificultad = pDificultad;
+            Categoria = pCategoria;
+            RespuestaIncorrecta1 = pRespuestasIncorrectas[0];
+            RespuestaIncorrecta2 = pRespuestasIncorrectas[1];
+            RespuestaIncorrecta3 = pRespuestasIncorrectas[2];
         }
-        public Boolean RespuestaCorrecta(string respuesta)
+
+        /// <summary>
+        /// Chequea si una respuesta es corretcta
+        /// Devuelve verdado si las string coinciden
+        /// </summary>
+        /// <param name="respuesta"></param>
+        /// <returns></returns>
+        public Boolean RespuestaEsCorrecta(string respuesta)
         {
-            if (respuesta == iRespuestaCorrecta)
+            if (respuesta == RespuestaCorrecta)
             {
                 return true;
             }
             else return false;
         }
+
+        public Pregunta() { }
     }
 }

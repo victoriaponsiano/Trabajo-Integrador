@@ -16,7 +16,7 @@ namespace Trabajo_Integrador.EntityFramework
         ////////////
         private readonly TDbContext iDbContext;
 
-        private DbSet<TEntity> iDBSet;
+        protected DbSet<TEntity> iDBSet;
 
 
 
@@ -30,6 +30,7 @@ namespace Trabajo_Integrador.EntityFramework
         public void Add(TEntity pEntity)
         {
             iDBSet.Add(pEntity);
+            
             iDbContext.SaveChanges();
         }
 
@@ -48,6 +49,8 @@ namespace Trabajo_Integrador.EntityFramework
         {
             return this.iDBSet.ToList();
         }
+
+       
 
 
 

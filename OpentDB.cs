@@ -57,7 +57,13 @@ namespace Trabajo_Integrador
                             string respuestaCorrecta = HttpUtility.HtmlDecode(bResponseItem.correct_answer.ToString());
                             CategoriaPregunta categoria = new CategoriaPregunta(bResponseItem.category.ToString());
                             Dificultad dificultad = new Dificultad(HttpUtility.HtmlDecode(bResponseItem.difficulty.ToString()));
-                            List<string> respIncorrectas = bResponseItem.incorrect_answers.ToObject<List<string>>();
+                            List<string> incorrectas = bResponseItem.incorrect_answers.ToObject<List<string>>();
+                            List<string> respIncorrectas = new List<string>();
+                            foreach (string respInc in incorrectas)
+                            {
+                                string respuestaIncorrecta= HttpUtility.HtmlDecode(respInc);
+                                respIncorrectas.Add(respuestaIncorrecta);
+                            }
 
                             Pregunta preg = new Pregunta(pregunta, respuestaCorrecta, respIncorrectas, dificultad, categoria);
 

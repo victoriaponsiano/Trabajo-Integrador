@@ -10,7 +10,7 @@ namespace Trabajo_Integrador
     public class Examen
     {
         Usuario iUsuario;
-        List<Pregunta> Preguntas;
+        
         ControladorPreguntas iControladorPreguntas;
         
 
@@ -26,7 +26,7 @@ namespace Trabajo_Integrador
         public CategoriaPregunta CategoriaPregunta{ get; set; }
         public Dificultad Dificultad { get; set; }
 
-
+        public List<Pregunta> Preguntas { get; set; }
 
         /// <summary>
         /// Constructor de examen
@@ -34,11 +34,17 @@ namespace Trabajo_Integrador
         /// <param name="pCantidad"></param>
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
+        /// 
         public Examen(int pCantidad, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             this.CantidadPreguntas = pCantidad;
             this.CategoriaPregunta = pCategoria;
             this.Dificultad = pDificultad;
+            this.iControladorPreguntas = new ControladorPreguntas();
+
+            Preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pCategoria.Id, pDificultad.Id);
         }
+
+        public Examen() { }
     }
 }
