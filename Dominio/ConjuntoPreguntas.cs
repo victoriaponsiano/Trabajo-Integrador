@@ -10,18 +10,20 @@ namespace Trabajo_Integrador
     {
         float iTiempoEsperadoRespuesta;
 
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
         public ConjuntoPreguntas(string pDescripcion, float pTiempoEsperadoRespuesta)
         {
-            Id = pDescripcion;
+            Descripcion= pDescripcion;
             iTiempoEsperadoRespuesta = pTiempoEsperadoRespuesta;
         }
         public ConjuntoPreguntas(string pDescripcion)
         {
-            Id = pDescripcion;
+            Descripcion = pDescripcion;
             iTiempoEsperadoRespuesta = 20;
         }
 
         public ConjuntoPreguntas() { }
+
     }
 }

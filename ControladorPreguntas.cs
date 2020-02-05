@@ -100,10 +100,11 @@ namespace Trabajo_Integrador
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public List<Pregunta> GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
+        public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
            
-            return iEstrategiaObtenerPreguntas.getPreguntas(pCantidad, pDificultad, pCategoria);
+            List<Pregunta> preguntas =iEstrategiaObtenerPreguntas.getPreguntas(pCantidad, pDificultad, pCategoria);
+            CargarPreguntas(preguntas);
         }
 
 
@@ -159,8 +160,6 @@ namespace Trabajo_Integrador
             iEstrategias = new List<IEstrategiaObtenerPreguntas>();
             iEstrategias.Add(new OpentDB());
             iEstrategiaObtenerPreguntas = this.GetEstrategia("OpentDB");
-            
-
         }
     }
 }

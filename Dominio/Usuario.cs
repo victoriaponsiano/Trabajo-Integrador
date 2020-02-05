@@ -10,5 +10,13 @@ namespace Trabajo_Integrador.Dominio
     {
         public String Id { get; set; }
         public String Contrasenia { get; set; }
+        public Boolean Aministrador { get; set; }
+        
+        public Usuario(string pId, string pContrasenia)
+        {
+            Id = pId;
+            Contrasenia = pContrasenia;
+            Aministrador = false;
+        }
     }
 }

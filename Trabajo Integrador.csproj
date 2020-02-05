@@ -86,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorAdministrativo.cs" />
     <Compile Include="Dominio\CategoriaPregunta.cs" />
     <Compile Include="Dominio\ConjuntoPreguntas.cs" />
     <Compile Include="ControladorExamen.cs" />

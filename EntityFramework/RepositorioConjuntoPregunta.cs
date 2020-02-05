@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador.EntityFramework
 {
-    public class RepositorioConjuntoPregunta : Repository<Pregunta, TrabajoDbContext>
+    public class RepositorioConjuntoPregunta : Repository<ConjuntoPreguntas, TrabajoDbContext>
     {
         public RepositorioConjuntoPregunta(TrabajoDbContext pContext) : base(pContext) { }
     }
