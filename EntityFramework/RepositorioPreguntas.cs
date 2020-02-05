@@ -25,26 +25,9 @@ namespace Trabajo_Integrador.EntityFramework
         /// <returns>Una Lista de preguntas</returns>
         public List<Pregunta> GetRandom(int pCantidad,string pCategoria,string pDificultad) 
         {
-            List<Pregunta> ADevolver = (List<Pregunta>) this.GetAll();
-            
-            foreach (Pregunta pre in ADevolver) 
-            {
-                if (!((pre.Categoria.Id == pCategoria) && (pre.Dificultad.Id == pDificultad)))
-                {
-                    ADevolver.Remove(pre);
-                }
-            }
 
-            if (ADevolver.Count() > pCantidad)
-            {
-                ADevolver.RemoveRange(0, ADevolver.Count() - pCantidad);
-                return ADevolver;
-            }
-            else
-            {
-                return ADevolver;
-            }
-           
+
+            return this.iDBSet.OrderBy(r => Guid.NewGuid()).Take(pCantidad).ToList<Pregunta>();
 
 
         }

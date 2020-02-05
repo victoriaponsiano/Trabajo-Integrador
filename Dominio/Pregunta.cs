@@ -18,8 +18,8 @@ namespace Trabajo_Integrador
 
         //Propiedades
         public string Id { get; set; }
-        public Dificultad Dificultad { get; set; }
-        public CategoriaPregunta Categoria { get; set; }
+        public virtual Dificultad Dificultad { get; set; }
+        public virtual CategoriaPregunta Categoria { get; set; }
 
         public string RespuestaCorrecta { get; set; }
         public string RespuestaIncorrecta1 { get; set; }
