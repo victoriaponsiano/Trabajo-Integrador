@@ -11,17 +11,16 @@ namespace Trabajo_Integrador
     {
         static void Main(string[] args)
         {
+            CategoriaPregunta cat = new CategoriaPregunta("Vehicles");
+            Dificultad dif = new Dificultad("easy");
+            Examen ex = new Examen(10, cat, dif);
 
-            ControladorPreguntas contrPreg = new ControladorPreguntas();
-            List<Pregunta> preguntas =  contrPreg.GetPreguntasOnline("100", "OpentDB", "0", "0");
-            foreach(Pregunta pre in preguntas)
+            foreach (Pregunta pre in ex.Preguntas)
             {
-                Console.WriteLine(pre.Id);
+                Console.WriteLine($"{pre.Id}");
             }
-            contrPreg.CargarPreguntas(preguntas);
-            Console.WriteLine("termine");
-            Console.ReadLine();
-                    
+
+            Console.ReadKey();
         }
     }
 }

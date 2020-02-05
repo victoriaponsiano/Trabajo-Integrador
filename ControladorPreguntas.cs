@@ -117,13 +117,13 @@ namespace Trabajo_Integrador
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public List<Pregunta> GetPreguntas(int pCantidad, string pCategoria, string pDificultad)
+        public List<Pregunta> GetPreguntasRandom(int pCantidad, string pCategoria, string pDificultad)
         {
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    return UoW.RepositorioPreguntas.GetRandom(pCantidad, pCategoria, pDificultad);
+                   return UoW.RepositorioPreguntas.GetRandom(pCantidad, pCategoria, pDificultad);
                 }
             }
                 
