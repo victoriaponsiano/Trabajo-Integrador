@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Trabajo_Integrador
 {
     public class CategoriaPregunta
     {
+
+        public int OpentDbId
+        { get; set; }
 
         public string Id { get { return iCategoria; }
             set { iCategoria = value; }
