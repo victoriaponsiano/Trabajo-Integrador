@@ -21,6 +21,8 @@ namespace Trabajo_Integrador.EntityFramework
         public DbSet<Dificultad> Dificultades { get; set; }
         public DbSet<CategoriaPregunta> Categorias { get; set; }
 
+        public DbSet<Log> Logs { get; set; }
+
         public TrabajoDbContext()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<TrabajoDbContext, Configuration>());

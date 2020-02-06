@@ -16,7 +16,7 @@ namespace Trabajo_Integrador.Dominio
         /// </summary>
         public String Id { get; set; }
         public String Contrasenia { get; set; }
-        public Boolean Aministrador { get; set; }
+        public Boolean Administrador { get; set; }
         
         /// <summary>
         /// Constructor
@@ -27,7 +27,7 @@ namespace Trabajo_Integrador.Dominio
         {
             Id = pId;
             Contrasenia = pContrasenia;
-            Aministrador = false;
+            Administrador = false;
         }
     }
 }
