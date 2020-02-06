@@ -73,7 +73,6 @@ namespace Trabajo_Integrador
 
                             //se agrega cada una de las preguntas a la lista
                             listaPreguntas.Add(preg);
-                            Console.WriteLine("OpentDB");
                         }           
                     }
                 }

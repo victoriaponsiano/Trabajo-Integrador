@@ -14,13 +14,12 @@ namespace Trabajo_Integrador
         /// <summary>
         /// atributos
         /// </summary>
-        float TiempoEsperadoRespuesta { get; set; }
+        public float TiempoEsperadoRespuesta { get; set; }
 
         /// <summary>
         /// Properties.
         /// </summary>
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Constructor
@@ -29,7 +28,7 @@ namespace Trabajo_Integrador
         /// <param name="pTiempoEsperadoRespuesta"></param>
         public ConjuntoPreguntas(string pDescripcion, float pTiempoEsperadoRespuesta)
         {
-            Descripcion= pDescripcion;
+            Id= pDescripcion;
             TiempoEsperadoRespuesta = pTiempoEsperadoRespuesta;
         }
         /// <summary>
@@ -38,7 +37,7 @@ namespace Trabajo_Integrador
         /// <param name="pDescripcion"></param>
         public ConjuntoPreguntas(string pDescripcion)
         {
-            Descripcion = pDescripcion;
+            Id = pDescripcion;
             TiempoEsperadoRespuesta = 20;
         }
         /// <summary>

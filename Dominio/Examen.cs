@@ -64,8 +64,6 @@ namespace Trabajo_Integrador
         public Usuario Usuario {get;set;}
 
         public int CantidadPreguntas { get; set; }
-        public CategoriaPregunta CategoriaPregunta{ get; set; }
-        public Dificultad Dificultad { get; set; }
 
         public List<Pregunta> Preguntas { get; set; }
 
@@ -79,7 +77,8 @@ namespace Trabajo_Integrador
         /// <returns></returns>
         private double CalcularPuntaje() 
         {
-            return (iRespuestasCorrectas / Preguntas.Count) * Dificultad.FactorDificultad * FactorTiempo;
+            
+            return (iRespuestasCorrectas / Preguntas.Count) * Preguntas.First().Dificultad.FactorDificultad * FactorTiempo;
         }
 
 
@@ -122,9 +121,9 @@ namespace Trabajo_Integrador
         /// </summary>
         public void Iniciar() 
         {
+
             iRespuestasCorrectas = 0;
             Fecha = DateTime.Now;
-            TiempoLimite = Preguntas.Count * Preguntas.First().Conjunto.TiempoEsperadoRespuesta;
         }
 
 
@@ -139,11 +138,9 @@ namespace Trabajo_Integrador
         public Examen(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             this.CantidadPreguntas = pCantidad;
-            this.CategoriaPregunta = pCategoria;
-            this.Dificultad = pDificultad;
             this.iControladorPreguntas = new ControladorPreguntas();
+            Preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
 
-            Preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad,pConjunto, pCategoria, pDificultad);
         }
 
         public Examen() { }

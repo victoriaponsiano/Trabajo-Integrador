@@ -10,9 +10,6 @@ namespace Trabajo_Integrador
 {
     public class ControladorExamen
     {
-
-
-
         /// <summary>
         /// Crea un nuevo examen no asociado a un usuario
         /// </summary>
@@ -20,13 +17,13 @@ namespace Trabajo_Integrador
         /// <param name="pConjunto"></param>
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
-        public Examen InicializarExamen(int pCantidad, String pConjunto, string pCategoria, string pDificultad)
+        public Examen InicializarExamen(int pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
             Dificultad dif = new Dificultad(pDificultad);
-            CategoriaPregunta cat = new CategoriaPregunta(pCategoria);
+            CategoriaPregunta cat = new CategoriaPregunta();
+            cat.OpentDbId =  int.Parse(pCategoria);
             ConjuntoPreguntas conj = new ConjuntoPreguntas(pConjunto);
             return new Examen(pCantidad, conj, cat, dif);
-
         }
 
 
@@ -45,7 +42,6 @@ namespace Trabajo_Integrador
         public Boolean RespuestaCorrecta(Examen pExamen, Pregunta pPregunta, String pRespuesta)
         {
             return pExamen.RespuestaCorrecta(pPregunta, pRespuesta);
-
         }
 
 
@@ -85,12 +81,17 @@ namespace Trabajo_Integrador
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    UoW.ExamenRepository.Add(pExamen);
+                    for(int i = 0; i < pExamen.Preguntas.Count; i++)
+                    {
+                        Pregunta preguntaNueva = db.Preguntas.Find(pExamen.Preguntas[i].Id);
+                        pExamen.Preguntas[i] = preguntaNueva;                       
+
+                    }
+
+                        UoW.ExamenRepository.Add(pExamen);
+                        UoW.Complete();
                 }
             }
-
-
-
         }
 
         public ControladorExamen() 

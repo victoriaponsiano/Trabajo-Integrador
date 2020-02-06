@@ -56,6 +56,7 @@ namespace Trabajo_Integrador
                         {
                             CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
                             Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
+                            ConjuntoPreguntas conjunto = db.ConjuntoPreguntas.Find(pre.Conjunto.Id);
 
                             ///Si la categoria esta en la base de datos la referencia,
                             ///sino crea una nueva y la inserta en la db
@@ -80,6 +81,16 @@ namespace Trabajo_Integrador
                                 pre.Dificultad = dificultad;
                             }
 
+                            ///Si el conjunto esta en la base de datos la referencia,
+                            ///sino crea uno nuevo y la inserta en la db
+                            if (conjunto == null)
+                            { 
+                                ConjuntoPreguntas conjuntoNuevo = new ConjuntoPreguntas(pre.Conjunto.Id);
+                            }
+                            else
+                            {
+                                pre.Conjunto = conjunto;
+                            }
 
 
                             UoW.RepositorioPreguntas.Add(pre);

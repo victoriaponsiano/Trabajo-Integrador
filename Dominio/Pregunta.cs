@@ -21,6 +21,7 @@ namespace Trabajo_Integrador
         public string RespuestaIncorrecta2 { get; set; }
         public string RespuestaIncorrecta3 { get; set; }
 
+        public virtual List<Examen> Examenes { get; set; }
 
 
         /// <summary>
@@ -31,6 +32,7 @@ namespace Trabajo_Integrador
         /// <param name="pRespuestasIncorrectas"></param>
         /// <param name="pDificultad"></param>
         /// <param name="pCategoria"></param>
+        /// <param name="pConjunto"></param>
         public Pregunta(string pPregunta,string pRespuestaCorrecta,List<string> pRespuestasIncorrectas,Dificultad pDificultad,CategoriaPregunta pCategoria, ConjuntoPreguntas pConjunto)
         {
             Id = pPregunta;
