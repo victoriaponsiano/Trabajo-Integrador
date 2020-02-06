@@ -70,7 +70,7 @@ namespace Trabajo_Integrador
         }
         public void SetAdministrador(Usuario pUsuario)
         {
-            pUsuario.Aministrador = true;
+            pUsuario.Administrador = true;
         }
 
     }

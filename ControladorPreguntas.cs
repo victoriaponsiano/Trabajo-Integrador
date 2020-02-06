@@ -94,7 +94,7 @@ namespace Trabajo_Integrador
 
 
         /// <summary>
-        /// Obtiene las preguntas de internet lo que devuelve una lista con preguntas y estas se cargan en la base de datos.
+        /// Obtiene las preguntas de internet y se cargan en la base de datos.
         /// </summary>
         /// <param name="pCantidad"></param>
         /// <param name="pConjunto"></param>
@@ -103,9 +103,18 @@ namespace Trabajo_Integrador
         /// <returns></returns>
         public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
-            IEstrategiaObtenerPreguntas estrategia= this.GetEstrategia(pConjunto);
-            List<Pregunta> preguntas =estrategia.getPreguntas(pCantidad,pConjunto, pDificultad, pCategoria);
-            CargarPreguntas(preguntas);
+            try
+            {
+                IEstrategiaObtenerPreguntas estrategia = this.GetEstrategia(pConjunto);
+                List<Pregunta> preguntas = estrategia.getPreguntas(pCantidad, pConjunto, pDificultad, pCategoria);
+                CargarPreguntas(preguntas);
+            }
+            catch (Exception bEx)
+            {
+                Bitacora.GuardarLog(bEx.ToString());
+
+
+            }
         }
 
 
