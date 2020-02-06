@@ -55,7 +55,11 @@ namespace Trabajo_Integrador
             {
                 return true;
             }
-            else return false;
+
+            else
+            {
+                return false;
+            }
         }
         /// <summary>
         /// Constructor

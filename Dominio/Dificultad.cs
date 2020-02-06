@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
-    /// <summary>
-    /// Clase que representa la dificultad de cada pregunta
-    /// </summary>
     public class Dificultad
     {
-        /// <summary>
-        /// Atributos
-        /// </summary>
+
         string iDificultad;
 
-        /// <summary>
-        /// Properties
-        /// </summary>
+
         public string Id
         {
             get { return iDificultad; }
@@ -26,18 +19,29 @@ namespace Trabajo_Integrador
         }
 
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="pDificultad"></param>
+        public int FactorDificultad { get; set; }
+
+
         public Dificultad(string pDificultad)
 
         {
             Id = pDificultad;
+            switch (pDificultad)
+            {
+                case "easy":
+                    FactorDificultad = 1;
+                    break;
+                case "medium":
+                    FactorDificultad = 3;
+                    break;
+                case "hard":
+                    FactorDificultad = 5;
+                    break;
+                default:
+                    FactorDificultad = 1;
+                    break;
+            }
         }
-        /// <summary>
-        /// Constructor
-        /// </summary>
         public Dificultad()
         { }
     }
