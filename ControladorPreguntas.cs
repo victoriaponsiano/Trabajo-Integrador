@@ -102,7 +102,6 @@ namespace Trabajo_Integrador
         /// <returns></returns>
         public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
-           
             List<Pregunta> preguntas =iEstrategiaObtenerPreguntas.getPreguntas(pCantidad, pDificultad, pCategoria);
             CargarPreguntas(preguntas);
         }

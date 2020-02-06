@@ -105,6 +105,7 @@
     <Compile Include="EstrategiaNula.cs" />
     <Compile Include="EstrategiaObtenerPreguntas.cs" />
     <Compile Include="IEstrategiaObtenerPreguntas.cs" />
+    <Compile Include="Bitacora.cs" />
     <Compile Include="Migrations\202002041255522_InitialCreate.cs" />
     <Compile Include="Migrations\202002041255522_InitialCreate.designer.cs">
       <DependentUpon>202002041255522_InitialCreate.cs</DependentUpon>

@@ -114,7 +114,6 @@
             this.btnComenzarExamen.TabIndex = 6;
             this.btnComenzarExamen.Text = "Comenzar Examen";
             this.btnComenzarExamen.UseVisualStyleBackColor = false;
-            this.btnComenzarExamen.Click += new System.EventHandler(this.btnComenzarExamen_Click);
             // 
             // dificultad
             // 
