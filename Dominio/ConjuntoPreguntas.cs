@@ -14,7 +14,7 @@ namespace Trabajo_Integrador
         /// <summary>
         /// atributos
         /// </summary>
-        float iTiempoEsperadoRespuesta;
+        float TiempoEsperadoRespuesta { get; set; }
 
         /// <summary>
         /// Properties.
@@ -30,7 +30,7 @@ namespace Trabajo_Integrador
         public ConjuntoPreguntas(string pDescripcion, float pTiempoEsperadoRespuesta)
         {
             Descripcion= pDescripcion;
-            iTiempoEsperadoRespuesta = pTiempoEsperadoRespuesta;
+            TiempoEsperadoRespuesta = pTiempoEsperadoRespuesta;
         }
         /// <summary>
         /// construtor
@@ -39,7 +39,7 @@ namespace Trabajo_Integrador
         public ConjuntoPreguntas(string pDescripcion)
         {
             Descripcion = pDescripcion;
-            iTiempoEsperadoRespuesta = 20;
+            TiempoEsperadoRespuesta = 20;
         }
         /// <summary>
         /// Constructor
