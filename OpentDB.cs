@@ -65,7 +65,7 @@ namespace Trabajo_Integrador
                                 respIncorrectas.Add(respuestaIncorrecta);
                             }
 
-                            Pregunta preg = new Pregunta(pregunta, respuestaCorrecta, respIncorrectas, dificultad, categoria);
+                            Pregunta preg = new Pregunta(pregunta, respuestaCorrecta, respIncorrectas, dificultad, categoria,new ConjuntoPreguntas("OpentDB"));
 
                             //se agrega cada una de las preguntas a la lista
                             listaPreguntas.Add(preg);
