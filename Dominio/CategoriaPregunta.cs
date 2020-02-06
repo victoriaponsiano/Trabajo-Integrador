@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
+    /// <summary>
+    /// Clase que indica la categoria de cada pregunta
+    /// </summary>
     public class CategoriaPregunta
     {
-
+        /// <summary>
+        /// properties.
+        /// </summary>
         public int OpentDbId
         { get; set; }
 
@@ -18,6 +23,10 @@ namespace Trabajo_Integrador
         }
         public string iCategoria { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pCategoria"></param>
         public CategoriaPregunta(string pCategoria)
         {
             iCategoria = pCategoria;

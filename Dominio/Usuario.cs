@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador.Dominio
 {
+    /// <summary>
+    /// Clase que almacena datos pertenecientes a un usuario.
+    /// </summary>
     public class Usuario
     {
+        /// <summary>
+        /// Properties.
+        /// </summary>
         public String Id { get; set; }
         public String Contrasenia { get; set; }
         public Boolean Aministrador { get; set; }
         
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pId"></param>
+        /// <param name="pContrasenia"></param>
         public Usuario(string pId, string pContrasenia)
         {
             Id = pId;

@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Integrador
 {
+    /// <summary>
+    /// Clase que representa la no implementacion de ninguna estrategia.
+    /// </summary>
     public sealed class EstrategiaNula:EstrategiaObtenerPreguntas
     {
         public EstrategiaNula() : base("Null")
         {
         }
 
-        public override List<Pregunta> getPreguntas(string pCantidad, string pDificultad, string pCategoria)
+        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, string pCategoria)
         {
             throw new NotImplementedException();
         }

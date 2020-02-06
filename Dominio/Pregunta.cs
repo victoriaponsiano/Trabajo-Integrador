@@ -9,13 +9,6 @@ namespace Trabajo_Integrador
 {
     public class Pregunta
     {
-
-        /// <summary>
-        /// Atributos
-        /// </summary>
-        
-
-
         //Propiedades
         public string Id { get; set; }
         public virtual Dificultad Dificultad { get; set; }
@@ -68,7 +61,9 @@ namespace Trabajo_Integrador
                 return false;
             }
         }
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Pregunta() { }
     }
 }

@@ -7,6 +7,9 @@ using System.IO;
 
 namespace Trabajo_Integrador
 {
+    /// <summary>
+    /// Clase bitacora que almacena todos los archivos log para hacer diagnosticos ante errores
+    /// </summary>
     public class Bitacora
     {
         private string Path = "";
