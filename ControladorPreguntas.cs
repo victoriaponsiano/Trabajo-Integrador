@@ -112,6 +112,8 @@ namespace Trabajo_Integrador
             catch (Exception bEx)
             {
                 Bitacora.GuardarLog(bEx.ToString());
+
+
             }
         }
 
