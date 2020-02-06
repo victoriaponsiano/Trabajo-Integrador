@@ -13,7 +13,7 @@ namespace Trabajo_Integrador.EntityFramework
     
         }
 
-     
+
 
 
         /// <summary>
@@ -23,11 +23,22 @@ namespace Trabajo_Integrador.EntityFramework
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns>Una Lista de preguntas</returns>
-        public List<Pregunta> GetRandom(int pCantidad,string pCategoria,string pDificultad) 
+        public List<Pregunta> GetRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
+            int agregadas = 0;
+            List<Pregunta> preguntas = iDBSet.Where(p => ((p.Dificultad.Id == pDificultad.Id) && (p.Categoria.Id == pCategoria.Id) && (p.Conjunto.Id == pConjunto.Id))).ToList<Pregunta>();
+            List<Pregunta> ADevolver = new List<Pregunta>();
 
+            if (pCantidad > preguntas.Count())
+            {
+                for (int i = preguntas.Count - pCantidad; i > 0; i--)
+                {
+                    ADevolver.Add(preguntas[i]);
+                }
+            }
 
-            return this.iDBSet.OrderBy(r => Guid.NewGuid()).Take(pCantidad).ToList<Pregunta>();
+            else { ADevolver = preguntas; }
+            return ADevolver;
 
 
         }

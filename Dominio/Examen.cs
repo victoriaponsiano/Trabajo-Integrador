@@ -9,10 +9,11 @@ namespace Trabajo_Integrador
 {
     public class Examen
     {
-        Usuario iUsuario;
-        
+
+        private DateTime iTiempoInicio;
+
         ControladorPreguntas iControladorPreguntas;
-        
+
 
 
         public int Id { get; set; }
@@ -22,11 +23,23 @@ namespace Trabajo_Integrador
         public float TiempoUsado { set; get; }
         public DateTime Fecha { get; set; }
 
+        public Usuario Usuario {get;set;}
+
         public int CantidadPreguntas { get; set; }
         public CategoriaPregunta CategoriaPregunta{ get; set; }
         public Dificultad Dificultad { get; set; }
 
         public List<Pregunta> Preguntas { get; set; }
+
+
+
+        public void Iniciar() 
+        {
+            iTiempoInicio = DateTime.Now;
+            TiempoLimite = Preguntas.Count * Preguntas[0].
+        }
+
+
 
         /// <summary>
         /// Constructor de examen
@@ -35,14 +48,14 @@ namespace Trabajo_Integrador
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// 
-        public Examen(int pCantidad, CategoriaPregunta pCategoria, Dificultad pDificultad)
+        public Examen(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             this.CantidadPreguntas = pCantidad;
             this.CategoriaPregunta = pCategoria;
             this.Dificultad = pDificultad;
             this.iControladorPreguntas = new ControladorPreguntas();
 
-            Preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pCategoria.Id, pDificultad.Id);
+            Preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad,pConjunto, pCategoria, pDificultad);
         }
 
         public Examen() { }
