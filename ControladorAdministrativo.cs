@@ -8,9 +8,12 @@ using Trabajo_Integrador.EntityFramework;
 
 namespace Trabajo_Integrador
 {
+    /// <summary>
+    /// Clase utilizada por el administrador.
+    /// </summary>
     public class ControladorAdministrativo
     {
-        ControladorPreguntas iControladorPreguntas;
+        ControladorPreguntas iControladorPreguntas = new ControladorPreguntas();
         public void CargarPreguntas(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
             iControladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);

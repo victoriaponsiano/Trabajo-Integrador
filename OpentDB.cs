@@ -17,13 +17,17 @@ namespace Trabajo_Integrador
     {
         List<Pregunta> listaPreguntas = new List<Pregunta>();
 
-        public OpentDB():base ("OpentDB")
-        {
+        public OpentDB():base ("OpentDB") {}
 
-        }
-
-        //metodo para obtener preguntas
-        public override List<Pregunta> getPreguntas(string pCantidad, string pDificultad, string pCategoria)
+        /// <summary>
+        /// Metodo para poder obtener preguntas de la pagina de OpentDB
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pDificultad"></param>
+        /// <param name="pCategoria"></param>
+        /// <returns></returns>
+        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, string pCategoria)
         {
             {
                 // Establecimiento del protocolo ssl de transporte
@@ -61,14 +65,15 @@ namespace Trabajo_Integrador
                             List<string> respIncorrectas = new List<string>();
                             foreach (string respInc in incorrectas)
                             {
-                                string respuestaIncorrecta= HttpUtility.HtmlDecode(respInc);
+                                string respuestaIncorrecta = HttpUtility.HtmlDecode(respInc);
                                 respIncorrectas.Add(respuestaIncorrecta);
                             }
 
-                            Pregunta preg = new Pregunta(pregunta, respuestaCorrecta, respIncorrectas, dificultad, categoria,new ConjuntoPreguntas("OpentDB"));
+                            Pregunta preg = new Pregunta(pregunta, respuestaCorrecta, respIncorrectas, dificultad, categoria, new ConjuntoPreguntas(pConjunto));
 
                             //se agrega cada una de las preguntas a la lista
                             listaPreguntas.Add(preg);
+                            Console.WriteLine("OpentDB");
                         }           
                     }
                 }
@@ -91,6 +96,13 @@ namespace Trabajo_Integrador
                 return listaPreguntas;
             }
         }
+        /// <summary>
+        /// Crea la url a partir de los parametros dados.
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pDificultad"></param>
+        /// <param name="pCategoria"></param>
+        /// <returns></returns>
         public string CrearURL(string pCantidad, string pDificultad, string pCategoria)
         {
             return ("https://opentdb.com/api.php?amount=" + pCantidad + "&category=" + pCategoria + "&difficulty=" + pDificultad + "&type=multiple");

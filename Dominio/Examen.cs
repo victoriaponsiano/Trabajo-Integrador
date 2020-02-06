@@ -36,7 +36,7 @@ namespace Trabajo_Integrador
         public void Iniciar() 
         {
             iTiempoInicio = DateTime.Now;
-            TiempoLimite = Preguntas.Count * Preguntas[0].
+          //  TiempoLimite = Preguntas.Count * Preguntas[0].
         }
 
 

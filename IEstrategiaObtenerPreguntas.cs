@@ -11,6 +11,6 @@ namespace Trabajo_Integrador
     /// </summary>
     public interface IEstrategiaObtenerPreguntas
     {
-       List<Pregunta> getPreguntas(string pCantidad, string pDificultad, string pCategoria);
+       List<Pregunta> getPreguntas(string pCantidad,string pConjunto, string pDificultad, string pCategoria);
     }
 }

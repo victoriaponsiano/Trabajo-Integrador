@@ -10,17 +10,21 @@ namespace Trabajo_Integrador
 {
     public class ControladorPreguntas
     {
+
+        /// <summary>
+        /// atributos
+        /// </summary>
         private static ControladorPreguntas cinstancia = null;
         private IEstrategiaObtenerPreguntas iEstrategiaObtenerPreguntas;
         private List<IEstrategiaObtenerPreguntas> iEstrategias;
  
-
-
-
-
+        /// <summary>
+        /// Obtiene la estrategia a utilizar teniendo como parametro el conjunto de preguntas
+        /// Si no encuentra la estrategia devuelve la nula
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public IEstrategiaObtenerPreguntas GetEstrategia(String nombre)
-        //Devuelve la estrategia cuyo nombre sea igual al parametro,
-        //Sino devuelve estrategia nula
         {
             IEstrategiaObtenerPreguntas estrategiaRetorno = new EstrategiaNula();
             foreach (EstrategiaObtenerPreguntas est in iEstrategias)
@@ -58,11 +62,9 @@ namespace Trabajo_Integrador
                             if (categoria == null)
                             {
                                 CategoriaPregunta categoriaNueva = new CategoriaPregunta(pre.Categoria.Id);
-                                Console.WriteLine($"agrego: {categoriaNueva.Id}");
                             }
                             else
                             {
-                                //db.Categorias.Attach(categoria);
                                 pre.Categoria = categoria;
                             }
 
@@ -75,7 +77,6 @@ namespace Trabajo_Integrador
                             }
                             else
                             {
-                                //db.Dificultades.Attach(dificultad);
                                 pre.Dificultad = dificultad;
                             }
 
@@ -93,7 +94,7 @@ namespace Trabajo_Integrador
 
 
         /// <summary>
-        /// Obtiene las preguntas de internet y devuelve una lista con preguntas
+        /// Obtiene las preguntas de internet lo que devuelve una lista con preguntas y estas se cargan en la base de datos.
         /// </summary>
         /// <param name="pCantidad"></param>
         /// <param name="pConjunto"></param>
@@ -102,7 +103,8 @@ namespace Trabajo_Integrador
         /// <returns></returns>
         public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
-            List<Pregunta> preguntas =iEstrategiaObtenerPreguntas.getPreguntas(pCantidad, pDificultad, pCategoria);
+            IEstrategiaObtenerPreguntas estrategia= this.GetEstrategia(pConjunto);
+            List<Pregunta> preguntas =estrategia.getPreguntas(pCantidad,pConjunto, pDificultad, pCategoria);
             CargarPreguntas(preguntas);
         }
 
@@ -114,6 +116,7 @@ namespace Trabajo_Integrador
         /// Obtiene preguntas random de la base de datos
         /// </summary>
         /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
