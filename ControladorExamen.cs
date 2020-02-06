@@ -10,9 +10,6 @@ namespace Trabajo_Integrador
 {
     public class ControladorExamen
     {
-
-
-
         /// <summary>
         /// Crea un nuevo examen no asociado a un usuario
         /// </summary>
@@ -29,12 +26,7 @@ namespace Trabajo_Integrador
 
         }
 
-
-
-
-
-
-
+                              
         /// <summary>
         /// Dado un examen, una pregunta y una respuesta, devuelve verdadero si la respuesta es correcta.
         /// </summary>
