@@ -19,11 +19,28 @@ namespace Trabajo_Integrador
         }
 
 
+        public int FactorDificultad { get; set; }
+
 
         public Dificultad(string pDificultad)
 
         {
             Id = pDificultad;
+            switch (pDificultad)
+            {
+                case "easy":
+                    FactorDificultad = 1;
+                    break;
+                case "medium":
+                    FactorDificultad = 3;
+                    break;
+                case "hard":
+                    FactorDificultad = 5;
+                    break;
+                default:
+                    FactorDificultad = 1;
+                    break;
+            }
         }
         public Dificultad()
         { }

@@ -13,19 +13,25 @@ namespace Trabajo_Integrador
     {
         static void Main(string[] args)
         {
-            /*    CategoriaPregunta cat = new CategoriaPregunta("Vehicles");
+
+            ControladorPreguntas contrPreg = new ControladorPreguntas();
+            contrPreg.GetPreguntasOnline("100", "OpentDB", "0", "0");
+            Console.WriteLine("termine");
+            Console.ReadLine();
+            /*  CategoriaPregunta cat = new CategoriaPregunta("Vehicles");
                 Dificultad dif = new Dificultad("easy");
                 Examen ex = new Examen(10, cat, dif);
 
                 foreach (Pregunta pre in ex.Preguntas)
                 {
                     Console.WriteLine($"{pre.Id}");
-                }*/
+                }
 
+            /*
             string path = "hola";
             Bitacora oLog = new Bitacora(path);
             oLog.Add("Hola mundo");
-
+            */
             Console.ReadKey();
         }
     }

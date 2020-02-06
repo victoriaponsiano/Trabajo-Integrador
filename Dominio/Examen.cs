@@ -10,17 +10,55 @@ namespace Trabajo_Integrador
     public class Examen
     {
 
-        private DateTime iTiempoInicio;
+
 
         ControladorPreguntas iControladorPreguntas;
 
 
+        public int iRespuestasCorrectas;
+
 
         public int Id { get; set; }
-        public int Puntaje { set; get; }
 
+
+        /// <summary>
+        /// Tiempo limite en segundos
+        /// </summary>
         public float TiempoLimite { set; get; }
-        public float TiempoUsado { set; get; }
+
+
+        /// <summary>
+        /// Devuelve el factor tiempo para utilizar en el calculo del puntaje
+        /// </summary>
+        private double FactorTiempo { 
+            get 
+            {
+                double factor = TiempoUsado / Preguntas.Count;
+
+                if (factor < 5)
+                {
+                    return 5;
+                }
+                else if (factor < 20)
+                {
+                    return 3;
+                }
+                else return 1;
+            } 
+        }
+
+
+
+        /// <summary>
+        /// Devuelve el puntaje de un examen
+        /// </summary>
+        public double Puntaje { get; private set; }
+
+
+        /// <summary>
+        /// Tiempo usado en segundos
+        /// </summary>
+        public double TiempoUsado { set; get; }
         public DateTime Fecha { get; set; }
 
         public Usuario Usuario {get;set;}
@@ -33,10 +71,60 @@ namespace Trabajo_Integrador
 
 
 
+
+
+        /// <summary>
+        /// Calcula el puntaje de un examen
+        /// </summary>
+        /// <returns></returns>
+        private double CalcularPuntaje() 
+        {
+            return (iRespuestasCorrectas / Preguntas.Count) * Dificultad.FactorDificultad * FactorTiempo;
+        }
+
+
+
+
+        /// <summary>
+        /// Dada una pregunta y una respuesta, dice si es correcta o no y modifica el contador de respuetas correctas.
+        /// </summary>
+        /// <param name="pPregunta"></param>
+        /// <param name="pRespuesta"></param>
+        /// <returns>Verdadero si respuesta es correcta</returns>
+        public Boolean RespuestaCorrecta(Pregunta pPregunta, String pRespuesta)
+        {
+            if (pPregunta.RespuestaEsCorrecta(pRespuesta))
+            {
+                iRespuestasCorrectas++;
+                return true;
+            }
+            else return false;
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Da fin a un examen
+        /// </summary>
+        public void Finalizar()
+        {
+            TiempoUsado = (DateTime.Now - Fecha).TotalSeconds;
+            Puntaje = CalcularPuntaje();
+        }
+
+
+        /// <summary>
+        /// Da inicio a un examen
+        /// </summary>
         public void Iniciar() 
         {
-            iTiempoInicio = DateTime.Now;
-            TiempoLimite = Preguntas.Count * Preguntas[0].
+            iRespuestasCorrectas = 0;
+            Fecha = DateTime.Now;
+            TiempoLimite = Preguntas.Count * Preguntas.First().Conjunto.TiempoEsperadoRespuesta;
         }
 
 
