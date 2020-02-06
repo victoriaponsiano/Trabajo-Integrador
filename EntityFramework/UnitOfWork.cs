@@ -32,6 +32,9 @@ namespace Trabajo_Integrador.EntityFramework
 
         public RepositorioCategorias RepositorioCategorias { get; private set; }
 
+        public RepositorioLogs RepositorioLogs { get; private set; }
+
+
 
 
         protected virtual void Dispose(bool pDisposing)
@@ -78,6 +81,7 @@ namespace Trabajo_Integrador.EntityFramework
             this.ExamenRepository = new ExamenRepository(pDbContext);
             this.RepositorioCategorias = new RepositorioCategorias(pDbContext);
             this.RepositorioDificultades = new RepositorioDificultades(pDbContext);
+            this.RepositorioLogs = new RepositorioLogs(pDbContext);
         }
 
 
