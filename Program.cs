@@ -25,11 +25,6 @@ namespace Trabajo_Integrador
             /* string path = "hola";
              Bitacora oLog = new Bitacora(path);
              oLog.Add("Hola mundo");*/
-
-            ControladorPreguntas controladorPreguntas = new ControladorPreguntas();
-            controladorPreguntas.GetPreguntasOnline("10", "OpenhhhtDB", "0", "0");
-
-            Console.ReadKey();
         }
     }
 }
