@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Trabajo_Integrador.Dominio;
 
 namespace Examen_Virtual
 {
@@ -14,6 +15,7 @@ namespace Examen_Virtual
     {
         string usuarioNombre;
         string contrasenia;
+        ControladorFachada fachada = new ControladorFachada();
 
         public Registro()
         {
@@ -32,11 +34,13 @@ namespace Examen_Virtual
                 usuarioNombre = nuevoUsuario.Text;
                 errorProvider2.SetError(nuevoUsuario, "");
             }
-            else { errorProvider2.SetError(nuevoUsuario, "Debe ingresar un usuario");
+            else
+            {
+                errorProvider2.SetError(nuevoUsuario, "Debe ingresar un usuario");
                 nuevoUsuario.Focus();
             }
 
-            if (nuevaContrasenia==nuevaContrasenia2)
+            if (nuevaContrasenia == nuevaContrasenia2)
             {
                 contrasenia = nuevaContrasenia.Text;
                 errorProvider1.SetError(nuevaContrasenia, "");
@@ -47,8 +51,15 @@ namespace Examen_Virtual
                 nuevaContrasenia.Focus();
             }
 
-            //Usuario user = new Usuario(usuarioNombre, contrasenia)
-                ;
+
+            fachada.GetUsuarios();
+            MessageBox.Show("Usuaurio registrado correctamente");
+            this.Close();
+
+
+
         }
+
+    
     }
 }
