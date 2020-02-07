@@ -14,39 +14,35 @@ namespace Trabajo_Integrador
     {
         static void Main(string[] args)
         {
-            Usuario leo = new Usuario("40806563", "leonardo");
-            Examen ex = new Examen(10, new ConjuntoPreguntas("OpentDB"), new CategoriaPregunta("9"), new Dificultad("easy"));
-            ex.Iniciar();
-            ex.Finalizar();
+
             using (var db = new TrabajoDbContext())
             {
-                using (var UoW = new UnitOfWork(db))
-                {
-                    UoW.ExamenRepository.Add(ex);
-                    UoW.Complete();
-                }
+                Console.WriteLine(db.Examenes.Count<Examen>());
             }
 
-                    /*
-                    ControladorExamen cont = new ControladorExamen();
+                /*
+                Usuario leo = new Usuario("40806563", "leonardo");
 
 
-                    Examen ex = cont.InicializarExamen(10, "OpentDB","9","easy");
-                    cont.IniciarExamen(leo, ex);
-
-                    foreach (Pregunta pre in ex.Preguntas) 
-                    {
-                        Console.WriteLine($"{pre.Id}");
-                        cont.RespuestaCorrecta(ex, pre, pre.RespuestaCorrecta);
-
-                    }
-                    Console.ReadLine();
-                    cont.FinalizarExamen(ex);
+                        ControladorExamen cont = new ControladorExamen();
 
 
-                Console.ReadKey();
+                        Examen ex = cont.InicializarExamen(10, "OpentDB","9","easy");
+                        cont.IniciarExamen(leo, ex);
 
-        */
-                }
-    }
+                        foreach (Pregunta pre in ex.getPreguntas()) 
+                        {
+                            Console.WriteLine($"{pre.Id}");
+                            cont.RespuestaCorrecta(ex, pre, pre.RespuestaCorrecta);
+
+                        }
+                        Console.ReadLine();
+                        cont.FinalizarExamen(ex);
+
+
+                    Console.ReadKey();
+            */
+
+            }
+            }
 }

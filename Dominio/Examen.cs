@@ -15,9 +15,8 @@ namespace Trabajo_Integrador
         ControladorPreguntas iControladorPreguntas;
 
 
-        public int iRespuestasCorrectas;
 
-
+        private int iRespuestasCorrectas;
         public int Id { get; set; }
 
 
@@ -33,7 +32,7 @@ namespace Trabajo_Integrador
         private double FactorTiempo { 
             get 
             {
-                double factor = TiempoUsado / Preguntas.Count;
+                double factor = TiempoUsado / getPreguntas().Count;
 
                 if (factor < 5)
                 {
@@ -65,10 +64,21 @@ namespace Trabajo_Integrador
 
         public int CantidadPreguntas { get; set; }
 
-        public List<Pregunta> Preguntas { get; set; }
 
 
+        private List<Pregunta> iPreguntas;
 
+
+        public List<Pregunta> getPreguntas() 
+        {
+            if (iPreguntas != null)
+            { return iPreguntas; }
+            else
+            {
+                iPreguntas = iControladorPreguntas.ObtenerPreguntasDeExamen(this.Id);
+                return iPreguntas;
+            }
+        }
 
 
         /// <summary>
@@ -77,8 +87,8 @@ namespace Trabajo_Integrador
         /// <returns></returns>
         private double CalcularPuntaje() 
         {
-            
-            return (iRespuestasCorrectas / Preguntas.Count) * Preguntas.First().Dificultad.FactorDificultad * FactorTiempo;
+
+            return (iRespuestasCorrectas / getPreguntas().Count) * getPreguntas().First().Dificultad.FactorDificultad * FactorTiempo;
         }
 
 
@@ -95,9 +105,15 @@ namespace Trabajo_Integrador
             if (pPregunta.RespuestaEsCorrecta(pRespuesta))
             {
                 iRespuestasCorrectas++;
+                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta,true);
                 return true;
             }
-            else return false;
+            else
+            {
+                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta, false);
+                return false;
+
+            } 
         }
 
 
@@ -121,11 +137,23 @@ namespace Trabajo_Integrador
         /// </summary>
         public void Iniciar() 
         {
-
-            iRespuestasCorrectas = 0;
             Fecha = DateTime.Now;
         }
 
+
+
+        /// <summary>
+        /// Carga las preguntas y llena las listas de pregunta y preguntaexamen
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        private void CargarPreguntas(int pCantidad, ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad) 
+        {
+            iPreguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
+            iControladorPreguntas.AsociarPreguntaExamen(this.Id, iPreguntas);
+        }
 
 
         /// <summary>
@@ -135,12 +163,13 @@ namespace Trabajo_Integrador
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// 
-        public Examen(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
+        public Examen(int pId,int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
+            this.iRespuestasCorrectas = 0;
+            this.Id = pId;
             this.CantidadPreguntas = pCantidad;
             this.iControladorPreguntas = new ControladorPreguntas();
-            Preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
-
+            CargarPreguntas(pCantidad, pConjunto, pCategoria, pDificultad);
         }
 
         public Examen() { }

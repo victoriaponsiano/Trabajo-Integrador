@@ -19,11 +19,20 @@ namespace Trabajo_Integrador
         /// <param name="pDificultad"></param>
         public Examen InicializarExamen(int pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
+            int id;
             Dificultad dif = new Dificultad(pDificultad);
             CategoriaPregunta cat = new CategoriaPregunta();
             cat.OpentDbId =  int.Parse(pCategoria);
             ConjuntoPreguntas conj = new ConjuntoPreguntas(pConjunto);
-            return new Examen(pCantidad, conj, cat, dif);
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    id = db.Examenes.Count()+1;
+                }
+            }
+
+            return new Examen(id,pCantidad, conj, cat, dif);
         }
 
 
@@ -81,15 +90,8 @@ namespace Trabajo_Integrador
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    for(int i = 0; i < pExamen.Preguntas.Count; i++)
-                    {
-                        Pregunta preguntaNueva = db.Preguntas.Find(pExamen.Preguntas[i].Id);
-                        pExamen.Preguntas[i] = preguntaNueva;                       
-
-                    }
-
-                        UoW.ExamenRepository.Add(pExamen);
-                        UoW.Complete();
+                    UoW.ExamenRepository.Add(pExamen);
+                    UoW.Complete();       
                 }
             }
         }

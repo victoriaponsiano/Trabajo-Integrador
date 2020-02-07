@@ -21,7 +21,6 @@ namespace Trabajo_Integrador
         public string RespuestaIncorrecta2 { get; set; }
         public string RespuestaIncorrecta3 { get; set; }
 
-        public virtual List<Examen> Examenes { get; set; }
 
 
         /// <summary>
