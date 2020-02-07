@@ -73,7 +73,6 @@ namespace Trabajo_Integrador
 
                             //se agrega cada una de las preguntas a la lista
                             listaPreguntas.Add(preg);
-                            Console.WriteLine("OpentDB");
                         }           
                     }
                 }
@@ -84,15 +83,13 @@ namespace Trabajo_Integrador
                     {
                         StreamReader mReader = new StreamReader(mResponseStream, Encoding.GetEncoding("utf-8"));
                         String mErrorText = mReader.ReadToEnd();
-
-                        System.Console.WriteLine("Error: {0}", mErrorText);
+                        Bitacora.GuardarLog(mErrorText);
                     }
                 }
                 catch (Exception ex)
                 {
-                    System.Console.WriteLine("Error: {0}", ex.Message);
+                    Bitacora.GuardarLog(ex.Message);
                 }
-                System.Console.ReadLine();
                 return listaPreguntas;
             }
         }

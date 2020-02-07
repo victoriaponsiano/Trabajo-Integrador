@@ -14,10 +14,6 @@ namespace Trabajo_Integrador
     /// </summary>
     public class Bitacora
     {
-
-
-
-
         /// <summary>
         /// Obtiene un log de la base de datos
         /// </summary>
@@ -60,7 +56,6 @@ namespace Trabajo_Integrador
 
         public Bitacora()
         {
-
         }
     }
 }
