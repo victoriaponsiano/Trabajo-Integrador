@@ -16,8 +16,8 @@ namespace Trabajo_Integrador
         static void Main(string[] args)
         {
 
-
-            if ("asdas" == null) { }
+            ControladorPreguntas controladorPreguntas = new ControladorPreguntas();
+            controladorPreguntas.GetPreguntasOnline("100", "OpentDB", "0", "0");
 
                /*
                 Usuario leo = new Usuario("40806563", "leonardo");

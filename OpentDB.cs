@@ -78,17 +78,18 @@ namespace Trabajo_Integrador
                 }
                 catch (WebException ex)
                 {
-                    WebResponse mErrorResponse = ex.Response;
+                    Bitacora.GuardarLog(ex.Message);
+
+             /*       WebResponse mErrorResponse = ex.Response;
                     using (Stream mResponseStream = mErrorResponse.GetResponseStream())
                     {
                         StreamReader mReader = new StreamReader(mResponseStream, Encoding.GetEncoding("utf-8"));
                         String mErrorText = mReader.ReadToEnd();
-                        Bitacora.GuardarLog(mErrorText);
-                    }
+                    }*/
                 }
                 catch (Exception ex)
                 {
-                    Bitacora.GuardarLog(ex.Message);
+
                 }
                 return listaPreguntas;
             }

@@ -126,10 +126,11 @@ namespace Trabajo_Integrador.Controladores
                 List<Pregunta> preguntas = estrategia.getPreguntas(pCantidad, pConjunto, pDificultad, pCategoria);
                 CargarPreguntas(preguntas);
             }
-            catch (Exception ex)
+            catch (NotImplementedException ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog("ControladorPreguntas.GetPreguntasOnline: "+ex.Message);
             }
+
         }
 
 
@@ -271,6 +272,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Entre en contPreg");
                 Bitacora.GuardarLog(ex.Message.ToString());
             }
             return preguntas;

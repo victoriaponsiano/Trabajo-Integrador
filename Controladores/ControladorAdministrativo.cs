@@ -41,7 +41,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.ToString());
+                Bitacora.GuardarLog("ControladorAdministrativo.GetUsuarios:"+ex.ToString());
             }
             return listaUsuarios;
         }
@@ -60,7 +60,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.ToString());
+                Bitacora.GuardarLog("ControladorAdministrativo.GetPreguntas:"+ex.ToString());
             }
             return listaPreguntas;
         }
@@ -79,7 +79,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.ToString());
+                Bitacora.GuardarLog("ControladorAdministrativo.GetExamenes:"+ex.ToString());
             }
             return listaExamenes;
 
@@ -100,7 +100,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.ToString());
+                Bitacora.GuardarLog("ControladorAdministrativo.ModificarTiempo: "+ex.ToString());
             }
 
         }
@@ -119,7 +119,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.ToString());
+                Bitacora.GuardarLog("ControladorAdministrativo.GetConjuntos"+ex.ToString());
             }
             return listaConjuntos;
 
@@ -140,7 +140,8 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (NullReferenceException ex)
             {
-                Bitacora.GuardarLog(ex.Message);
+                Bitacora.GuardarLog("ControladorAdministrativo.SetAdministrador: "+
+                    ex.Message);
             }
         }
         public void GuardarUsuario(string pUsuario, string pContrasenia)
