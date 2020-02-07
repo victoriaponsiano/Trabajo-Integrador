@@ -43,53 +43,54 @@ namespace Trabajo_Integrador
         /// </summary>
         public void CargarPreguntas(List<Pregunta> pPreguntas)
         {
-            
-            using (var db = new TrabajoDbContext())
+            try
             {
-                using (var UoW = new UnitOfWork(db))
+                using (var db = new TrabajoDbContext())
                 {
-                                    
-                    foreach (Pregunta pre in pPreguntas)
+                    using (var UoW = new UnitOfWork(db))
                     {
 
-                        if (db.Preguntas.Find(pre.Id) == null)
+                        foreach (Pregunta pre in pPreguntas)
                         {
-                            CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
-                            Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
 
-                            ///Si la categoria esta en la base de datos la referencia,
-                            ///sino crea una nueva y la inserta en la db
-                            if (categoria == null)
+                            if (db.Preguntas.Find(pre.Id) == null)
                             {
-                                CategoriaPregunta categoriaNueva = new CategoriaPregunta(pre.Categoria.Id);
+                                CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
+                                Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
+
+                                ///Si la categoria esta en la base de datos la referencia,
+                                ///sino crea una nueva y la inserta en la db
+                                if (categoria == null)
+                                {
+                                    CategoriaPregunta categoriaNueva = new CategoriaPregunta(pre.Categoria.Id);
+                                }
+                                else
+                                {
+                                    pre.Categoria = categoria;
+                                }
+
+
+                                ///Si la dificultad esta en la base de datos la referencia,
+                                ///sino crea una nueva y la inserta en la db
+                                if (dificultad == null)
+                                {
+                                    Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
+                                }
+                                else
+                                {
+                                    pre.Dificultad = dificultad;
+                                }
+                                UoW.RepositorioPreguntas.Add(pre);
                             }
-                            else
-                            {
-                                pre.Categoria = categoria;
-                            }
-
-
-                            ///Si la dificultad esta en la base de datos la referencia,
-                            ///sino crea una nueva y la inserta en la db
-                            if (dificultad == null)
-                            {
-                                Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
-                            }
-                            else
-                            {
-                                pre.Dificultad = dificultad;
-                            }
-
-
-
-                            UoW.RepositorioPreguntas.Add(pre);
                         }
+                        UoW.Complete();
                     }
-                    UoW.Complete();
                 }
-
             }
-
+            catch(Exception ex)
+            {
+                Bitacora.GuardarLog(ex.Message.ToString());
+            }
         }
 
 
@@ -109,9 +110,9 @@ namespace Trabajo_Integrador
                 List<Pregunta> preguntas = estrategia.getPreguntas(pCantidad, pConjunto, pDificultad, pCategoria);
                 CargarPreguntas(preguntas);
             }
-            catch (Exception bEx)
+            catch (Exception ex)
             {
-                Bitacora.GuardarLog(bEx.ToString());
+                Bitacora.GuardarLog(ex.Message.ToString());
             }
         }
 
@@ -129,14 +130,22 @@ namespace Trabajo_Integrador
         /// <returns></returns>
         public List<Pregunta> GetPreguntasRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
-            using (var db = new TrabajoDbContext())
+            List<Pregunta> preguntas = new List<Pregunta>();
+            try
             {
-                using (var UoW = new UnitOfWork(db))
+                using (var db = new TrabajoDbContext())
                 {
-                   return UoW.RepositorioPreguntas.GetRandom(pCantidad,pConjunto, pCategoria, pDificultad);
+                    using (var UoW = new UnitOfWork(db))
+                    {
+                        preguntas = (List<Pregunta>)UoW.RepositorioPreguntas.GetRandom(pCantidad, pConjunto, pCategoria, pDificultad);
+                    }
                 }
             }
-                
+            catch (Exception ex)
+            {
+                Bitacora.GuardarLog(ex.Message.ToString());
+            }
+            return preguntas;
         }
 
 
