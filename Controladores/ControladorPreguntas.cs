@@ -158,6 +158,45 @@ namespace Trabajo_Integrador.Controladores
         }
 
 
+
+
+        /// <summary>
+        /// Dado la ID de un examen, obtiene la cantidad de respuestas correctas.
+        /// </summary>
+        /// <param name="pExamenId"></param>
+        /// <returns></returns>
+        public int ObtenerCantidadRespuestasCorrectas(int pExamenId)
+        {
+            int aDevolver = 0;
+            List<Pregunta> preguntas = new List<Pregunta>();
+
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+
+                    ///Busca todas las clases de asociacion
+                    List<ExamenPregunta> expr = db.PreguntasExamenes.Where(c => c.ExamenId == pExamenId).ToList();
+
+
+                    //Por cada una de las clases de asociacion, busca la pregunta y llama a es correcta.
+                    foreach (ExamenPregunta ex in expr)
+                    {
+                        if (UoW.RepositorioPreguntas.Get(ex.PreguntaId).RespuestaEsCorrecta(ex.OpcionElegida))
+                        {
+                            aDevolver++;
+                        }
+                    }
+
+
+                }
+
+            }
+            return aDevolver;
+        }
+
+
+
         /// <summary>
         /// Crea la asociacion en la base de datos de preguntaexamen
         /// </summary>

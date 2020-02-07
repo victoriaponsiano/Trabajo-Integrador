@@ -15,9 +15,11 @@ namespace Trabajo_Integrador
     {
         static void Main(string[] args)
         {
-           
 
-               
+
+            if ("asdas" == null) { }
+
+               /*
                 Usuario leo = new Usuario("40806563", "leonardo");
 
 
@@ -37,7 +39,9 @@ namespace Trabajo_Integrador
                         cont.FinalizarExamen(ex);
 
 
+            */
                     Console.ReadKey();
+
           
 
             }

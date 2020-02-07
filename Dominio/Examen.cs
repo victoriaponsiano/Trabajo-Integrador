@@ -86,7 +86,7 @@ namespace Trabajo_Integrador.Dominio
         /// <returns></returns>
         private double CalcularPuntaje() 
         {
-
+            iRespuestasCorrectas = iControladorPreguntas.ObtenerCantidadRespuestasCorrectas(this.Id);
             return (iRespuestasCorrectas / getPreguntas().Count) * getPreguntas().First().Dificultad.FactorDificultad * FactorTiempo;
         }
 
@@ -103,7 +103,6 @@ namespace Trabajo_Integrador.Dominio
         {
             if (pPregunta.RespuestaEsCorrecta(pRespuesta))
             {
-                iRespuestasCorrectas++;
                 iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta);
                 return true;
             }
