@@ -29,5 +29,7 @@ namespace Trabajo_Integrador.Dominio
             Contrasenia = pContrasenia;
             Administrador = false;
         }
+
+        public Usuario() { }
     }
 }

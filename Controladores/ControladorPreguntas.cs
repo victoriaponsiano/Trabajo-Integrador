@@ -144,14 +144,13 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pPregunta"></param>
         /// <param name="pRespuesta"></param>
         /// <param name="pEsCorrecto"></param>
-        public void MarcarRespuesta(int pExamenId, Pregunta pPregunta, String pRespuesta,Boolean pEsCorrecto)
+        public void MarcarRespuesta(int pExamenId, Pregunta pPregunta, String pRespuesta)
         {
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    Pregunta_Examen preex = UoW.RepositorioPreguntasExamenes.Get(pExamenId, pPregunta.Id);
-                    preex.EsCorrecta = pEsCorrecto;
+                    ExamenPregunta preex = UoW.RepositorioPreguntasExamenes.Get(pExamenId, pPregunta.Id);
                     preex.OpcionElegida = pRespuesta;
                     UoW.Complete();
                 }
@@ -172,7 +171,7 @@ namespace Trabajo_Integrador.Controladores
                 {
                     foreach (Pregunta pre in pPreguntas) 
                     {
-                        Pregunta_Examen preguntaExamen = new Pregunta_Examen();
+                        ExamenPregunta preguntaExamen = new ExamenPregunta();
                         preguntaExamen.ExamenId = pExamenId;
                         preguntaExamen.PreguntaId = pre.Id;
                         UoW.RepositorioPreguntasExamenes.Add(preguntaExamen);
@@ -195,10 +194,10 @@ namespace Trabajo_Integrador.Controladores
                 using (var UoW = new UnitOfWork(db))
                 {
                     //Primero busca los objetos de la clase de asociacion preguntaexamen
-                    List<Pregunta_Examen> preguntaExamenes = db.PreguntasExamenes.Where(c => c.ExamenId == pExamenId).ToList<Pregunta_Examen>();
+                    List<ExamenPregunta> preguntaExamenes = db.PreguntasExamenes.Where(c => c.ExamenId == pExamenId).ToList<ExamenPregunta>();
                     
                     //Luego con los preguntaExamen obtiene las preguntas de un examen
-                    foreach (Pregunta_Examen pe in preguntaExamenes) 
+                    foreach (ExamenPregunta pe in preguntaExamenes) 
                     {
                         preguntas.Add(UoW.RepositorioPreguntas.Get(pe.PreguntaId));
                     }

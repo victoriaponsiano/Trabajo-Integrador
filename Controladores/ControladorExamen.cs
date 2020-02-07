@@ -28,6 +28,7 @@ namespace Trabajo_Integrador.Controladores
             {
                 using (var UoW = new UnitOfWork(db))
                 {
+                    
                     id = db.Examenes.Count()+1;
                 }
             }
@@ -85,7 +86,18 @@ namespace Trabajo_Integrador.Controladores
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    UoW.ExamenRepository.Add(pExamen);
+                    Usuario usr = UoW.RepositorioUsuarios.Get(pExamen.Usuario.Id);
+                    if (usr == null)
+                    {
+                        UoW.ExamenRepository.Add(pExamen);
+                    }
+                    else
+                    {
+                        pExamen.Usuario = usr;
+                        UoW.ExamenRepository.Add(pExamen);
+
+                    }
+
                     UoW.Complete();       
                 }
             }

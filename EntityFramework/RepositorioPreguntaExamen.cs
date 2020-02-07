@@ -7,10 +7,10 @@ using Trabajo_Integrador.Dominio;
 
 namespace Trabajo_Integrador.EntityFramework
 {
-    public class RepositorioPreguntaExamen : Repository<Pregunta_Examen, TrabajoDbContext>
+    public class RepositorioPreguntaExamen : Repository<ExamenPregunta, TrabajoDbContext>
     {
 
-        public Pregunta_Examen Get(int pExamenId, String pPreguntaId)
+        public ExamenPregunta Get(int pExamenId, String pPreguntaId)
         {
             return this.iDBSet.Where(c => (c.ExamenId == pExamenId) && (c.PreguntaId == pPreguntaId)).FirstOrDefault();
         }

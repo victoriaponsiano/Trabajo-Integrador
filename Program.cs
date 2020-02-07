@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Trabajo_Integrador.EntityFramework;
 using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador.Controladores;
 using System.Web;
 
 
@@ -14,13 +15,9 @@ namespace Trabajo_Integrador
     {
         static void Main(string[] args)
         {
+           
 
-            using (var db = new TrabajoDbContext())
-            {
-                Console.WriteLine(db.Examenes.Count<Examen>());
-            }
-
-                /*
+               
                 Usuario leo = new Usuario("40806563", "leonardo");
 
 
@@ -41,7 +38,7 @@ namespace Trabajo_Integrador
 
 
                     Console.ReadKey();
-            */
+          
 
             }
             }
