@@ -71,7 +71,6 @@
             this.usuario.Name = "usuario";
             this.usuario.Size = new System.Drawing.Size(190, 20);
             this.usuario.TabIndex = 3;
-            this.usuario.TextChanged += new System.EventHandler(this.usuario_TextChanged);
             // 
             // btnIngresar
             // 
@@ -115,6 +114,7 @@
             this.contrasenia.Name = "contrasenia";
             this.contrasenia.Size = new System.Drawing.Size(190, 20);
             this.contrasenia.TabIndex = 7;
+            this.contrasenia.UseSystemPasswordChar = true;
             // 
             // errorProvider1
             // 

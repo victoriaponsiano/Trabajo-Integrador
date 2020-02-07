@@ -39,9 +39,7 @@ namespace Trabajo_Integrador
             return pExamen.RespuestaCorrecta(pPregunta, pRespuesta);
 
         }
-
-
-
+        
         /// <summary>
         /// Da fin a un examen y lo guarda en la DB
         /// </summary>

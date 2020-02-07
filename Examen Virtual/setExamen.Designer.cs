@@ -1,4 +1,4 @@
-﻿namespace Trabajo_Integrador
+﻿namespace Examen_Virtual
 {
     partial class setExamen
     {
@@ -196,7 +196,7 @@
         private System.Windows.Forms.Label saludo;
         private System.Windows.Forms.Button volver;
         private System.Windows.Forms.Button btnComenzarExamen;
-                private System.Windows.Forms.ComboBox dificultad;
+        private System.Windows.Forms.ComboBox dificultad;
         private System.Windows.Forms.NumericUpDown cantidadPreguntas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox conjunto;
