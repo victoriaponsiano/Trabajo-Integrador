@@ -90,7 +90,22 @@ namespace Trabajo_Integrador.Controladores
                 }
             }
         }
-
+        /// <summary>
+        /// Metodo que devuelve el tiempo limite de un examen
+        /// </summary>
+        /// <param name="unExamen"></param>
+        /// <returns></returns>
+        public float GetTiempoLimite(Examen unExamen)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    Examen ex =UoW.ExamenRepository.Get(unExamen.Id);
+                    return ex.TiempoLimite;
+                }
+            }
+        }
         public ControladorExamen() 
         {
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Trabajo_Integrador.Dominio;
 
 
 
@@ -11,38 +11,78 @@ namespace Trabajo_Integrador.Controladores
 {
     public class ControladorFachada
     {
-      /*  ControladorExamen ctrlExamen = new ControladorExamen();
-        ControladorAdministrativo ctrlAdministrativo = new ControladorAdministrativo();
-        public float getTiempoLimite(Examen unExamen)
+        ///Atributos
+        ControladorExamen controladorExamen;
+        ControladorAdministrativo controladorAdministrativo;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ControladorFachada()
         {
-            float limite = unExamen.TiempoLimite;
-            return limite;
+            controladorAdministrativo = new ControladorAdministrativo();
+            controladorExamen = new ControladorExamen();
         }
 
+        /// <summary>
+        /// Obtiene el tiempo limite que está asociado a un examen
+        /// </summary>
+        /// <param name="unExamen"></param>
+        /// <returns></returns>
+        public float GetTiempoLimite(Examen unExamen)
+        {
+            return controladorExamen.GetTiempoLimite(unExamen);
+        }
+
+        /// <summary>
+        /// Metodo que inicia un examen
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        /// <returns></returns>
         public Examen InicializarExamen(int pCantidad, String pConjunto, string pCategoria, string pDificultad)
         {
-
-            Examen unExamen = ctrlExamen.InicializarExamen(pCantidad, pConjunto, pCategoria, pDificultad);
-            return unExamen;
-
+            return controladorExamen.InicializarExamen(pCantidad, pConjunto, pCategoria, pDificultad);
         }
-
+        /// <summary>
+        /// Metodo que finaliza un examen y lo guarda en la base de datos
+        /// </summary>
+        /// <param name="pExamen"></param>
         public void FinalizarExamen(Examen pExamen)
         {
-            ctrlExamen.FinalizarExamen(pExamen);
+            controladorExamen.FinalizarExamen(pExamen);
         }
 
+        /// <summary>
+        /// Metodo que devuelve una lista de todos los usuarios
+        /// </summary>
+        /// <returns></returns>
         public List<Usuario> GetUsuarios()
         {
-            return (ctrlAdministrativo.GetUsuarios());
+            return controladorAdministrativo.GetUsuarios();
         }
 
-        public void guardarUsuario(string usuarioNombre, string contrasenia)
+        /// <summary>
+        /// Metodo que guarda un usuario en la base de datos de usuarios
+        /// </summary>
+        /// <param name="usuarioNombre"></param>
+        /// <param name="contrasenia"></param>
+        public void GuardarUsuario(string usuarioNombre, string contrasenia)
         {
-            ctrlAdministrativo.GuardarUsuario(string usuarioNombre, string contrasenia);
+            controladorAdministrativo.GuardarUsuario(usuarioNombre, contrasenia);
         }
 
-
-    */
+        /// <summary>
+        /// Metodo que determina si una respuesta es correcta o no 
+        /// </summary>
+        /// <param name="pExamen"></param>
+        /// <param name="pPregunta"></param>
+        /// <param name="pRespuesta"></param>
+        /// <returns></returns>
+        public Boolean RespuestaCorrecta(Examen pExamen, Pregunta pPregunta, String pRespuesta)
+        {
+            return controladorExamen.RespuestaCorrecta(pExamen, pPregunta, pRespuesta);
+        }
     }
 }

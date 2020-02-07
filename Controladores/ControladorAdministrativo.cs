@@ -41,7 +41,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog(ex.ToString());
             }
             return listaUsuarios;
         }
@@ -60,7 +60,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog(ex.ToString());
             }
             return listaPreguntas;
         }
@@ -79,7 +79,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog(ex.ToString());
             }
             return listaExamenes;
 
@@ -100,7 +100,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog(ex.ToString());
             }
 
         }
@@ -119,7 +119,7 @@ namespace Trabajo_Integrador.Controladores
             }
             catch (Exception ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog(ex.ToString());
             }
             return listaConjuntos;
 
@@ -138,9 +138,21 @@ namespace Trabajo_Integrador.Controladores
                     }
                 }
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
-                Bitacora.GuardarLog(ex.Message.ToString());
+                Bitacora.GuardarLog(ex.Message);
+            }
+        }
+        public void GuardarUsuario(string pUsuario, string pContrasenia)
+        {
+            Usuario usuario = new Usuario(pUsuario, pContrasenia);
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                { 
+                        UoW.RepositorioUsuarios.Add(usuario);
+                        UoW.Complete();
+                }
             }
         }
     }
