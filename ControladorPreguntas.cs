@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Trabajo_Integrador;
+using Trabajo_Integrador.Dominio;
 
 namespace Trabajo_Integrador
 {
@@ -53,10 +54,11 @@ namespace Trabajo_Integrador
                         foreach (Pregunta pre in pPreguntas)
                         {
 
-                            if (db.Preguntas.Find(pre.Id) == null)
-                            {
-                                CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
-                                Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
+                        if (db.Preguntas.Find(pre.Id) == null)
+                        {
+                            CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
+                            Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
+                            ConjuntoPreguntas conjunto = db.ConjuntoPreguntas.Find(pre.Conjunto.Id);
 
                                 ///Si la categoria esta en la base de datos la referencia,
                                 ///sino crea una nueva y la inserta en la db
@@ -70,27 +72,37 @@ namespace Trabajo_Integrador
                                 }
 
 
-                                ///Si la dificultad esta en la base de datos la referencia,
-                                ///sino crea una nueva y la inserta en la db
-                                if (dificultad == null)
-                                {
-                                    Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
-                                }
-                                else
-                                {
-                                    pre.Dificultad = dificultad;
-                                }
-                                UoW.RepositorioPreguntas.Add(pre);
+                            ///Si la dificultad esta en la base de datos la referencia,
+                            ///sino crea una nueva y la inserta en la db
+                            if (dificultad == null)
+                            {
+                                Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
                             }
+                            else
+                            {
+                                pre.Dificultad = dificultad;
+                            }
+
+                            ///Si el conjunto esta en la base de datos la referencia,
+                            ///sino crea uno nuevo y la inserta en la db
+                            if (conjunto == null)
+                            { 
+                                ConjuntoPreguntas conjuntoNuevo = new ConjuntoPreguntas(pre.Conjunto.Id);
+                            }
+                            else
+                            {
+                                pre.Conjunto = conjunto;
+                            }
+
+
+                            UoW.RepositorioPreguntas.Add(pre);
                         }
-                        UoW.Complete();
                     }
+                    UoW.Complete();
                 }
+
             }
-            catch(Exception ex)
-            {
-                Bitacora.GuardarLog(ex.Message.ToString());
-            }
+
         }
 
 
@@ -117,6 +129,80 @@ namespace Trabajo_Integrador
         }
 
 
+
+
+
+
+        /// <summary>
+        /// Marca una respuesta en la base de datos como verdadera o falsa.
+        /// </summary>
+        /// <param name="pExamenId"></param>
+        /// <param name="pPregunta"></param>
+        /// <param name="pRespuesta"></param>
+        /// <param name="pEsCorrecto"></param>
+        public void MarcarRespuesta(int pExamenId, Pregunta pPregunta, String pRespuesta,Boolean pEsCorrecto)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    Pregunta_Examen preex = UoW.RepositorioPreguntasExamenes.Get(pExamenId, pPregunta.Id);
+                    preex.EsCorrecta = pEsCorrecto;
+                    preex.OpcionElegida = pRespuesta;
+                    UoW.Complete();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Crea la asociacion en la base de datos de preguntaexamen
+        /// </summary>
+        /// <param name="ExamenId"></param>
+        /// <param name="Preguntas"></param>
+        public void AsociarPreguntaExamen(int pExamenId,ICollection<Pregunta> pPreguntas) 
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    foreach (Pregunta pre in pPreguntas) 
+                    {
+                        Pregunta_Examen preguntaExamen = new Pregunta_Examen();
+                        preguntaExamen.ExamenId = pExamenId;
+                        preguntaExamen.PreguntaId = pre.Id;
+                        UoW.RepositorioPreguntasExamenes.Add(preguntaExamen);
+                    }
+                    UoW.Complete();
+                }
+            }
+               
+        }
+
+        /// <summary>
+        /// Obtiene las preguntas asociadas a un examen
+        /// </summary>
+        /// <returns></returns>
+        public List<Pregunta> ObtenerPreguntasDeExamen(int pExamenId) 
+        {
+            List<Pregunta> preguntas = new List<Pregunta>();
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    //Primero busca los objetos de la clase de asociacion preguntaexamen
+                    List<Pregunta_Examen> preguntaExamenes = db.PreguntasExamenes.Where(c => c.ExamenId == pExamenId).ToList<Pregunta_Examen>();
+                    
+                    //Luego con los preguntaExamen obtiene las preguntas de un examen
+                    foreach (Pregunta_Examen pe in preguntaExamenes) 
+                    {
+                        preguntas.Add(UoW.RepositorioPreguntas.Get(pe.PreguntaId));
+                    }
+                }
+            }
+            return preguntas;
+
+        }
 
 
 

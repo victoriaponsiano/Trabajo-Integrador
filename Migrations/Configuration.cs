@@ -9,8 +9,10 @@
     {
         public Configuration()
         {
+            
             AutomaticMigrationsEnabled = true;
             ContextKey = "Trabajo_Integrador.EntityFramework.TrabajoDbContext";
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Trabajo_Integrador.EntityFramework.TrabajoDbContext context)

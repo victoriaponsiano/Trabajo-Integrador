@@ -21,6 +21,8 @@ namespace Trabajo_Integrador.EntityFramework
         public DbSet<Dificultad> Dificultades { get; set; }
         public DbSet<CategoriaPregunta> Categorias { get; set; }
 
+        public DbSet<Pregunta_Examen> PreguntasExamenes { get; set; }
+
         public DbSet<Log> Logs { get; set; }
 
         public TrabajoDbContext()

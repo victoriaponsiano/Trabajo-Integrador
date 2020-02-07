@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace Trabajo_Integrador.EntityFramework
 {
@@ -29,9 +30,29 @@ namespace Trabajo_Integrador.EntityFramework
 
         public void Add(TEntity pEntity)
         {
-            iDBSet.Add(pEntity);
-            
-            iDbContext.SaveChanges();
+            try
+            {
+                // Your code...
+                // Could also be before try if you know the exception occurs in SaveChanges
+                iDBSet.Add(pEntity);
+                
+                iDbContext.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                
+                throw;
+            }
         }
 
         public void Remove(TEntity pEntity)
@@ -44,6 +65,11 @@ namespace Trabajo_Integrador.EntityFramework
         {
             return this.iDBSet.Find(pId);
         }
+        public TEntity Get(string pId)
+        {
+            return this.iDBSet.Find(pId);
+        }
+
         public TEntity Get(string pId)
         {
             return this.iDBSet.Find(pId);
