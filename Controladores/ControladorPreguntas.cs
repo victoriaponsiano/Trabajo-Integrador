@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Trabajo_Integrador;
 using Trabajo_Integrador.Dominio;
 
-namespace Trabajo_Integrador
+namespace Trabajo_Integrador.Controladores
 {
     public class ControladorPreguntas
     {

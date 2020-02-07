@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador.Controladores;
 
 namespace Examen_Virtual
 {
-  /*  public partial class Registro : Form
+    public partial class Registro : Form
     {
         string usuarioNombre;
         string contrasenia;
@@ -61,5 +61,5 @@ namespace Examen_Virtual
         }
 
     
-    }*/
+    }
 }

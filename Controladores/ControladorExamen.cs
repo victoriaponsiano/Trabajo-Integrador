@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Trabajo_Integrador.EntityFramework;
 using Trabajo_Integrador.Dominio;
 
-namespace Trabajo_Integrador
+namespace Trabajo_Integrador.Controladores
 {
     public class ControladorExamen
     {

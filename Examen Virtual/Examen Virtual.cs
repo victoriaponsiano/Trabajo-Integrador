@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Trabajo_Integrador;
-using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador.Controladores;
 
 namespace Examen_Virtual
 {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Trabajo_Integrador.EntityFramework;
+using Trabajo_Integrador.Dominio;
 
 namespace Trabajo_Integrador.EntityFramework
 {

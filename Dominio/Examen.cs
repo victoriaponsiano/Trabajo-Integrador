@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador.Controladores;
 
 
-namespace Trabajo_Integrador
+namespace Trabajo_Integrador.Dominio
 {
     public class Examen
     {

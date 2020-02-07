@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 
 
-namespace Trabajo_Integrador
+namespace Trabajo_Integrador.Controladores
 {
-    class ControladorFachada
+    public class ControladorFachada
     {
       /*  ControladorExamen ctrlExamen = new ControladorExamen();
         ControladorAdministrativo ctrlAdministrativo = new ControladorAdministrativo();

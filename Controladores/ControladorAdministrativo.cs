@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Trabajo_Integrador.Dominio;
 using Trabajo_Integrador.EntityFramework;
 
-namespace Trabajo_Integrador
+namespace Trabajo_Integrador.Controladores
 {
     /// <summary>
     /// Clase utilizada por el administrador.
