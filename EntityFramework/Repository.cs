@@ -35,7 +35,6 @@ namespace Trabajo_Integrador.EntityFramework
                 // Your code...
                 // Could also be before try if you know the exception occurs in SaveChanges
                 iDBSet.Add(pEntity);
-                
                 iDbContext.SaveChanges();
             }
             catch (DbEntityValidationException e)

@@ -104,12 +104,12 @@ namespace Trabajo_Integrador.Dominio
             if (pPregunta.RespuestaEsCorrecta(pRespuesta))
             {
                 iRespuestasCorrectas++;
-                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta,true);
+                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta);
                 return true;
             }
             else
             {
-                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta, false);
+                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta);
                 return false;
 
             } 

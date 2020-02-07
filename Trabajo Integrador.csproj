@@ -96,7 +96,7 @@
     <Compile Include="Dominio\CategoriaPregunta.cs" />
     <Compile Include="Dominio\ConjuntoPreguntas.cs" />
     <Compile Include="Controladores\ControladorExamen.cs" />
-    <Compile Include="Dominio\Pregunta_Examen.cs" />
+    <Compile Include="Dominio\ExamenPregunta.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="EntityFramework\ExamenRepository.cs" />
     <Compile Include="EntityFramework\RepositorioCategorias.cs" />
@@ -116,21 +116,9 @@
     <Compile Include="IEstrategiaObtenerPreguntas.cs" />
     <Compile Include="Bitacora.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Migrations\202002041255522_InitialCreate.cs" />
-    <Compile Include="Migrations\202002041255522_InitialCreate.designer.cs">
-      <DependentUpon>202002041255522_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002071117348_Initial.cs" />
-    <Compile Include="Migrations\202002071117348_Initial.designer.cs">
-      <DependentUpon>202002071117348_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002071206575_NuevaMigracion.cs" />
-    <Compile Include="Migrations\202002071206575_NuevaMigracion.designer.cs">
-      <DependentUpon>202002071206575_NuevaMigracion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002071217073_NuevaMigracion2.cs" />
-    <Compile Include="Migrations\202002071217073_NuevaMigracion2.designer.cs">
-      <DependentUpon>202002071217073_NuevaMigracion2.cs</DependentUpon>
+    <Compile Include="Migrations\202002071351363_Init.cs" />
+    <Compile Include="Migrations\202002071351363_Init.designer.cs">
+      <DependentUpon>202002071351363_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OpentDB.cs" />
@@ -147,20 +135,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002041255522_InitialCreate.resx">
-      <DependentUpon>202002041255522_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002071117348_Initial.resx">
-      <DependentUpon>202002071117348_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002071206575_NuevaMigracion.resx">
-      <DependentUpon>202002071206575_NuevaMigracion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002071217073_NuevaMigracion2.resx">
-      <DependentUpon>202002071217073_NuevaMigracion2.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
     <Analyzer Include="packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Humanizer.dll" />
@@ -170,6 +144,11 @@
     <Analyzer Include="packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002071351363_Init.resx">
+      <DependentUpon>202002071351363_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
