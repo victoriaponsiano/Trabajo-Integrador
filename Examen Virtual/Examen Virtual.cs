@@ -73,7 +73,7 @@ namespace Examen_Virtual
             List <Usuario> listaUsuarios= fachada.GetUsuarios();
             foreach(Usuario user in listaUsuarios)
             {
-                if ((user.Id == nombreUsuario) && (user.contrasenia == contrasenia)
+                if ((user.Id == nombreUsuario) && (user.contrasenia == contrasenia))
                 {
                     aceptado = true;
                 }

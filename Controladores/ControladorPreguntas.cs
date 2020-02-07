@@ -18,7 +18,7 @@ namespace Trabajo_Integrador
         private static ControladorPreguntas cinstancia = null;
         private IEstrategiaObtenerPreguntas iEstrategiaObtenerPreguntas;
         private List<IEstrategiaObtenerPreguntas> iEstrategias;
- 
+
         /// <summary>
         /// Obtiene la estrategia a utilizar teniendo como parametro el conjunto de preguntas
         /// Si no encuentra la estrategia devuelve la nula
@@ -30,7 +30,7 @@ namespace Trabajo_Integrador
             IEstrategiaObtenerPreguntas estrategiaRetorno = new EstrategiaNula();
             foreach (EstrategiaObtenerPreguntas est in iEstrategias)
             {
-                if (est.Conjunto== nombre)
+                if (est.Conjunto == nombre)
                 {
                     estrategiaRetorno = est;
                 }
@@ -54,11 +54,11 @@ namespace Trabajo_Integrador
                         foreach (Pregunta pre in pPreguntas)
                         {
 
-                        if (db.Preguntas.Find(pre.Id) == null)
-                        {
-                            CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
-                            Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
-                            ConjuntoPreguntas conjunto = db.ConjuntoPreguntas.Find(pre.Conjunto.Id);
+                            if (db.Preguntas.Find(pre.Id) == null)
+                            {
+                                CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
+                                Dificultad dificultad = db.Dificultades.Find(pre.Dificultad.Id);
+                                ConjuntoPreguntas conjunto = db.ConjuntoPreguntas.Find(pre.Conjunto.Id);
 
                                 ///Si la categoria esta en la base de datos la referencia,
                                 ///sino crea una nueva y la inserta en la db
@@ -72,38 +72,42 @@ namespace Trabajo_Integrador
                                 }
 
 
-                            ///Si la dificultad esta en la base de datos la referencia,
-                            ///sino crea una nueva y la inserta en la db
-                            if (dificultad == null)
-                            {
-                                Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
-                            }
-                            else
-                            {
-                                pre.Dificultad = dificultad;
-                            }
+                                ///Si la dificultad esta en la base de datos la referencia,
+                                ///sino crea una nueva y la inserta en la db
+                                if (dificultad == null)
+                                {
+                                    Dificultad dificultadNueva = new Dificultad(pre.Dificultad.Id);
+                                }
+                                else
+                                {
+                                    pre.Dificultad = dificultad;
+                                }
 
-                            ///Si el conjunto esta en la base de datos la referencia,
-                            ///sino crea uno nuevo y la inserta en la db
-                            if (conjunto == null)
-                            { 
-                                ConjuntoPreguntas conjuntoNuevo = new ConjuntoPreguntas(pre.Conjunto.Id);
-                            }
-                            else
-                            {
-                                pre.Conjunto = conjunto;
-                            }
+                                ///Si el conjunto esta en la base de datos la referencia,
+                                ///sino crea uno nuevo y la inserta en la db
+                                if (conjunto == null)
+                                {
+                                    ConjuntoPreguntas conjuntoNuevo = new ConjuntoPreguntas(pre.Conjunto.Id);
+                                }
+                                else
+                                {
+                                    pre.Conjunto = conjunto;
+                                }
 
 
-                            UoW.RepositorioPreguntas.Add(pre);
+                                UoW.RepositorioPreguntas.Add(pre);
+                            }
                         }
+                        UoW.Complete();
                     }
-                    UoW.Complete();
                 }
-
             }
-
+            catch (Exception ex)
+            {
+                Bitacora.GuardarLog(ex.Message.ToString());
+            }
         }
+     
 
 
         /// <summary>

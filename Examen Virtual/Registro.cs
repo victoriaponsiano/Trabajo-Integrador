@@ -11,7 +11,7 @@ using Trabajo_Integrador.Dominio;
 
 namespace Examen_Virtual
 {
-    public partial class Registro : Form
+  /*  public partial class Registro : Form
     {
         string usuarioNombre;
         string contrasenia;
@@ -61,5 +61,5 @@ namespace Examen_Virtual
         }
 
     
-    }
+    }*/
 }

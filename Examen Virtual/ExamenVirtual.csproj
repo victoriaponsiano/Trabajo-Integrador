@@ -49,22 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador Fachada.cs" />
     <Compile Include="Examen Virtual.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Examen Virtual.Designer.cs">
       <DependentUpon>Examen Virtual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pregunta.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Pregunta.cs" />
     <Compile Include="Pregunta.Designer.cs">
       <DependentUpon>Pregunta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Registro.cs" />
     <Compile Include="Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
@@ -117,6 +112,12 @@
     <None Include="Resources\descarga.png" />
     <None Include="Resources\utnlogo.png" />
     <Content Include="student-cap-books_icon-icons.com_49273.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trabajo Integrador.csproj">
+      <Project>{6aae9d8f-2359-4a92-ba17-ce66d1283b6c}</Project>
+      <Name>Trabajo Integrador</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

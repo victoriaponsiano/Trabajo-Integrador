@@ -70,11 +70,6 @@ namespace Trabajo_Integrador.EntityFramework
             return this.iDBSet.Find(pId);
         }
 
-        public TEntity Get(string pId)
-        {
-            return this.iDBSet.Find(pId);
-        }
-
         public IEnumerable<TEntity> GetAll()
         {
             return this.iDBSet.ToList();

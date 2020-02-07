@@ -11,7 +11,7 @@ using Trabajo_Integrador.Dominio;
 
 namespace Examen_Virtual
 {
-    public partial class Pregunta : Form
+   /* public partial class Pregunta : Form
     {
         Examen iExamen;
         public Pregunta(Examen unExamen)
@@ -20,7 +20,7 @@ namespace Examen_Virtual
             iExamen = unExamen;
         }
 
-        public List<Pregunta> getPreguntas()
+        public List<Pregunta> getPreguntas();
         public void mostrarPreguntas()
         {
             
@@ -29,5 +29,5 @@ namespace Examen_Virtual
      
 
        
-    }
+    }*/
 }

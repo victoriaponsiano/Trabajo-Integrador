@@ -11,7 +11,7 @@ namespace Trabajo_Integrador
 {
     class ControladorFachada
     {
-        ControladorExamen ctrlExamen = new ControladorExamen();
+      /*  ControladorExamen ctrlExamen = new ControladorExamen();
         ControladorAdministrativo ctrlAdministrativo = new ControladorAdministrativo();
         public float getTiempoLimite(Examen unExamen)
         {
@@ -43,6 +43,6 @@ namespace Trabajo_Integrador
         }
 
 
-
+    */
     }
 }
