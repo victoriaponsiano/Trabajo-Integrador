@@ -53,25 +53,25 @@ namespace Examen_Virtual
 
         private void cargarCategoria()
         {
-            for (int i=0; i<cate.Length; i++)
+            //for (int i=0; i<cate.Length; i++)
             {
-                categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
+            //    categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
             }
         }
 
         private void cargarDificultad() //Le asigno al combobox dificultad el array dificultades
         {
-            for (int i=0; i<dific.Length; i++)
+            //for (int i=0; i<dific.Length; i++)
             {
-                dificultad.Items.Add(dific[i]);  
+                //dificultad.Items.Add(dific[i]);  
             }
         }
 
         private void cargarConjunto()   //Le asigno al combobox conjunto el array conjunto
         {
-            for (int i = 0; i < conj.Length; i++)
+            //for (int i = 0; i < conj.Length; i++)
             {
-                dificultad.Items.Add(conj[i]);
+             //   dificultad.Items.Add(conj[i]);
             }
         }
 

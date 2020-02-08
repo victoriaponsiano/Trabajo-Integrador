@@ -85,50 +85,45 @@ namespace Examen_Virtual
             return opcionSeleccionada;
         }
 
+      
+
 
         public void responderPreguntas() //mUESTRA LAS PREGUNTAS DEL EXAMEN
         {
             foreach (Pregunta pregunt in iExamen.Preguntas)//Por cada pregunta que tiene el examen 
             {
                 string opcion= mostrarPregunta(pregunt);
-
-                siguiente()
-
-                //fachada.RespuestaCorrecta(pregunt, opcion);
-
+                fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
+                siguiente_Click(null, null);                              
 
             }
 
         }
 
         
-       // private void siguiente_Click(object sender, EventArgs e, Pregunta preg, string opcion)
-        //{
-          //  fachada.RespuestaCorrecta(preg, opcion);
-            //LimpiaControles(this);
-
-
-        //}
-      
-
-        public void LimpiaControles(Control container)
+        private void siguiente_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in container.Controls)
-            {
-                if (ctrl is TextBox)
-                {
-                    ((TextBox)ctrl).Clear();
-                }
-
-                if (ctrl.HasChildren)
-                {
-                    LimpiaControles(ctrl);
-                }
-            }
+            LimpiaControles();
+            
         }
+      
+        public void LimpiaControles()
+        {
+            
+                opcionA.Text = String.Empty;
+                opcionB.Text = String.Empty;
+                opcionC.Text = String.Empty;
+                opcionD.Text = String.Empty;
+
+                opcionA.Checked = false;
+                opcionB.Checked = false;
+                opcionC.Checked = false;
+                opcionD.Checked = false;
 
 
 
+        }
+        
         private void Preguntas_Load(object sender, EventArgs e)
         {
             responderPreguntas();
