@@ -52,7 +52,7 @@ namespace Examen_Virtual
             }
 
 
-            fachada.GetUsuarios();
+            fachada.GuardarUsuario(nuevoUsuario.Text.Trim(), nuevaContrasenia.Text.Trim());
             MessageBox.Show("Usuaurio registrado correctamente");
             this.Close();
 
@@ -60,5 +60,6 @@ namespace Examen_Virtual
 
         }
 
+     
     }
 }

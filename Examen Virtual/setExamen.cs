@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Examen_Virtual;
 using Trabajo_Integrador.Dominio;
 using Trabajo_Integrador;
+using Trabajo_Integrador.Controladores;
 
 
 namespace Examen_Virtual
@@ -19,13 +20,13 @@ namespace Examen_Virtual
         string nombreCliente;
         ControladorFachada fachada = new ControladorFachada();
 
-        string[] categorias = { "Aleatoria", "Libros", "Peliculas", "Musica", "Television", "Videojuegos", "Computacion", "Matemática", "Naturaleza" };
-        string[] dificultades = { "Aleatoria", "Facil", "Media", "Dificil" };
-       // CategoriaPregunta[] cate = { };
-        //ConjutoPregunta[] conj = { };
-        //Dificultad[] dific = { };
+        //string[] categorias = { "Aleatoria", "Libros", "Peliculas", "Musica", "Television", "Videojuegos", "Computacion", "Matemática", "Naturaleza" };
+        //string[] dificultades = { "Aleatoria", "Facil", "Media", "Dificil" };
+        List<CategoriaPregunta> cate;
+        List<ConjuntoPreguntas> conj;
+        List<Dificultad>dific;
 
-        //List.toArray(); PARA CONVERTIR LA LISTA DE BASE D DATOS EN UN ARRAY DE STRIing
+        
 
 
 
@@ -43,35 +44,42 @@ namespace Examen_Virtual
         }
 
 
-        private void setExamen_Load(object sender, EventArgs e)
+        private void setExamen_Load(object sender, EventArgs e) 
         {
             saludo.Text += nombreCliente; //Nombre que aparece junto con el Bienvenido 
 
             cargarCategoria();
             cargarDificultad();
+            cargarConjunto();
         }
 
         private void cargarCategoria()
         {
-            //for (int i=0; i<cate.Length; i++)
+            cate= fachada.GetCategorias();
+            CategoriaPregunta[] categ = cate.ToArray();
+            for (int i=0; i<categ.Length; i++)
             {
-            //    categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
+                categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
             }
         }
 
         private void cargarDificultad() //Le asigno al combobox dificultad el array dificultades
         {
-            //for (int i=0; i<dific.Length; i++)
+            dific = fachada.GetDificultades();
+            Dificultad[] dificult= dific.ToArray();
+
+            for (int i=0; i<dificult.Length; i++)
             {
-                //dificultad.Items.Add(dific[i]);  
+                dificultad.Items.Add(dific[i]);  
             }
         }
 
         private void cargarConjunto()   //Le asigno al combobox conjunto el array conjunto
-        {
-            //for (int i = 0; i < conj.Length; i++)
+        {   conj = fachada.GetConjuntoPreguntas();
+            ConjuntoPreguntas[] conju = conj.ToArray();
+            for (int i = 0; i < conju.Length; i++)
             {
-             //   dificultad.Items.Add(conj[i]);
+               dificultad.Items.Add(conj[i]);
             }
         }
 
@@ -86,13 +94,11 @@ namespace Examen_Virtual
 
             string dificultadSeleccionada = dificultad.SelectedItem.ToString().ToLower(); //Asigno el valor ingresado a clase Dificultad
 
-
-            int cantidadSeleccionada = Convert.ToInt32(cantidadPreguntas.Value); //Cantidad de preguntas a responder
-
             string conjuntoSeleccionado = conjunto.SelectedItem.ToString().ToLower(); //Asigno el valor ingresado a clase Dificultad
 
+            int cantidadSeleccionada = Convert.ToInt32(cantidadPreguntas.Value); //Cantidad de preguntas a responder     
 
-
+            
             Examen nuevoExamen = fachada.InicializarExamen(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
 
             using (Preguntas preguntas = new Preguntas(nuevoExamen)) //Le paso el usuario para que aparezca en la proxima ventana

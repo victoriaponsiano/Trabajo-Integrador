@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo_Integrador.Dominio;
 using Trabajo_Integrador;
+using Trabajo_Integrador.Controladores;
 
 namespace Examen_Virtual
 {
@@ -85,18 +86,16 @@ namespace Examen_Virtual
             return opcionSeleccionada;
         }
 
-      
-
-
         public void responderPreguntas() //mUESTRA LAS PREGUNTAS DEL EXAMEN
         {
-            foreach (Pregunta pregunt in iExamen.Preguntas)//Por cada pregunta que tiene el examen 
+            foreach (Pregunta pregunt in iExamen.getPreguntas())//Por cada pregunta que tiene el examen 
             {
                 string opcion= mostrarPregunta(pregunt);
-                //fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
+                fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
                 siguiente_Click(null, null);                              
 
             }
+            fachada.FinalizarExamen(iExamen);
 
         }
 
@@ -134,13 +133,14 @@ namespace Examen_Virtual
             this.timer.Enabled = true;
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e) //Tiempo agotado
         {
             tiempo--;
             this.time.Text = tiempo.ToString();
             if (tiempo == 0) //Termino el tiempo limite
             {
                 this.timer.Enabled = false;
+                fachada.FinalizarExamen(iExamen);
                 using (ExamenTerminado finalizado = new ExamenTerminado(iExamen)) //Paso el examen a la proxima ventana 
                     finalizado.ShowDialog();
             }

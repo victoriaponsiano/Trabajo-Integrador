@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador Fachada.cs" />
     <Compile Include="Examen Virtual.cs">
       <SubType>Form</SubType>
     </Compile>
