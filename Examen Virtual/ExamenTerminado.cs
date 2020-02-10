@@ -21,6 +21,7 @@ namespace Examen_Virtual
         private void ExamenTerminado_Load(object sender, EventArgs e)
         {
 
+
         }
     }
 }

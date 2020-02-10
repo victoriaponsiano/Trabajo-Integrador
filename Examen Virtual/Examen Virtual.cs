@@ -49,6 +49,7 @@ namespace Examen_Virtual
 
         private Boolean controlBoton()
         {
+
             Boolean aceptado;
             if ((usuario.Text.Trim() != string.Empty)  && (esAceptao(usuario.Text.Trim(), contrasenia.Text.Trim()))) //Se verifica que el ususario y pswd sean correctos y el campo usuario no sea vacio
             {

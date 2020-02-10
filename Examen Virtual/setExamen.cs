@@ -25,7 +25,7 @@ namespace Examen_Virtual
         //ConjutoPregunta[] conj = { };
         //Dificultad[] dific = { };
 
-        //List.toArray(); PARA CONVERTIR LA LISTA DE BASE D DATOS EN UN ARRAY DE STRING
+        //List.toArray(); PARA CONVERTIR LA LISTA DE BASE D DATOS EN UN ARRAY DE STRIing
 
 
 
@@ -97,6 +97,7 @@ namespace Examen_Virtual
 
             using (Preguntas preguntas = new Preguntas(nuevoExamen)) //Le paso el usuario para que aparezca en la proxima ventana
                 preguntas.ShowDialog();
+
 
         }
     }

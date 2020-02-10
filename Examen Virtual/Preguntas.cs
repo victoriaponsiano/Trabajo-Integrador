@@ -27,7 +27,7 @@ namespace Examen_Virtual
 
         float tiempo;
 
-        public string mostrarPregunta(Pregunta unaPregunta)
+        public string mostrarPregunta(Pregunta unaPregunta) //Muestra una pregunta con sus opciones
         {
             preg.Text += unaPregunta.Id; //Muestro la Pregunta en el Label
 
@@ -58,7 +58,7 @@ namespace Examen_Virtual
 
             }
 
-        public string RecogerOpcion()
+        public string RecogerOpcion() //Devuelve cual fue la opcion Seleccionada
         {
             string opcionSeleccionada = "";
 
@@ -93,7 +93,7 @@ namespace Examen_Virtual
             foreach (Pregunta pregunt in iExamen.Preguntas)//Por cada pregunta que tiene el examen 
             {
                 string opcion= mostrarPregunta(pregunt);
-                fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
+                //fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
                 siguiente_Click(null, null);                              
 
             }
@@ -101,15 +101,16 @@ namespace Examen_Virtual
         }
 
         
-        private void siguiente_Click(object sender, EventArgs e)
+        private void siguiente_Click(object sender, EventArgs e) //Boton Siguiente
         {
             LimpiaControles();
             
         }
       
-        public void LimpiaControles()
+        public void LimpiaControles() //Limpia todos los campos (textBox y checkBox)
         {
-            
+                preg.Text = String.Empty;
+                
                 opcionA.Text = String.Empty;
                 opcionB.Text = String.Empty;
                 opcionC.Text = String.Empty;
@@ -124,11 +125,12 @@ namespace Examen_Virtual
 
         }
         
-        private void Preguntas_Load(object sender, EventArgs e)
+        private void Preguntas_Load(object sender, EventArgs e) //Se carga junto con la pantalla de Preguntas
         {
             responderPreguntas();
             tiempo = iExamen.TiempoLimite;
             this.time.Text = tiempo.ToString();
+
             this.timer.Enabled = true;
         }
 
