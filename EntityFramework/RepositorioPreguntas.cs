@@ -31,6 +31,10 @@ namespace Trabajo_Integrador.EntityFramework
             Console.ReadLine();
             List<Pregunta> ADevolver = new List<Pregunta>();
 
+
+            return preguntas.OrderBy(x => Guid.NewGuid()).Take(pCantidad).ToList<Pregunta>();
+
+            /*
             if (pCantidad < preguntas.Count())
             {
                 for (int i = preguntas.Count - pCantidad; i > 0; i--)
@@ -41,7 +45,7 @@ namespace Trabajo_Integrador.EntityFramework
 
             else { ADevolver = preguntas; }
             return ADevolver;
-
+            */
 
         }
     }
