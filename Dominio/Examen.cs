@@ -18,6 +18,7 @@ namespace Trabajo_Integrador.Dominio
 
         private int iRespuestasCorrectas;
 
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 

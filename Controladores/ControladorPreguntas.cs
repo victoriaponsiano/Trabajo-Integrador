@@ -53,7 +53,6 @@ namespace Trabajo_Integrador.Controladores
 
                         foreach (Pregunta pre in pPreguntas)
                         {
-
                             if (db.Preguntas.Find(pre.Id) == null)
                             {
                                 CategoriaPregunta categoria = db.Categorias.Find(pre.Categoria.Id);
