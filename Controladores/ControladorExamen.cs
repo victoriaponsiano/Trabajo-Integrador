@@ -48,9 +48,7 @@ namespace Trabajo_Integrador.Controladores
         {
             return pExamen.RespuestaCorrecta(pPregunta, pRespuesta);
         }
-
-
-
+        
         /// <summary>
         /// Da fin a un examen y lo guarda en la DB
         /// </summary>

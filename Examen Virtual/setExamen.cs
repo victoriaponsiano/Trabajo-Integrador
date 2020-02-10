@@ -7,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Trabajo_Integrador.Dominio;
-using Trabajo_Integrador.Controladores;
-using Trabajo_Integrador;
 using Examen_Virtual;
+using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador;
 
 
-
-namespace Trabajo_Integrador
+namespace Examen_Virtual
 {
     public partial class setExamen : Form
     {
@@ -23,11 +21,11 @@ namespace Trabajo_Integrador
 
         string[] categorias = { "Aleatoria", "Libros", "Peliculas", "Musica", "Television", "Videojuegos", "Computacion", "Matemática", "Naturaleza" };
         string[] dificultades = { "Aleatoria", "Facil", "Media", "Dificil" };
-        CategoriaPregunta[] cate = { };
-        Dificultad[] dific = { };
-        ConjuntoPreguntas[] conj = { };
+       // CategoriaPregunta[] cate = { };
+        //ConjutoPregunta[] conj = { };
+        //Dificultad[] dific = { };
 
-        //List.toArray(); PARA CONVERTIR LA LISTA DE BASE D DATOS EN UN ARRAY DE STRING
+        //List.toArray(); PARA CONVERTIR LA LISTA DE BASE D DATOS EN UN ARRAY DE STRIing
 
 
 
@@ -55,25 +53,25 @@ namespace Trabajo_Integrador
 
         private void cargarCategoria()
         {
-            for (int i=0; i<cate.Length; i++)
+            //for (int i=0; i<cate.Length; i++)
             {
-                categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
+            //    categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
             }
         }
 
         private void cargarDificultad() //Le asigno al combobox dificultad el array dificultades
         {
-            for (int i=0; i<dific.Length; i++)
+            //for (int i=0; i<dific.Length; i++)
             {
-                dificultad.Items.Add(dific[i]);  
+                //dificultad.Items.Add(dific[i]);  
             }
         }
 
         private void cargarConjunto()   //Le asigno al combobox conjunto el array conjunto
         {
-            for (int i = 0; i < conj.Length; i++)
+            //for (int i = 0; i < conj.Length; i++)
             {
-                dificultad.Items.Add(conj[i]);
+             //   dificultad.Items.Add(conj[i]);
             }
         }
 
@@ -97,8 +95,9 @@ namespace Trabajo_Integrador
 
             Examen nuevoExamen = fachada.InicializarExamen(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
 
-            //using (Preguntas preguntas = new Preguntas(nuevoExamen)) //Le paso el usuario para que aparezca en la proxima ventana
-              //  preguntas.ShowDialog();
+            using (Preguntas preguntas = new Preguntas(nuevoExamen)) //Le paso el usuario para que aparezca en la proxima ventana
+                preguntas.ShowDialog();
+
 
         }
     }
