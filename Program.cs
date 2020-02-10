@@ -16,11 +16,22 @@ namespace Trabajo_Integrador
         static void Main(string[] args)
         {
 
-            ControladorPreguntas controladorPreguntas = new ControladorPreguntas();
-            controladorPreguntas.GetPreguntasOnline("100", "OpentDB", "0", "0");
 
-               /*
-                Usuario leo = new Usuario("40806563", "leonardo");
+            /*COSAS A HACER
+             * 1)Que pasa si no hay suficientes pregutnas de una categoria
+             * 2)Agregran el OpentDBId
+             * 3)Revisar puntaje 
+             * 
+             * 
+             * 
+             * 
+             * 
+             */
+
+            ControladorPreguntas controladorPreguntas = new ControladorPreguntas();
+            controladorPreguntas.GetPreguntasOnline("100", "OpentDB", "9", "easy");
+
+                Usuario leo = new Usuario("leo", "leonardo");
 
 
                         ControladorExamen cont = new ControladorExamen();
@@ -39,7 +50,7 @@ namespace Trabajo_Integrador
                         cont.FinalizarExamen(ex);
 
 
-            */
+            
                     Console.ReadKey();
 
           

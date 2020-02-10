@@ -25,9 +25,16 @@ namespace Trabajo_Integrador.EntityFramework
 
         public DbSet<Log> Logs { get; set; }
 
-        public TrabajoDbContext()
+        public TrabajoDbContext() : base(nameOrConnectionString: "Default")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("public");
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<TrabajoDbContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
+
         }
-        }
+    }
 }

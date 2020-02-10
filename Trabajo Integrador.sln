@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trabajo Integrador", "Traba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamenVirtual", "Examen Virtual\ExamenVirtual.csproj", "{98BF2C40-9421-4B24-8C8C-8A41F3A5C070}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestTpIntegrador", "..\UnitTestTpIntegrador\UnitTestTpIntegrador.csproj", "{74B44CF2-B46A-4DF9-A82D-0E245EAE6B79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{98BF2C40-9421-4B24-8C8C-8A41F3A5C070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98BF2C40-9421-4B24-8C8C-8A41F3A5C070}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98BF2C40-9421-4B24-8C8C-8A41F3A5C070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B44CF2-B46A-4DF9-A82D-0E245EAE6B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B44CF2-B46A-4DF9-A82D-0E245EAE6B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B44CF2-B46A-4DF9-A82D-0E245EAE6B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B44CF2-B46A-4DF9-A82D-0E245EAE6B79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
