@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Trabajo_Integrador;
 using Trabajo_Integrador.Controladores;
+using Trabajo_Integrador.Dominio;
+
 
 namespace Examen_Virtual
 {
@@ -48,8 +51,9 @@ namespace Examen_Virtual
 
         private Boolean controlBoton()
         {
+
             Boolean aceptado;
-            if ((usuario.Text.Trim() != string.Empty)  && (esAceptao(usuario.Text.Trim(), contrasenia.Text.Trim()))) //Se verifica que el ususario y pswd sean correctos y el campo usuario no sea vacio
+            if ((usuario.Text.Trim() != string.Empty)  && (esAceptado(usuario.Text.Trim(), contrasenia.Text.Trim()))) //Se verifica que el ususario y pswd sean correctos y el campo usuario no sea vacio
             {
                 btnIngresar.Enabled = true; //Se habilita en boton Ingresar
                 errorProvider1.SetError(usuario, ""); //No hubo error
@@ -66,13 +70,13 @@ namespace Examen_Virtual
             return aceptado;
         }
 
-        private Boolean esAceptao(string nombreUsuario, string contrasenia)
+        private Boolean esAceptado(string nombreUsuario, string contrasenia)
         {
             Boolean aceptado = true;
-            List <Usuario> listaUsuarios= fachada.GetUsuarios();
+            List<Usuario> listaUsuarios = fachada.GetUsuarios();
             foreach(Usuario user in listaUsuarios)
             {
-                if ((user.Id == nombreUsuario) && (user.contrasenia == contrasenia))
+                if ((user.Id == nombreUsuario) && (user.Contrasenia == contrasenia))
                 {
                     aceptado = true;
                 }

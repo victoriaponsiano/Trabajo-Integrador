@@ -110,6 +110,7 @@
             this.nuevaContrasenia.Name = "nuevaContrasenia";
             this.nuevaContrasenia.Size = new System.Drawing.Size(171, 20);
             this.nuevaContrasenia.TabIndex = 6;
+            this.nuevaContrasenia.UseSystemPasswordChar = true;
             // 
             // nuevaContrasenia2
             // 
@@ -117,6 +118,7 @@
             this.nuevaContrasenia2.Name = "nuevaContrasenia2";
             this.nuevaContrasenia2.Size = new System.Drawing.Size(171, 20);
             this.nuevaContrasenia2.TabIndex = 7;
+            this.nuevaContrasenia2.UseSystemPasswordChar = true;
             // 
             // Registrar
             // 
@@ -169,7 +171,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registro";
             this.Text = "Examen Virtual";
-            
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();

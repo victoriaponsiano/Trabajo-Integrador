@@ -49,17 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador Fachada.cs" />
     <Compile Include="Examen Virtual.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Examen Virtual.Designer.cs">
       <DependentUpon>Examen Virtual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pregunta.cs" />
-    <Compile Include="Pregunta.Designer.cs">
-      <DependentUpon>Pregunta.cs</DependentUpon>
+    <Compile Include="ExamenTerminado.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro.cs" />
+    <Compile Include="ExamenTerminado.Designer.cs">
+      <DependentUpon>ExamenTerminado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preguntas.Designer.cs">
+      <DependentUpon>Preguntas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
@@ -74,8 +85,11 @@
     <EmbeddedResource Include="Examen Virtual.resx">
       <DependentUpon>Examen Virtual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pregunta.resx">
-      <DependentUpon>Pregunta.cs</DependentUpon>
+    <EmbeddedResource Include="ExamenTerminado.resx">
+      <DependentUpon>ExamenTerminado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preguntas.resx">
+      <DependentUpon>Preguntas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

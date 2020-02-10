@@ -60,6 +60,5 @@ namespace Examen_Virtual
 
         }
 
-    
     }
 }

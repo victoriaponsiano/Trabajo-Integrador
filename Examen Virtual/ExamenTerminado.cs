@@ -7,27 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador;
 
 namespace Examen_Virtual
 {
-   /* public partial class Pregunta : Form
+    public partial class ExamenTerminado : Form
     {
-        Examen iExamen;
-        public Pregunta(Examen unExamen)
+        public ExamenTerminado(Examen unExamen)
         {
             InitializeComponent();
-            iExamen = unExamen;
         }
 
-        public List<Pregunta> getPreguntas();
-        public void mostrarPreguntas()
+        private void ExamenTerminado_Load(object sender, EventArgs e)
         {
-            
+
 
         }
-     
-
-       
-    }*/
+    }
 }
