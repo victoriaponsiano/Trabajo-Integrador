@@ -16,21 +16,13 @@ namespace Trabajo_Integrador.Controladores
         ControladorPreguntas iControladorPreguntas = new ControladorPreguntas();
         public void CargarPreguntas(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
-            try
-            {
+           
                 iControladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
-            }
-            catch (Exception ex)
-            {
-                Bitacora.GuardarLog(ex.Message.ToString());
-            }
-
+           
         }
         public List<Usuario> GetUsuarios()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();
-            try
-            {
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -38,18 +30,12 @@ namespace Trabajo_Integrador.Controladores
                         listaUsuarios = (List<Usuario>)UoW.RepositorioUsuarios.GetAll();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Bitacora.GuardarLog("ControladorAdministrativo.GetUsuarios:"+ex.ToString());
-            }
+            
             return listaUsuarios;
         }
         public List<Pregunta> GetPreguntas()
         {
             List<Pregunta> listaPreguntas = new List<Pregunta>();
-            try
-            {
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -57,18 +43,12 @@ namespace Trabajo_Integrador.Controladores
                         listaPreguntas = (List<Pregunta>)UoW.RepositorioPreguntas.GetAll();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Bitacora.GuardarLog("ControladorAdministrativo.GetPreguntas:"+ex.ToString());
-            }
+            
             return listaPreguntas;
         }
         public List<Examen> GetExamenes()
         {
             List<Examen> listaExamenes = new List<Examen>();
-            try
-            {
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -76,11 +56,7 @@ namespace Trabajo_Integrador.Controladores
                         listaExamenes = (List<Examen>)UoW.ExamenRepository.GetAll();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Bitacora.GuardarLog("ControladorAdministrativo.GetExamenes:"+ex.ToString());
-            }
+            
             return listaExamenes;
 
         }
@@ -111,8 +87,6 @@ namespace Trabajo_Integrador.Controladores
         }
         public void ModificarTiempo(ConjuntoPreguntas pConjuntoPreguntas, float pTiempo)
         {
-            try
-            {
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -122,17 +96,12 @@ namespace Trabajo_Integrador.Controladores
                         UoW.Complete();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Bitacora.GuardarLog("ControladorAdministrativo.ModificarTiempo: "+ex.ToString());
-            }
+            
+            
 
         }
         public void SetAdministrador(Usuario pUsuario)
         {
-            try
-            {
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -142,13 +111,9 @@ namespace Trabajo_Integrador.Controladores
                         UoW.Complete();
                     }
                 }
-            }
-            catch (NullReferenceException ex)
-            {
-                Bitacora.GuardarLog("ControladorAdministrativo.SetAdministrador: "+
-                    ex.Message);
-            }
+            
         }
+
         public void GuardarUsuario(string pUsuario, string pContrasenia)
         {
             Usuario usuario = new Usuario(pUsuario, pContrasenia);
