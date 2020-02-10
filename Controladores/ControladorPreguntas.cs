@@ -278,6 +278,76 @@ namespace Trabajo_Integrador.Controladores
             return preguntas;
         }
 
+        /// <summary>
+        /// Metodo que devuelve todas las categorias cargadas en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<CategoriaPregunta> GetCategorias()
+        {
+            List<CategoriaPregunta> listaCategoria = new List<CategoriaPregunta>();
+            try
+            {
+                using (var db = new TrabajoDbContext())
+                {
+                    using (var UoW = new UnitOfWork(db))
+                    {
+                        listaCategoria = (List<CategoriaPregunta>)UoW.RepositorioCategorias.GetAll();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Bitacora.GuardarLog("ControladorPreguntas.GetCategorias" + ex.ToString());
+            }
+            return listaCategoria;
+        }
+        /// <summary>
+        /// Metodo que devuelve todas los conjuntos de preguntas cargados en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<ConjuntoPreguntas> GetConjuntoPreguntas()
+        {
+            List<ConjuntoPreguntas> listaConjuntos = new List<ConjuntoPreguntas>();
+            try
+            {
+                using (var db = new TrabajoDbContext())
+                {
+                    using (var UoW = new UnitOfWork(db))
+                    {
+                        listaConjuntos = (List<ConjuntoPreguntas>)UoW.RepositorioConjuntoPregunta.GetAll();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Bitacora.GuardarLog("ControladorPreguntas.GetConjuntoPreguntas" + ex.ToString());
+            }
+            return listaConjuntos;
+        }
+
+        /// <summary>
+        /// Metodo que devuelve todas las dificultades cargadas en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<Dificultad> GetDificultades()
+        {
+            List<Dificultad> listaDificultades = new List<Dificultad>();
+            try
+            {
+                using (var db = new TrabajoDbContext())
+                {
+                    using (var UoW = new UnitOfWork(db))
+                    {
+                        listaDificultades = (List<Dificultad>)UoW.RepositorioDificultades.GetAll();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Bitacora.GuardarLog("ControladorPreguntas.GetDificultades" + ex.ToString());
+            }
+            return listaDificultades;
+        }
 
 
 

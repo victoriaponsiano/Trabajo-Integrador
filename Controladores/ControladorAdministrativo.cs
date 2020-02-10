@@ -84,6 +84,31 @@ namespace Trabajo_Integrador.Controladores
             return listaExamenes;
 
         }
+        /// <summary>
+        /// Metodo que devuelve todas las categorias cargadas en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<CategoriaPregunta> GetCategorias()
+        {
+            return iControladorPreguntas.GetCategorias();
+        }
+
+        /// <summary>
+        /// Metodo que devuelve todas los conjuntos de preguntas cargados en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<ConjuntoPreguntas> GetConjuntoPreguntas()
+        {
+            return iControladorPreguntas.GetConjuntoPreguntas();
+        }
+        /// <summary>
+        /// Metodo que devuelve todas las dificultades cargadas en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<Dificultad> GetDificultades()
+        {
+            return iControladorPreguntas.GetDificultades();
+        }
         public void ModificarTiempo(ConjuntoPreguntas pConjuntoPreguntas, float pTiempo)
         {
             try
@@ -102,26 +127,6 @@ namespace Trabajo_Integrador.Controladores
             {
                 Bitacora.GuardarLog("ControladorAdministrativo.ModificarTiempo: "+ex.ToString());
             }
-
-        }
-        public List<ConjuntoPreguntas> GetConjuntos()
-        {
-            List<ConjuntoPreguntas> listaConjuntos = new List<ConjuntoPreguntas>();
-            try
-            {
-                using (var db = new TrabajoDbContext())
-                {
-                    using (var UoW = new UnitOfWork(db))
-                    {
-                        listaConjuntos = (List<ConjuntoPreguntas>)UoW.RepositorioConjuntoPregunta.GetAll();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Bitacora.GuardarLog("ControladorAdministrativo.GetConjuntos"+ex.ToString());
-            }
-            return listaConjuntos;
 
         }
         public void SetAdministrador(Usuario pUsuario)

@@ -64,6 +64,30 @@ namespace Trabajo_Integrador.Controladores
         }
 
         /// <summary>
+        /// Metodo que devuelve todas las categorias cargadas en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<CategoriaPregunta> GetCategorias()
+        {
+            return controladorAdministrativo.GetCategorias();
+        }
+        /// <summary>
+        /// Metodo que devuelve todas los conjuntos de preguntas cargados en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<ConjuntoPreguntas> GetConjuntoPreguntas()
+        {
+            return controladorAdministrativo.GetConjuntoPreguntas();
+        }
+        /// <summary>
+        /// Metodo que devuelve todas las dificultades cargadas en base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<Dificultad> GetDificultades()
+        {
+            return controladorAdministrativo.GetDificultades();
+        }
+        /// <summary>
         /// Metodo que guarda un usuario en la base de datos de usuarios
         /// </summary>
         /// <param name="usuarioNombre"></param>
