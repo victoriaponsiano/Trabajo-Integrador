@@ -16,7 +16,7 @@ namespace Trabajo_Integrador.Ventanas
 {
     public partial class Inicio : Form
     {
-        ControladorFachada fachada = new ControladorFachada();
+        ControladorFachada iFachada = new ControladorFachada();
         public Inicio()
         {
             InitializeComponent();
@@ -73,17 +73,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private Boolean esAceptado(string nombreUsuario, string contrasenia)
         {
-            Boolean aceptado = true;
-            List<Usuario> listaUsuarios = fachada.GetUsuarios();
-            foreach (Usuario user in listaUsuarios)
-            {
-                if ((user.Id == nombreUsuario) && (user.Contrasenia == contrasenia))
-                {
-                    aceptado = true;
-                }
-                else aceptado = false;
-            }
-            return aceptado;
+            return iFachada.UsuarioValido(nombreUsuario, contrasenia);
         }
 
         private void crearUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
