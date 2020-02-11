@@ -25,7 +25,7 @@ namespace Trabajo_Integrador.Dominio
         /// <param name="pContrasenia"></param>
         public Usuario(string pId, string pContrasenia)
         {
-            Id = PasswordHasher.CreateMD5(pId);
+            Id = pId;
             Contrasenia = PasswordHasher.CreateMD5
                 (pContrasenia);
             Administrador = false;
