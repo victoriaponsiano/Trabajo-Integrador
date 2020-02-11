@@ -25,10 +25,6 @@ namespace Trabajo_Integrador.Ventanas
         List<ConjuntoPreguntas> conj;
         List<Dificultad> dific;
 
-
-
-
-
         public configurarExamen(string nombre)
         {
             InitializeComponent();
