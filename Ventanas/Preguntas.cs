@@ -11,7 +11,7 @@ using Trabajo_Integrador.Dominio;
 using Trabajo_Integrador;
 using Trabajo_Integrador.Controladores;
 
-namespace Examen_Virtual
+namespace Trabajo_Integrador.Ventanas
 {
     public partial class Preguntas : Form
     {
@@ -57,7 +57,7 @@ namespace Examen_Virtual
 
             return RecogerOpcion();
 
-            }
+        }
 
         public string RecogerOpcion() //Devuelve cual fue la opcion Seleccionada
         {
@@ -90,35 +90,35 @@ namespace Examen_Virtual
         {
             foreach (Pregunta pregunt in iExamen.getPreguntas())//Por cada pregunta que tiene el examen 
             {
-                string opcion= mostrarPregunta(pregunt);
+                string opcion = mostrarPregunta(pregunt);
                 fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
-                siguiente_Click(null, null);                              
+                siguiente_Click(null, null);
             }
             fachada.FinalizarExamen(iExamen);
 
         }
 
-        
+
         private void siguiente_Click(object sender, EventArgs e) //Boton Siguiente
         {
             LimpiaControles();
         }
-      
+
         public void LimpiaControles() //Limpia todos los campos (textBox y checkBox)
         {
-                preg.Text = String.Empty;
-                
-                opcionA.Text = String.Empty;
-                opcionB.Text = String.Empty;
-                opcionC.Text = String.Empty;
-                opcionD.Text = String.Empty;
+            preg.Text = String.Empty;
 
-                opcionA.Checked = false;
-                opcionB.Checked = false;
-                opcionC.Checked = false;
-                opcionD.Checked = false;
+            opcionA.Text = String.Empty;
+            opcionB.Text = String.Empty;
+            opcionC.Text = String.Empty;
+            opcionD.Text = String.Empty;
+
+            opcionA.Checked = false;
+            opcionB.Checked = false;
+            opcionC.Checked = false;
+            opcionD.Checked = false;
         }
-        
+
         private void Preguntas_Load(object sender, EventArgs e) //Se carga junto con la pantalla de Preguntas
         {
             responderPreguntas();
@@ -143,9 +143,9 @@ namespace Examen_Virtual
 
         }
 
-        
+
     }
 
-       
-    
+
+
 }
