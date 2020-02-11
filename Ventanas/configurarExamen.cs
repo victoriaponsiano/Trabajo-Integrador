@@ -19,7 +19,7 @@ namespace Trabajo_Integrador.Ventanas
         string nombreCliente;
         ControladorFachada fachada = new ControladorFachada();
 
-        //string[] categorias = { "Aleatoria", "Libros", "Peliculas", "Musica", "Television", "Videojuegos", "Computacion", "Matemática", "Naturaleza" };
+        
         //string[] dificultades = { "Aleatoria", "Facil", "Media", "Dificil" };
         List<CategoriaPregunta> cate;
         List<ConjuntoPreguntas> conj;
@@ -36,9 +36,6 @@ namespace Trabajo_Integrador.Ventanas
 
             saludo.Text += nombreCliente; //Nombre que aparece junto con el Bienvenido 
 
-            cargarCategoria();
-            cargarDificultad();
-            cargarConjunto();
 
         }
 
@@ -55,33 +52,59 @@ namespace Trabajo_Integrador.Ventanas
         private void cargarCategoria()
         {
             cate = fachada.GetCategorias();
-            CategoriaPregunta[] categ = cate.ToArray();
-            for (int i = 0; i < categ.Length; i++)
+
+            List<string> listaCategorias = new List<string>(); ;
+            foreach (CategoriaPregunta cat in cate)
             {
-                categoria.Items.Add(cate[i]); //Le asigno al combobox categoria el array categorias
+                listaCategorias.Add(cat.Id);
+            }
+
+            string[] categorias= listaCategorias.ToArray();
+             
+            for (int i = 0; i < categorias.Length; i++)
+            {
+                categoria.Items.Add(categorias[i]); //Le asigno al combobox categoria el array categorias
             }
         }
 
         private void cargarDificultad() //Le asigno al combobox dificultad el array dificultades
         {
             dific = fachada.GetDificultades();
-            Dificultad[] dificult = dific.ToArray();
-
-            for (int i = 0; i < dificult.Length; i++)
+            
+            List<string> listaDificultades = new List<string>(); ;
+            foreach (Dificultad dif in dific)
             {
-                dificultad.Items.Add(dific[i]);
+                listaDificultades.Add(dif.Id);
+            }
+
+            string[] dificultades = listaDificultades.ToArray();
+
+            for (int i = 0; i < dificultades.Length; i++)
+            {
+                dificultad.Items.Add(dificultades[i]); //Le asigno al combobox dificultad el array dificultades
             }
         }
+    
 
         private void cargarConjunto()   //Le asigno al combobox conjunto el array conjunto
         {
             conj = fachada.GetConjuntoPreguntas();
-            ConjuntoPreguntas[] conju = conj.ToArray();
-            for (int i = 0; i < conju.Length; i++)
+        
+             List<string> listaConjuntos = new List<string>(); 
+
+                foreach (ConjuntoPreguntas con in conj)
+                {
+                    listaConjuntos.Add(con.Id);
+                }
+
+            string[] conjuntos = listaConjuntos.ToArray();
+
+            for (int i = 0; i < conjuntos.Length; i++)
             {
-                dificultad.Items.Add(conj[i]);
+                categoria.Items.Add(conjuntos[i]); //Le asigno al combobox categoria el array categorias
             }
         }
+
 
         private void volver_Click(object sender, EventArgs e)
         {
