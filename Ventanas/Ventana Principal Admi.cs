@@ -42,13 +42,13 @@ namespace Trabajo_Integrador.Ventanas
 
             private void Ventana_Principal_Load(object sender, EventArgs e)
             {
-                user.Text += iNombreUsuario;
+                user.Text += iUsuario;
             }
 
             private void CerrarSesion_Click(object sender, EventArgs e)
             {
                 Close();
             }
-        }
     }
 }
+
