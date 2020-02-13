@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Globalization;
 
 namespace Trabajo_Integrador
 {
@@ -33,8 +34,9 @@ namespace Trabajo_Integrador
                 // Establecimiento del protocolo ssl de transporte
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+                CultureInfo provider = new CultureInfo("en-us");
                 // Creacion de URL
-                var mUrl =CrearURL(pCantidad,pDificultad,pCategoria.OpentDbId);
+                var mUrl =CrearURL(pCantidad,pDificultad,pCategoria.OpentDbId.ToString(provider));
 
                 
                 // Se crea el request http
