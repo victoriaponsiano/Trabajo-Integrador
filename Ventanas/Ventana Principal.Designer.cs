@@ -31,44 +31,32 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana_Principal));
             this.comenzarExamen = new System.Windows.Forms.Button();
             this.verRanking = new System.Windows.Forms.Button();
-            this.admin = new System.Windows.Forms.Button();
             this.user = new System.Windows.Forms.Label();
+            this.cerrarSesion = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comenzarExamen
             // 
             this.comenzarExamen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.comenzarExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comenzarExamen.Location = new System.Drawing.Point(324, 308);
+            this.comenzarExamen.Location = new System.Drawing.Point(471, 234);
             this.comenzarExamen.Name = "comenzarExamen";
             this.comenzarExamen.Size = new System.Drawing.Size(140, 47);
             this.comenzarExamen.TabIndex = 0;
             this.comenzarExamen.Text = "Comenzar Examen";
             this.comenzarExamen.UseVisualStyleBackColor = false;
-            
             // 
             // verRanking
             // 
             this.verRanking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.verRanking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verRanking.Location = new System.Drawing.Point(69, 308);
+            this.verRanking.Location = new System.Drawing.Point(182, 234);
             this.verRanking.Name = "verRanking";
             this.verRanking.Size = new System.Drawing.Size(140, 47);
             this.verRanking.TabIndex = 1;
             this.verRanking.Text = "Ver Ranking";
             this.verRanking.UseVisualStyleBackColor = false;
-            this.verRanking.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // admin
-            // 
-            this.admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.admin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(555, 308);
-            this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(140, 47);
-            this.admin.TabIndex = 2;
-            this.admin.Text = "Administrador";
-            this.admin.UseVisualStyleBackColor = false;
             // 
             // user
             // 
@@ -81,6 +69,28 @@
             this.user.Size = new System.Drawing.Size(0, 18);
             this.user.TabIndex = 3;
             // 
+            // cerrarSesion
+            // 
+            this.cerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.cerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cerrarSesion.Location = new System.Drawing.Point(648, 391);
+            this.cerrarSesion.Name = "cerrarSesion";
+            this.cerrarSesion.Size = new System.Drawing.Size(140, 47);
+            this.cerrarSesion.TabIndex = 4;
+            this.cerrarSesion.Text = "Cerrar Sesión";
+            this.cerrarSesion.UseVisualStyleBackColor = false;
+           
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(304, 142);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 24);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Qué desea hacer?";
+            // 
             // Ventana_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,8 +98,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cerrarSesion);
             this.Controls.Add(this.user);
-            this.Controls.Add(this.admin);
             this.Controls.Add(this.verRanking);
             this.Controls.Add(this.comenzarExamen);
             this.Name = "Ventana_Principal";
@@ -104,7 +115,8 @@
 
         private System.Windows.Forms.Button comenzarExamen;
         private System.Windows.Forms.Button verRanking;
-        private System.Windows.Forms.Button admin;
         private System.Windows.Forms.Label user;
+        private System.Windows.Forms.Button cerrarSesion;
+        private System.Windows.Forms.Label label2;
     }
 }

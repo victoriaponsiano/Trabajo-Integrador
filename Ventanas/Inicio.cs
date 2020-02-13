@@ -44,7 +44,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void Inicio_Load(object sender, EventArgs e) //Se ejeecuta el codigo cuando el formulario se carga
         {
-            //btnIngresar.Enabled = false;
+            
         }
 
         //Trim saca espacios al texto ingresado

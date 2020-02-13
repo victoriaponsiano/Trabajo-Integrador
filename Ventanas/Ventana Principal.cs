@@ -30,13 +30,11 @@ namespace Trabajo_Integrador.Ventanas
             ranking.ShowDialog();
 
 
-            
-
         }
 
         private void comenzarExamen_Click(object sender, EventArgs e)
         {
-            configurarExamen ex = new configurarExamen(iUsuario);
+            configurarExamen ex = new configurarExamen(iNombreUsuario);
             ex.ShowDialog();
                 
 
@@ -44,7 +42,12 @@ namespace Trabajo_Integrador.Ventanas
 
         private void Ventana_Principal_Load(object sender, EventArgs e)
         {
-            user.Text += nombreUser;
+            user.Text += iNombreUsuario;
+        }
+
+        private void CerrarSesion_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

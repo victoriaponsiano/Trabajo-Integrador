@@ -25,19 +25,24 @@ namespace Trabajo_Integrador.Ventanas
 
         private void VentanaRanking_Load(object sender, EventArgs e)
         {
-            List<Examen> listaExamenes;//= fachada.GetRanking(iNombreUsuario);
+            List<Examen> listaExamenes = fachada.GetRanking(iNombreUsuario);
             DataTable dt = new DataTable();
             dt.Columns.Add("Usuario", typeof(string));
             dt.Columns.Add("Fecha", typeof(DateTime));
             dt.Columns.Add("Puntaje", typeof(int));
             dt.Columns.Add("Tiempo", typeof(float));
 
-            //foreach (Examen examen in listaExamenes)
+            foreach (Examen examen in listaExamenes)
             {
-              //  dt.Rows.Add(new object[] { examen.Usuario, examen.Fecha, examen.Puntaje, examen.TiempoUsado });
+               dt.Rows.Add(new object[] { examen.Usuario, examen.Fecha, examen.Puntaje, examen.TiempoUsado });
             }
 
-            //dataGridView1.DataSource = dt;
+            dataGridView1.DataSource = dt;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

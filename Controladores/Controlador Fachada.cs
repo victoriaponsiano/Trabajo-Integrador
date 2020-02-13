@@ -168,5 +168,25 @@ namespace Trabajo_Integrador.Controladores
         {
             return controladorExamen.RespuestaCorrecta(pExamen, pPregunta, pRespuesta);
         }
+
+        /// <summary>
+        /// Metodo que establece como administrador a un usuario pasado como parametro
+        /// </summary>
+        /// <param name="pUsuario"></param>
+        public void SetAdministrador(string pUsuario)
+        {
+            controladorAdministrativo.SetAdministrador(pUsuario);
+        }
+        /// <summary>
+        /// Metodo que devuelve los examenes del usuario (pasado como parametro) ordenados por Puntaje en forma descendente.
+        /// 
+        /// </summary>
+        /// <param name="pUsuario"></param>
+        /// <returns></returns>
+        public List<Examen> GetRanking(string pUsuario)
+        {
+            return controladorAdministrativo.GetRanking(pUsuario);
+        }
     }
 }
+

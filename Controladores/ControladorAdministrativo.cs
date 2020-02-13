@@ -85,6 +85,11 @@ namespace Trabajo_Integrador.Controladores
         {
             return iControladorPreguntas.GetDificultades();
         }
+        /// <summary>
+        /// Metodo que modifica el tiempo esperado por respuesta de un conjunto pasado como parametro.
+        /// </summary>
+        /// <param name="pConjuntoPreguntas"></param>
+        /// <param name="pTiempo"></param>
         public void ModificarTiempo(ConjuntoPreguntas pConjuntoPreguntas, float pTiempo)
         {
             using (var db = new TrabajoDbContext())
@@ -100,13 +105,17 @@ namespace Trabajo_Integrador.Controladores
 
 
         }
-        public void SetAdministrador(Usuario pUsuario)
+        /// <summary>
+        /// Metodo que establece como admin a un usuario pasado como parametro
+        /// </summary>
+        /// <param name="pUsuario"></param>
+        public void SetAdministrador(string pUsuario)
         {
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    Usuario dBUsuario = UoW.RepositorioUsuarios.Get(pUsuario.Id);
+                    Usuario dBUsuario = UoW.RepositorioUsuarios.Get(pUsuario);
                     dBUsuario.Administrador = true;
                     UoW.Complete();
                 }
@@ -114,6 +123,11 @@ namespace Trabajo_Integrador.Controladores
 
         }
 
+        /// <summary>
+        /// Metodo que Agrega un usuario en la BD si este no existe.
+        /// </summary>
+        /// <param name="pUsuario"></param>
+        /// <param name="pContrasenia"></param>
         public void GuardarUsuario(string pUsuario, string pContrasenia)
         {
             Usuario usuario = new Usuario(pUsuario, pContrasenia);
@@ -129,13 +143,18 @@ namespace Trabajo_Integrador.Controladores
                 }
             }
         }
-        public List<Examen> GetRanking(Usuario pUsuario)
+        /// <summary>
+        /// Metodo que devuelve los examenes correspondientes a un usuario, ordenados por puntaje descendentemente
+        /// </summary>
+        /// <param name="pUsuario"></param>
+        /// <returns></returns>
+        public List<Examen> GetRanking(string pUsuario)
         {
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    List<Examen> examenes = UoW.ExamenRepository.SelectAll(pUsuario.Id);
+                    List<Examen> examenes = UoW.ExamenRepository.SelectAll(pUsuario);
                     examenes.Sort((a, b) => b.Puntaje.CompareTo(a.Puntaje));
                     return examenes;
                 }
