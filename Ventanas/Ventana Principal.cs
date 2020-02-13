@@ -8,28 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador.Controladores;
 
 namespace Trabajo_Integrador.Ventanas
 {
     public partial class Ventana_Principal : Form
     {
-        String nombreUser;
+        String iNombreUsuario;
+        ControladorFachada fachada = new ControladorFachada();
 
-        public Ventana_Principal(string unUsuario)
+        public Ventana_Principal(String pNombreUsuario)
         {
             InitializeComponent();
-            nombreUser = unUsuario;
+            iNombreUsuario=pNombreUsuario;
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void verRanking_Click(object sender, EventArgs e)
         {
+            VentanaRanking ranking = new VentanaRanking(iNombreUsuario);
+            ranking.ShowDialog();
+
+
+            
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void comenzarExamen_Click(object sender, EventArgs e)
         {
-            configurarExamen ex = new configurarExamen(nombreUser);
+            configurarExamen ex = new configurarExamen(iUsuario);
             ex.ShowDialog();
                 
 

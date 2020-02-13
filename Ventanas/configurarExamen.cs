@@ -16,7 +16,7 @@ namespace Trabajo_Integrador.Ventanas
 {
     public partial class configurarExamen : Form
     {
-        string nombreCliente;
+        String iNombreUsuario;
         ControladorFachada fachada = new ControladorFachada();
 
         
@@ -25,12 +25,12 @@ namespace Trabajo_Integrador.Ventanas
         List<ConjuntoPreguntas> conj;
         List<Dificultad> dific;
 
-        public configurarExamen(string nombre)
+        public configurarExamen(String pNombreUsuario)
         {
             InitializeComponent();
-            nombreCliente = nombre; //Usado para mostrar en el Bienvenido
+            iNombreUsuario = pNombreUsuario; //Usado para mostrar en el Bienvenido
 
-            saludo.Text += nombreCliente; //Nombre que aparece junto con el Bienvenido 
+            
 
 
         }
@@ -38,7 +38,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void setExamen_Load(object sender, EventArgs e)
         {
-            saludo.Text += nombreCliente; //Nombre que aparece junto con el Bienvenido 
+            saludo.Text += iNombreUsuario; //Nombre que aparece junto con el Bienvenido 
 
             cargarCategoria();
             cargarDificultad();
@@ -62,6 +62,8 @@ namespace Trabajo_Integrador.Ventanas
                 categoria.Items.Add(categorias[i]); //Le asigno al combobox categoria el array categorias
             }
         }
+
+
 
         private void cargarDificultad() //Le asigno al combobox dificultad el array dificultades
         {
@@ -97,7 +99,7 @@ namespace Trabajo_Integrador.Ventanas
 
             for (int i = 0; i < conjuntos.Length; i++)
             {
-                categoria.Items.Add(conjuntos[i]); //Le asigno al combobox categoria el array categorias
+                conjunto.Items.Add(conjuntos[i]); //Le asigno al combobox categoria el array categorias
             }
         }
 
@@ -109,18 +111,23 @@ namespace Trabajo_Integrador.Ventanas
 
         private void btnComenzarExamen_Click(object sender, EventArgs e)
         {
-            string categoriaSeleccionada = categoria.SelectedItem.ToString().ToLower(); //Asigno el valor ingresado a clase Categoria
 
-            string dificultadSeleccionada = dificultad.SelectedItem.ToString().ToLower(); //Asigno el valor ingresado a clase Dificultad
 
-            string conjuntoSeleccionado = conjunto.SelectedItem.ToString().ToLower(); //Asigno el valor ingresado a clase Dificultad
+            string categoriaSeleccionada = categoria.SelectedItem.ToString(); //Asigno el valor ingresado a clase Categoria
+
+            string dificultadSeleccionada = dificultad.SelectedItem.ToString(); //Asigno el valor ingresado a clase Dificultad
+
+            string conjuntoSeleccionado = conjunto.SelectedItem.ToString(); //Asigno el valor ingresado a clase Dificultad
 
             int cantidadSeleccionada = Convert.ToInt32(cantidadPreguntas.Value); //Cantidad de preguntas a responder     
 
 
             Examen nuevoExamen = fachada.InicializarExamen(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
+            fachada.InicarExamen(iNombreUsuario, nuevoExamen);
 
-            using (Preguntas preguntas = new Preguntas(nuevoExamen)) //Le paso el usuario para que aparezca en la proxima ventana
+           
+
+            using (Preguntas preguntas = new Preguntas(nuevoExamen)) 
                 preguntas.ShowDialog();
 
 

@@ -178,6 +178,12 @@
     <Compile Include="Ventanas\Ventana Principal.Designer.cs">
       <DependentUpon>Ventana Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaRanking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\VentanaRanking.Designer.cs">
+      <DependentUpon>VentanaRanking.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventana Principal.resx">
       <DependentUpon>Ventana Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\VentanaRanking.resx">
+      <DependentUpon>VentanaRanking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

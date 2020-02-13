@@ -33,14 +33,43 @@ namespace Trabajo_Integrador.Controladores
             return controladorExamen.GetTiempoLimite(unExamen);
         }
 
+       
+
+
+
+        
+        
         /// <summary>
-        /// Metodo que inicia un examen
+        /// Da comienzo a un examen. Asocia el examen a un usuario
+        /// </summary>
+        /// <param name="pUsuario"></param>
+        /// <param name="pExamen"></param>
+        public void InicarExamen(String pNombreUsuario,Examen pExamen)
+        {
+            Usuario usuario;
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+
+                    usuario = UoW.RepositorioUsuarios.Get(pNombreUsuario);
+                }
+            }
+
+            controladorExamen.IniciarExamen(usuario, pExamen);
+        }
+
+
+
+        /// <summary>
+        /// Metodo que crea un examen sin asociarlo a un usuario
         /// </summary>
         /// <param name="pCantidad"></param>
         /// <param name="pConjunto"></param>
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
+        /// 
         public Examen InicializarExamen(int pCantidad, String pConjunto, string pCategoria, string pDificultad)
         {
             return controladorExamen.InicializarExamen(pCantidad, pConjunto, pCategoria, pDificultad);
