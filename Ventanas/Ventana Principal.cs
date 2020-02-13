@@ -31,6 +31,7 @@ namespace Trabajo_Integrador.Ventanas
         {
             configurarExamen ex = new configurarExamen(iNombreUsuario);
             ex.ShowDialog();
+            
                 
 
         }

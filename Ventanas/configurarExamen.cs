@@ -125,6 +125,8 @@ namespace Trabajo_Integrador.Ventanas
             Examen nuevoExamen = fachada.InicializarExamen(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
             fachada.InicarExamen(iNombreUsuario, nuevoExamen);
 
+           
+
             using (Preguntas preguntas = new Preguntas(nuevoExamen)) 
                 preguntas.ShowDialog();
 
