@@ -170,23 +170,23 @@ namespace Trabajo_Integrador.Controladores
         }
 
         /// <summary>
-        /// Metodo que establece como administrador a un usuario pasado como parametro
+        /// Metodo que permite cargar preguntas desde una pagina de preguntas hacia la base de datos.
         /// </summary>
-        /// <param name="pUsuario"></param>
-        public void SetAdministrador(string pUsuario)
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        public void CargarPreguntas(string pCantidad,string pConjunto,string pCategoria,string pDificultad)
         {
-            controladorAdministrativo.SetAdministrador(pUsuario);
-        }
-        /// <summary>
-        /// Metodo que devuelve los examenes del usuario (pasado como parametro) ordenados por Puntaje en forma descendente.
-        /// 
-        /// </summary>
-        /// <param name="pUsuario"></param>
-        /// <returns></returns>
-        public List<Examen> GetRanking(string pUsuario)
-        {
-            return controladorAdministrativo.GetRanking(pUsuario);
+            CategoriaPregunta categoria;
+            using (var db=new TrabajoDbContext())
+            {
+                using (var UoW=new UnitOfWork(db))
+                {
+                    categoria=UoW.RepositorioCategorias.Get(pCategoria);
+                }
+            }
+            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
         }
     }
 }
-

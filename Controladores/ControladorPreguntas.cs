@@ -117,7 +117,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
+        public void GetPreguntasOnline(string pCantidad,string pConjunto, CategoriaPregunta pCategoria, string pDificultad)
         {
             try
             {
