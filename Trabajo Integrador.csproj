@@ -172,6 +172,12 @@
     <Compile Include="Ventanas\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Ventana Principal Admi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Principal Admi.Designer.cs">
+      <DependentUpon>Ventana Principal Admi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Ventana Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Principal Admi.resx">
+      <DependentUpon>Ventana Principal Admi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventana Principal.resx">
       <DependentUpon>Ventana Principal.cs</DependentUpon>

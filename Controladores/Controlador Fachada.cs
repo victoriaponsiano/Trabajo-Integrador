@@ -157,6 +157,20 @@ namespace Trabajo_Integrador.Controladores
             }
         }
 
+        public Boolean EsAdministrador(string nombreUsuario)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    Usuario usrDb = UoW.RepositorioUsuarios.Get(nombreUsuario);
+                    if (usrDb.Administrador == true)
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
+
         /// <summary>
         /// Metodo que determina si una respuesta es correcta o no 
         /// </summary>
