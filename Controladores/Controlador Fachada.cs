@@ -170,6 +170,8 @@ namespace Trabajo_Integrador.Controladores
                     }
                     else return false;
                 }
+            }
+        }
 
         /// <summary>
         /// Metodo que determina si una respuesta es correcta o no 
@@ -202,5 +204,7 @@ namespace Trabajo_Integrador.Controladores
             }
             controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
         }
+
+        
     }
 }

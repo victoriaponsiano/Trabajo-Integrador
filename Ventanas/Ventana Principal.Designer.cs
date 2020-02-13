@@ -64,14 +64,7 @@
             // 
             // admin
             // 
-            this.admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.admin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(555, 308);
-            this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(140, 47);
-            this.admin.TabIndex = 2;
-            this.admin.Text = "Administrador";
-            this.admin.UseVisualStyleBackColor = false;
+            
 
             // 
             // user

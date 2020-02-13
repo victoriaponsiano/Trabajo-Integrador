@@ -93,7 +93,7 @@ namespace Trabajo_Integrador.Ventanas
             //{
             Pregunta pregunt = iExamen.getPreguntas().First();
                 string opcion = mostrarPregunta(pregunt);
-                fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
+               //fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
                 siguiente_Click(this, null);
             //}
             //fachada.FinalizarExamen(iExamen);
