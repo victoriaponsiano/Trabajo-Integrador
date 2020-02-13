@@ -33,7 +33,7 @@
             this.tiempo = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.Label();
             this.cerrar = new System.Windows.Forms.Button();
-            this.ranking = new System.Windows.Forms.Button();
+            this.volverInicio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // usuarioNombre
@@ -85,19 +85,18 @@
             this.cerrar.TabIndex = 4;
             this.cerrar.Text = "Cerrar Sesion";
             this.cerrar.UseVisualStyleBackColor = false;
-            this.cerrar.Click += new System.EventHandler(this.cerrar_Click);
             // 
-            // ranking
+            // volverInicio
             // 
-            this.ranking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ranking.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ranking.Location = new System.Drawing.Point(438, 393);
-            this.ranking.Name = "ranking";
-            this.ranking.Size = new System.Drawing.Size(165, 45);
-            this.ranking.TabIndex = 5;
-            this.ranking.Text = "Volver a Inicio";
-            this.ranking.UseVisualStyleBackColor = false;
-            this.ranking.Click += new System.EventHandler(this.ranking_Click);
+            this.volverInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.volverInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.volverInicio.Location = new System.Drawing.Point(438, 393);
+            this.volverInicio.Name = "volverInicio";
+            this.volverInicio.Size = new System.Drawing.Size(165, 45);
+            this.volverInicio.TabIndex = 5;
+            this.volverInicio.Text = "Volver a Inicio";
+            this.volverInicio.UseVisualStyleBackColor = false;
+            this.volverInicio.Click += new System.EventHandler(this.volverInicio_Click_1);
             // 
             // ExamenTerminado
             // 
@@ -105,7 +104,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ranking);
+            this.Controls.Add(this.volverInicio);
             this.Controls.Add(this.cerrar);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.tiempo);
@@ -126,6 +125,6 @@
         private System.Windows.Forms.Label tiempo;
         private System.Windows.Forms.Label fecha;
         private System.Windows.Forms.Button cerrar;
-        private System.Windows.Forms.Button ranking;
+        private System.Windows.Forms.Button volverInicio;
     }
 }

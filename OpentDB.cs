@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Globalization;
 
 namespace Trabajo_Integrador
 {
@@ -27,14 +28,15 @@ namespace Trabajo_Integrador
         /// <param name="pDificultad"></param>
         /// <param name="pCategoria"></param>
         /// <returns></returns>
-        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, string pCategoria)
+        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, CategoriaPregunta pCategoria)
         {
             {
                 // Establecimiento del protocolo ssl de transporte
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+                CultureInfo provider = new CultureInfo("en-us");
                 // Creacion de URL
-                var mUrl =CrearURL(pCantidad,pDificultad,pCategoria);
+                var mUrl =CrearURL(pCantidad,pDificultad,pCategoria.OpentDbId.ToString(provider));
 
                 
                 // Se crea el request http

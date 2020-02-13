@@ -29,8 +29,6 @@ namespace Trabajo_Integrador.Ventanas
             ranking.ShowDialog();
 
 
-            
-
         }
 
         private void comenzarExamen_Click(object sender, EventArgs e)
@@ -44,6 +42,13 @@ namespace Trabajo_Integrador.Ventanas
         private void Ventana_Principal_Load(object sender, EventArgs e)
         {
             user.Text += iNombreUsuario;
+
+        }
+
+        private void CerrarSesion_Click(object sender, EventArgs e)
+        {
+            Close();
+
         }
 
     }
