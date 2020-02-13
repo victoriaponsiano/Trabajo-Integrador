@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Trabajo_Integrador.Dominio;
+using Trabajo_Integrador.EntityFramework;
 
 
 
@@ -14,9 +15,8 @@ namespace Trabajo_Integrador.Controladores
         ///Atributos
         ControladorExamen controladorExamen;
         ControladorAdministrativo controladorAdministrativo;
-        /// <summary>
-        /// Constructor
-        /// </summary>
+        
+        
         public ControladorFachada()
         {
             controladorAdministrativo = new ControladorAdministrativo();
@@ -95,6 +95,37 @@ namespace Trabajo_Integrador.Controladores
         public void GuardarUsuario(string usuarioNombre, string contrasenia)
         {
             controladorAdministrativo.GuardarUsuario(usuarioNombre, contrasenia);
+        }
+
+
+
+        /// <summary>
+        /// Chequea si un usuario ya existe en la base de datos
+        /// </summary>
+        /// <param name="pUsuarioId"></param>
+        /// <param name="pContrasenia"></param>
+        /// <returns>Verdadero si usuario y contraseña existen </returns>
+        public Boolean UsuarioValido(string pUsuarioId, string pContrasenia)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    Usuario usr = new Usuario(pUsuarioId, pContrasenia);
+                    Usuario usrDb = UoW.RepositorioUsuarios.Get(pUsuarioId);
+                    if (usrDb != null)
+                    {
+                        if (usrDb.Contrasenia == usr.Contrasenia)
+                        {
+                            return true;
+                        }
+                        else return false;
+                    }
+                    else return false;
+                   
+
+                }
+            }
         }
 
         /// <summary>

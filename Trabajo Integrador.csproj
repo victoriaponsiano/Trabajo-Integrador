@@ -66,6 +66,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -91,6 +92,7 @@
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -135,6 +137,47 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controladores\ControladorPreguntas.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\configurarExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\configurarExamen.Designer.cs">
+      <DependentUpon>configurarExamen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Examen Terminado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Examen Terminado.Designer.cs">
+      <DependentUpon>Examen Terminado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Preguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Preguntas.Designer.cs">
+      <DependentUpon>Preguntas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Registro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Registro.Designer.cs">
+      <DependentUpon>Registro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Principal.Designer.cs">
+      <DependentUpon>Ventana Principal.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -157,6 +200,25 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002092213292_Inital.resx">
       <DependentUpon>202002092213292_Inital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\configurarExamen.resx">
+      <DependentUpon>configurarExamen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Examen Terminado.resx">
+      <DependentUpon>Examen Terminado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Registro.resx">
+      <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Principal.resx">
+      <DependentUpon>Ventana Principal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
