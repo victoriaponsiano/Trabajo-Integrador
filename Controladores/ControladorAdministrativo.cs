@@ -16,47 +16,47 @@ namespace Trabajo_Integrador.Controladores
         ControladorPreguntas iControladorPreguntas = new ControladorPreguntas();
         public void CargarPreguntas(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
-           
-                iControladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
-           
+
+            iControladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
+
         }
         public List<Usuario> GetUsuarios()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();
-                using (var db = new TrabajoDbContext())
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
                 {
-                    using (var UoW = new UnitOfWork(db))
-                    {
-                        listaUsuarios = (List<Usuario>)UoW.RepositorioUsuarios.GetAll();
-                    }
+                    listaUsuarios = (List<Usuario>)UoW.RepositorioUsuarios.GetAll();
                 }
-            
+            }
+
             return listaUsuarios;
         }
         public List<Pregunta> GetPreguntas()
         {
             List<Pregunta> listaPreguntas = new List<Pregunta>();
-                using (var db = new TrabajoDbContext())
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
                 {
-                    using (var UoW = new UnitOfWork(db))
-                    {
-                        listaPreguntas = (List<Pregunta>)UoW.RepositorioPreguntas.GetAll();
-                    }
+                    listaPreguntas = (List<Pregunta>)UoW.RepositorioPreguntas.GetAll();
                 }
-            
+            }
+
             return listaPreguntas;
         }
         public List<Examen> GetExamenes()
         {
             List<Examen> listaExamenes = new List<Examen>();
-                using (var db = new TrabajoDbContext())
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
                 {
-                    using (var UoW = new UnitOfWork(db))
-                    {
-                        listaExamenes = (List<Examen>)UoW.ExamenRepository.GetAll();
-                    }
+                    listaExamenes = (List<Examen>)UoW.ExamenRepository.GetAll();
                 }
-            
+            }
+
             return listaExamenes;
 
         }
@@ -87,31 +87,31 @@ namespace Trabajo_Integrador.Controladores
         }
         public void ModificarTiempo(ConjuntoPreguntas pConjuntoPreguntas, float pTiempo)
         {
-                using (var db = new TrabajoDbContext())
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
                 {
-                    using (var UoW = new UnitOfWork(db))
-                    {
-                        ConjuntoPreguntas conjunto=UoW.RepositorioConjuntoPregunta.Get(pConjuntoPreguntas.Id);
-                        conjunto.Id = pConjuntoPreguntas.Id;
-                        UoW.Complete();
-                    }
+                    ConjuntoPreguntas conjunto = UoW.RepositorioConjuntoPregunta.Get(pConjuntoPreguntas.Id);
+                    conjunto.Id = pConjuntoPreguntas.Id;
+                    UoW.Complete();
                 }
-            
-            
+            }
+
+
 
         }
         public void SetAdministrador(Usuario pUsuario)
         {
-                using (var db = new TrabajoDbContext())
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
                 {
-                    using (var UoW = new UnitOfWork(db))
-                    {
-                        Usuario dBUsuario = UoW.RepositorioUsuarios.Get(pUsuario.Id);
-                        dBUsuario.Administrador = true;
-                        UoW.Complete();
-                    }
+                    Usuario dBUsuario = UoW.RepositorioUsuarios.Get(pUsuario.Id);
+                    dBUsuario.Administrador = true;
+                    UoW.Complete();
                 }
-            
+            }
+
         }
 
         public void GuardarUsuario(string pUsuario, string pContrasenia)
@@ -120,11 +120,27 @@ namespace Trabajo_Integrador.Controladores
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
-                { 
+                {
+                    if (UoW.RepositorioUsuarios.Get(usuario.Id) == null)
+                    {
                         UoW.RepositorioUsuarios.Add(usuario);
-                        UoW.Complete();
+                    }
+                    UoW.Complete();
+                }
+            }
+        }
+        public List<Examen> GetRanking(Usuario pUsuario)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    List<Examen> examenes = UoW.ExamenRepository.SelectAll(pUsuario.Id);
+                    examenes.Sort((a, b) => b.Puntaje.CompareTo(a.Puntaje));
+                    return examenes;
                 }
             }
         }
     }
 }
+

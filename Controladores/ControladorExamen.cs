@@ -22,7 +22,7 @@ namespace Trabajo_Integrador.Controladores
             int id;
             Dificultad dif = new Dificultad(pDificultad);
             CategoriaPregunta cat = new CategoriaPregunta();
-            cat.OpentDbId =  int.Parse(pCategoria);
+            cat.Id = pCategoria;
             ConjuntoPreguntas conj = new ConjuntoPreguntas(pConjunto);
             using (var db = new TrabajoDbContext())
             {

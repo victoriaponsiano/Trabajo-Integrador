@@ -11,7 +11,12 @@ namespace Trabajo_Integrador.EntityFramework
     public class ExamenRepository : Repository<Examen,TrabajoDbContext>{
         public ExamenRepository(TrabajoDbContext pContext) : base(pContext)
             { }
-        
+        public List<Examen> SelectAll(string pId)
+        {
+            return this.iDBSet.Where(c => c.Usuario.Id == pId).ToList();
+        }
+
+
     }
 }
 

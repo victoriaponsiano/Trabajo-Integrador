@@ -35,7 +35,7 @@ namespace Trabajo_Integrador.Ventanas
             List<string> opciones = new List<string>(); //Almacena las 4 opciones de respuestas
 
             opciones.Add(unaPregunta.RespuestaCorrecta);
-            opciones.Add(unaPregunta.RespuestaIncorrecta1); ;
+            opciones.Add(unaPregunta.RespuestaIncorrecta1);
             opciones.Add(unaPregunta.RespuestaIncorrecta2);
             opciones.Add(unaPregunta.RespuestaIncorrecta3);
 

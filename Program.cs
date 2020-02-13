@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Trabajo_Integrador.Ventanas;
 
-namespace Trabajo_Integrador.Ventanas
+
+namespace Trabajo_Integrador
 {
     static class Program
     {
