@@ -15,7 +15,6 @@ namespace Trabajo_Integrador.Ventanas
     public partial class Ventana_Principal : Form
     {
         String iNombreUsuario;
-        ControladorFachada fachada = new ControladorFachada();
 
         public Ventana_Principal(String pNombreUsuario)
         {
@@ -36,7 +35,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void comenzarExamen_Click(object sender, EventArgs e)
         {
-            configurarExamen ex = new configurarExamen(iUsuario);
+            configurarExamen ex = new configurarExamen(iNombreUsuario);
             ex.ShowDialog();
                 
 
@@ -44,7 +43,8 @@ namespace Trabajo_Integrador.Ventanas
 
         private void Ventana_Principal_Load(object sender, EventArgs e)
         {
-            user.Text += nombreUser;
+            user.Text += iNombreUsuario;
         }
+
     }
 }

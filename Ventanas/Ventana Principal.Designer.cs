@@ -45,7 +45,7 @@
             this.comenzarExamen.TabIndex = 0;
             this.comenzarExamen.Text = "Comenzar Examen";
             this.comenzarExamen.UseVisualStyleBackColor = false;
-            
+            this.comenzarExamen.Click += new System.EventHandler(this.comenzarExamen_Click);
             // 
             // verRanking
             // 
@@ -57,7 +57,6 @@
             this.verRanking.TabIndex = 1;
             this.verRanking.Text = "Ver Ranking";
             this.verRanking.UseVisualStyleBackColor = false;
-            this.verRanking.Click += new System.EventHandler(this.button2_Click);
             // 
             // admin
             // 

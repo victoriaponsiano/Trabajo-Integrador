@@ -13,13 +13,13 @@ using Trabajo_Integrador.Controladores;
 
 namespace Trabajo_Integrador.Ventanas
 {
-    public partial class Preguntas : Form
+    public partial class VPreguntas : Form
     {
         Examen iExamen;
         ControladorFachada fachada = new ControladorFachada();
 
 
-        public Preguntas(Examen unExamen)
+        public VPreguntas(Examen unExamen)
         {
             InitializeComponent();
             iExamen = unExamen;
@@ -30,7 +30,7 @@ namespace Trabajo_Integrador.Ventanas
 
         public string mostrarPregunta(Pregunta unaPregunta) //Muestra una pregunta con sus opciones
         {
-            preg.Text += unaPregunta.Id; //Muestro la Pregunta en el Label
+            preg.Text += "hola"; //Muestro la Pregunta en el Label
 
             List<string> opciones = new List<string>(); //Almacena las 4 opciones de respuestas
 
@@ -43,7 +43,7 @@ namespace Trabajo_Integrador.Ventanas
             List<string> listaDesordenada = new List<string>();
             Random rnd = new Random();
 
-            while (opciones.Count != 0) //Desordena la Lista 
+            while (opciones.Count > 0) //Desordena la Lista 
             {
                 int i = rnd.Next(opciones.Count);
                 listaDesordenada.Add(opciones[i]);
@@ -88,13 +88,15 @@ namespace Trabajo_Integrador.Ventanas
 
         public void responderPreguntas() //mUESTRA LAS PREGUNTAS DEL EXAMEN
         {
-            foreach (Pregunta pregunt in iExamen.getPreguntas())//Por cada pregunta que tiene el examen 
-            {
+
+            //foreach (Pregunta pregunt in iExamen.getPreguntas())//Por cada pregunta que tiene el examen 
+            //{
+            Pregunta pregunt = iExamen.getPreguntas().First();
                 string opcion = mostrarPregunta(pregunt);
                 fachada.RespuestaCorrecta(iExamen, pregunt, opcion);
-                siguiente_Click(null, null);
-            }
-            fachada.FinalizarExamen(iExamen);
+                siguiente_Click(this, null);
+            //}
+            //fachada.FinalizarExamen(iExamen);
 
         }
 
@@ -142,7 +144,6 @@ namespace Trabajo_Integrador.Ventanas
 
 
         }
-
 
     }
 

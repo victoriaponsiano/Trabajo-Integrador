@@ -144,13 +144,13 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pPregunta"></param>
         /// <param name="pRespuesta"></param>
         /// <param name="pEsCorrecto"></param>
-        public void MarcarRespuesta(int pExamenId, Pregunta pPregunta, String pRespuesta)
+        public void MarcarRespuesta(int pExamenId, string pPreguntaId, String pRespuesta)
         {
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    ExamenPregunta preex = UoW.RepositorioPreguntasExamenes.Get(pExamenId, pPregunta.Id);
+                    ExamenPregunta preex = UoW.RepositorioPreguntasExamenes.Get(pExamenId, pPreguntaId);
                     preex.OpcionElegida = pRespuesta;
                     UoW.Complete();
                 }
