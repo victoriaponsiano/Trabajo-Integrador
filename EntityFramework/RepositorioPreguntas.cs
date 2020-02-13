@@ -26,7 +26,7 @@ namespace Trabajo_Integrador.EntityFramework
         public List<Pregunta> GetRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             
-            List<Pregunta> preguntas = iDBSet.Include("Conjunto").Include("Dificultad").Where(p => ((p.Dificultad.Id == pDificultad.Id) && (p.Categoria.OpentDbId == pCategoria.OpentDbId) && (p.Conjunto.Id == pConjunto.Id))).ToList<Pregunta>();
+            List<Pregunta> preguntas = iDBSet.Include("Conjunto").Include("Dificultad").Where(p => ((p.Dificultad.Id == pDificultad.Id) && (p.Categoria.Id == pCategoria.Id) && (p.Conjunto.Id == pConjunto.Id))).ToList<Pregunta>();
 
             Console.ReadLine();
             List<Pregunta> ADevolver = new List<Pregunta>();

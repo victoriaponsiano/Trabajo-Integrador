@@ -13,12 +13,12 @@ namespace Trabajo_Integrador.Ventanas
 {
     public partial class Ventana_Principal : Form
     {
-        String nombreUser;
+        String iNombreUsuario;
 
         public Ventana_Principal(string unUsuario)
         {
             InitializeComponent();
-            nombreUser = unUsuario;
+            iNombreUsuario = unUsuario;
             
         }
 
@@ -29,7 +29,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            configurarExamen ex = new configurarExamen(nombreUser);
+            configurarExamen ex = new configurarExamen(iNombreUsuario);
             ex.ShowDialog();
                 
 
@@ -37,7 +37,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void Ventana_Principal_Load(object sender, EventArgs e)
         {
-            user.Text += nombreUser;
+            user.Text += iNombreUsuario;
         }
     }
 }
