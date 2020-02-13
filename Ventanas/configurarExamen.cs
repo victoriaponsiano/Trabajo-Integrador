@@ -20,7 +20,6 @@ namespace Trabajo_Integrador.Ventanas
         ControladorFachada fachada = new ControladorFachada();
 
         
-        //string[] dificultades = { "Aleatoria", "Facil", "Media", "Dificil" };
         List<CategoriaPregunta> cate;
         List<ConjuntoPreguntas> conj;
         List<Dificultad> dific;
@@ -29,9 +28,6 @@ namespace Trabajo_Integrador.Ventanas
         {
             InitializeComponent();
             iNombreUsuario = pNombreUsuario; //Usado para mostrar en el Bienvenido
-
-            
-
 
         }
 
@@ -127,8 +123,8 @@ namespace Trabajo_Integrador.Ventanas
 
            
 
-            using (Preguntas preguntas = new Preguntas(nuevoExamen)) 
-                preguntas.ShowDialog();
+            using (VPreguntas Vpreguntas = new VPreguntas(nuevoExamen)) 
+                Vpreguntas.ShowDialog();
 
 
         }

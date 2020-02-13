@@ -15,7 +15,6 @@ namespace Trabajo_Integrador.Ventanas
     public partial class Ventana_Principal : Form
     {
         String iNombreUsuario;
-        ControladorFachada fachada = new ControladorFachada();
 
         public Ventana_Principal(String pNombreUsuario)
         {
@@ -43,11 +42,14 @@ namespace Trabajo_Integrador.Ventanas
         private void Ventana_Principal_Load(object sender, EventArgs e)
         {
             user.Text += iNombreUsuario;
+
         }
 
         private void CerrarSesion_Click(object sender, EventArgs e)
         {
             Close();
+
         }
+
     }
 }
