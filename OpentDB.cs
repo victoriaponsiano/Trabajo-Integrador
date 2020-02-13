@@ -27,14 +27,14 @@ namespace Trabajo_Integrador
         /// <param name="pDificultad"></param>
         /// <param name="pCategoria"></param>
         /// <returns></returns>
-        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, string pCategoria)
+        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, CategoriaPregunta pCategoria)
         {
             {
                 // Establecimiento del protocolo ssl de transporte
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 // Creacion de URL
-                var mUrl =CrearURL(pCantidad,pDificultad,pCategoria);
+                var mUrl =CrearURL(pCantidad,pDificultad,pCategoria.OpentDbId);
 
                 
                 // Se crea el request http

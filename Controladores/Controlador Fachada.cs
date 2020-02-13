@@ -139,5 +139,25 @@ namespace Trabajo_Integrador.Controladores
         {
             return controladorExamen.RespuestaCorrecta(pExamen, pPregunta, pRespuesta);
         }
+
+        /// <summary>
+        /// Metodo que permite cargar preguntas desde una pagina de preguntas hacia la base de datos.
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        public void CargarPreguntas(string pCantidad,string pConjunto,string pCategoria,string pDificultad)
+        {
+            CategoriaPregunta categoria;
+            using (var db=new TrabajoDbContext())
+            {
+                using (var UoW=new UnitOfWork(db))
+                {
+                    categoria=UoW.RepositorioCategorias.Get(pCategoria);
+                }
+            }
+            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
+        }
     }
 }
