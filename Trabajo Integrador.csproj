@@ -160,11 +160,11 @@
     <Compile Include="Ventanas\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Preguntas.cs">
+    <Compile Include="Ventanas\VPreguntas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\Preguntas.Designer.cs">
-      <DependentUpon>Preguntas.cs</DependentUpon>
+    <Compile Include="Ventanas\VPreguntas.Designer.cs">
+      <DependentUpon>VPreguntas.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Registro.cs">
       <SubType>Form</SubType>
@@ -228,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\VentanaRanking.resx">
       <DependentUpon>VentanaRanking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\VPreguntas.resx">
+      <DependentUpon>VPreguntas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,6 +15,8 @@ namespace Trabajo_Integrador.Dominio
         ControladorPreguntas iControladorPreguntas;
 
 
+        [NotMapped]
+        List<ExamenPregunta> iExamenPregunta;
 
         private int iRespuestasCorrectas;
 
@@ -69,6 +71,7 @@ namespace Trabajo_Integrador.Dominio
 
 
 
+        [NotMapped]
         private List<Pregunta> iPreguntas;
 
 
@@ -105,22 +108,38 @@ namespace Trabajo_Integrador.Dominio
         /// <returns>Verdadero si respuesta es correcta</returns>
         public Boolean RespuestaCorrecta(Pregunta pPregunta, String pRespuesta)
         {
+            ExamenPregunta ep = new ExamenPregunta();
+            ep.ExamenId = this.Id;
+            ep.PreguntaId = pPregunta.Id;
+
+
             if (pPregunta.RespuestaEsCorrecta(pRespuesta))
             {
-                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta);
+                ep.OpcionElegida = pRespuesta;
                 return true;
             }
             else
             {
-                iControladorPreguntas.MarcarRespuesta(this.Id, pPregunta, pRespuesta);
+                ep.OpcionElegida = pRespuesta;
                 return false;
-
             } 
         }
 
 
 
 
+
+        /// <summary>
+        /// Guarda las clase de asociacion que representa Examen-Pregunta en 
+        /// la base de datos
+        /// </summary>
+        private void GuardarExamenPregunta()
+        {
+            foreach (var ep in iExamenPregunta)
+            {
+                iControladorPreguntas.MarcarRespuesta(ep.ExamenId, ep.PreguntaId, ep.OpcionElegida);
+            }
+        }
 
 
 
@@ -130,6 +149,7 @@ namespace Trabajo_Integrador.Dominio
         public void Finalizar()
         {
             TiempoUsado = (DateTime.Now - Fecha).TotalSeconds;
+            GuardarExamenPregunta();
             Puntaje = CalcularPuntaje();
         }
 
@@ -139,6 +159,7 @@ namespace Trabajo_Integrador.Dominio
         /// </summary>
         public void Iniciar() 
         {
+            iExamenPregunta = new List<ExamenPregunta>();
             Fecha = DateTime.Now;
         }
 
