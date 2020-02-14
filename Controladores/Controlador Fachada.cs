@@ -72,8 +72,26 @@ namespace Trabajo_Integrador.Controladores
         /// 
         public Examen InicializarExamen(int pCantidad, String pConjunto, string pCategoria, string pDificultad)
         {
-            return controladorExamen.InicializarExamen(pCantidad, pConjunto, pCategoria, pDificultad);
+            ConjuntoPreguntas conjunto;
+            CategoriaPregunta categoria;
+            Dificultad dificultad;
+            
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    conjunto = UoW.RepositorioConjuntoPregunta.Get(pConjunto);
+                    categoria = UoW.RepositorioCategorias.Get(pCategoria);
+                    dificultad = UoW.RepositorioDificultades.Get(pDificultad);
+                }
+            }
+
+             return controladorExamen.InicializarExamen(pCantidad, conjunto, categoria, dificultad);
         }
+
+
+
+
         /// <summary>
         /// Metodo que finaliza un examen y lo guarda en la base de datos
         /// </summary>

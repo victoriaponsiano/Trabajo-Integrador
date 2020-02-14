@@ -12,16 +12,13 @@ namespace Trabajo_Integrador.Dominio
     public class Examen
     {
         
-        ControladorPreguntas iControladorPreguntas;
 
 
-        [NotMapped]
-        List<ExamenPregunta> iExamenPregunta;
+        
+        public List<ExamenPregunta> ExamenPreguntas { get; set; }
 
-        private int iRespuestasCorrectas;
+      
 
-
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
 
@@ -71,19 +68,41 @@ namespace Trabajo_Integrador.Dominio
 
 
 
-        [NotMapped]
-        private List<Pregunta> iPreguntas;
+        
 
 
         public List<Pregunta> getPreguntas() 
         {
-            if (iPreguntas != null)
-            { return iPreguntas; }
-            else
+            List<Pregunta> ADevoler = new List<Pregunta>();
+            foreach (var ep in ExamenPreguntas)
             {
-                iPreguntas = iControladorPreguntas.ObtenerPreguntasDeExamen(this.Id);
-                return iPreguntas;
+                ADevoler.Add(ep.Pregunta);
             }
+
+            return ADevoler;
+        }
+
+
+
+
+        /// <summary>
+        /// Devuelve la cantidad de respuestas correctas
+        /// </summary>
+        /// <returns></returns>
+        private int CantidadRespuestasCorrectas() 
+        {
+            int cont = 0;
+
+            foreach (var ep in ExamenPreguntas)
+            {
+                if (ep.Pregunta.RespuestaEsCorrecta(ep.OpcionElegida))
+                {
+                    cont++;
+                }
+            }
+
+            return cont;
+
         }
 
 
@@ -93,54 +112,29 @@ namespace Trabajo_Integrador.Dominio
         /// <returns></returns>
         private double CalcularPuntaje() 
         {
-            iRespuestasCorrectas = iControladorPreguntas.ObtenerCantidadRespuestasCorrectas(this.Id);
-            return (iRespuestasCorrectas / getPreguntas().Count) * getPreguntas().First().Dificultad.FactorDificultad * FactorTiempo;
+            int cantidadRespuestasCorrectas = CantidadRespuestasCorrectas();
+            return (cantidadRespuestasCorrectas / getPreguntas().Count) * getPreguntas().First().Dificultad.FactorDificultad * FactorTiempo;
         }
 
 
 
 
         /// <summary>
-        /// Dada una pregunta y una respuesta, dice si es correcta o no y modifica el contador de respuetas correctas.
+        /// Dada una pregunta y una respuesta, dice si es correcta o no 
         /// </summary>
         /// <param name="pPregunta"></param>
         /// <param name="pRespuesta"></param>
         /// <returns>Verdadero si respuesta es correcta</returns>
         public Boolean RespuestaCorrecta(Pregunta pPregunta, String pRespuesta)
         {
-            ExamenPregunta ep = new ExamenPregunta();
-            ep.ExamenId = this.Id;
-            ep.PreguntaId = pPregunta.Id;
-
-
-            if (pPregunta.RespuestaEsCorrecta(pRespuesta))
-            {
-                ep.OpcionElegida = pRespuesta;
-                return true;
-            }
-            else
-            {
-                ep.OpcionElegida = pRespuesta;
-                return false;
-            } 
+            return pPregunta.RespuestaEsCorrecta(pRespuesta);
         }
 
 
 
 
 
-        /// <summary>
-        /// Guarda las clase de asociacion que representa Examen-Pregunta en 
-        /// la base de datos
-        /// </summary>
-        private void GuardarExamenPregunta()
-        {
-            foreach (var ep in iExamenPregunta)
-            {
-                iControladorPreguntas.MarcarRespuesta(ep.ExamenId, ep.PreguntaId, ep.OpcionElegida);
-            }
-        }
-
+    
 
 
         /// <summary>
@@ -149,7 +143,6 @@ namespace Trabajo_Integrador.Dominio
         public void Finalizar()
         {
             TiempoUsado = (DateTime.Now - Fecha).TotalSeconds;
-            GuardarExamenPregunta();
             Puntaje = CalcularPuntaje();
         }
 
@@ -159,25 +152,12 @@ namespace Trabajo_Integrador.Dominio
         /// </summary>
         public void Iniciar() 
         {
-            iExamenPregunta = new List<ExamenPregunta>();
             Fecha = DateTime.Now;
         }
 
 
 
-        /// <summary>
-        /// Carga las preguntas y llena las listas de pregunta y preguntaexamen
-        /// </summary>
-        /// <param name="pCantidad"></param>
-        /// <param name="pConjunto"></param>
-        /// <param name="pCategoria"></param>
-        /// <param name="pDificultad"></param>
-        private void CargarPreguntas(int pCantidad, ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad) 
-        {
-            iPreguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
-            iControladorPreguntas.AsociarPreguntaExamen(this.Id, iPreguntas);
-        }
-
+   
 
         /// <summary>
         /// Constructor de examen
@@ -186,15 +166,11 @@ namespace Trabajo_Integrador.Dominio
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// 
-        public Examen(int pId,int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
+        public Examen()
         {
-            this.iRespuestasCorrectas = 0;
-            this.Id = pId;
-            this.CantidadPreguntas = pCantidad;
-            this.iControladorPreguntas = new ControladorPreguntas();
-            CargarPreguntas(pCantidad, pConjunto, pCategoria, pDificultad);
+            
         }
 
-        public Examen() { }
+      
     }
 }
