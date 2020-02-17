@@ -23,6 +23,21 @@ namespace Trabajo_Integrador.Controladores
             controladorExamen = new ControladorExamen();
         }
 
+
+        /// <summary>
+        /// Devuevlve el ranking de los examenes de un usuario.
+        /// </summary>
+        /// <param name="pUsuario">Id del usuario</param>
+        /// <returns></returns>
+        public List<Examen> GetRanking(String pUsuario)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                return db.Examenes.Where(e => e.Usuario.Id == pUsuario).OrderBy(ex => ex.Puntaje).ToList<Examen>();
+            }
+        }
+
+
         /// <summary>
         /// Obtiene el tiempo limite que está asociado a un examen
         /// </summary>
