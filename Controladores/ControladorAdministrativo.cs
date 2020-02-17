@@ -88,14 +88,14 @@ namespace Trabajo_Integrador.Controladores
         /// </summary>
         /// <param name="pConjuntoPreguntas"></param>
         /// <param name="pTiempo"></param>
-        public void ModificarTiempo(ConjuntoPreguntas pConjuntoPreguntas, float pTiempo)
+        public void ModificarTiempo(string pConjuntoPreguntas, float pTiempo)
         {
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
                 {
-                    ConjuntoPreguntas conjunto = UoW.RepositorioConjuntoPregunta.Get(pConjuntoPreguntas.Id);
-                    conjunto.Id = pConjuntoPreguntas.Id;
+                    ConjuntoPreguntas conjunto = UoW.RepositorioConjuntoPregunta.Get(pConjuntoPreguntas);
+                    conjunto.Id = pConjuntoPreguntas;
                     UoW.Complete();
                 }
             }

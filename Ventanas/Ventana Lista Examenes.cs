@@ -12,41 +12,36 @@ using Trabajo_Integrador.Controladores;
 
 namespace Trabajo_Integrador.Ventanas
 {
-    public partial class VentanaRanking : Form
+    
+    public partial class Ventana_Lista_Examenes : Form
     {
-        string iNombreUsuario;
         ControladorFachada fachada = new ControladorFachada();
 
-        public VentanaRanking(string pNombreUsuario)
+        public Ventana_Lista_Examenes()
         {
             InitializeComponent();
-            iNombreUsuario = pNombreUsuario;
         }
 
-        private void VentanaRanking_Load(object sender, EventArgs e)
-        {
-            List<Examen> listaExamenes = fachada.GetRanking(iNombreUsuario);
-            DataTable dt = new DataTable();
-            //dt.Columns.Add("Usuario", typeof(string));
-            dt.Columns.Add("Fecha", typeof(DateTime));
-            dt.Columns.Add("Puntaje", typeof(int));
-            dt.Columns.Add("Tiempo", typeof(float));
-
-           foreach (Examen examen in listaExamenes)
-            {
-               dt.Rows.Add(new object[] {  examen.Fecha, examen.Puntaje, examen.TiempoUsado });
-            }
-
-            dataGridView1.DataSource = dt;
-        }
-
-        
-
-        private void listo_Click_1(object sender, EventArgs e)
+        private void Volver_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-     
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            List<Examen> listaExamenes = fachada.GetExamenes();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Usuario", typeof(string));
+            dt.Columns.Add("Fecha", typeof(DateTime));
+            dt.Columns.Add("Puntaje", typeof(int));
+            dt.Columns.Add("Tiempo", typeof(float));
+
+            foreach (Examen examen in listaExamenes)
+            {
+                dt.Rows.Add(new object[] { examen.Usuario ,examen.Fecha, examen.Puntaje, examen.TiempoUsado });
+            }
+
+            dataGridView1.DataSource = dt;
+        }
     }
 }

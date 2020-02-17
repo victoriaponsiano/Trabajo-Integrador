@@ -1,6 +1,6 @@
 ﻿namespace Trabajo_Integrador.Ventanas
 {
-    partial class VentanaRanking
+    partial class Ventana_Lista_Usuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -30,53 +30,53 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.listo = new System.Windows.Forms.Button();
+            this.Volver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(68, 46);
+            this.dataGridView1.Location = new System.Drawing.Point(80, 71);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(620, 358);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.Size = new System.Drawing.Size(463, 338);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ranking";
+            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Usuarios";
             // 
-            // listo
+            // Volver
             // 
-            this.listo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.listo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listo.Location = new System.Drawing.Point(692, 412);
-            this.listo.Name = "listo";
-            this.listo.Size = new System.Drawing.Size(96, 28);
-            this.listo.TabIndex = 3;
-            this.listo.Text = "Listo";
-            this.listo.UseMnemonic = false;
-            this.listo.UseVisualStyleBackColor = false;
-            this.listo.Click += new System.EventHandler(this.listo_Click_1);
+            this.Volver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Volver.ForeColor = System.Drawing.Color.Black;
+            this.Volver.Location = new System.Drawing.Point(635, 406);
+            this.Volver.Name = "Volver";
+            this.Volver.Size = new System.Drawing.Size(134, 34);
+            this.Volver.TabIndex = 2;
+            this.Volver.Text = "Volver";
+            this.Volver.UseVisualStyleBackColor = false;
+            this.Volver.Click += new System.EventHandler(this.Volver_Click);
             // 
-            // VentanaRanking
+            // Ventana_Lista_Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listo);
+            this.Controls.Add(this.Volver);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "VentanaRanking";
-            this.Text = "Ranking";
-            this.Load += new System.EventHandler(this.VentanaRanking_Load);
+            this.Name = "Ventana_Lista_Usuarios";
+            this.Text = "Ventana_Lista_Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -87,6 +87,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button listo;
+        private System.Windows.Forms.Button Volver;
     }
 }

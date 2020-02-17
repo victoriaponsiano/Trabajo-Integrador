@@ -205,6 +205,31 @@ namespace Trabajo_Integrador.Controladores
             controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
         }
 
-        
+        public List<Examen> GetRanking(string pUsuario)
+        {
+            return controladorAdministrativo.GetRanking(pUsuario);
+        }
+
+        public List<Examen> GetExamenes()
+        {
+            return controladorAdministrativo.GetExamenes();
+        }
+
+
+        public void ModificarTiempo(string pConjuntoPreguntas, float pTiempo)
+        {
+            controladorAdministrativo.ModificarTiempo(pConjuntoPreguntas, pTiempo);
+
+        }
+
+        public void SetAdministrador(string pUsuario)
+        {
+            controladorAdministrativo.SetAdministrador(pUsuario);
+        }
+
+        public List<Pregunta> GetPreguntas()
+        {
+            return controladorAdministrativo.GetPreguntas();
+        }
     }
 }

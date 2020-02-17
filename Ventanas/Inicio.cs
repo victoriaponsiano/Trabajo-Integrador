@@ -25,7 +25,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void btnSalir_Click(object sender, EventArgs e) //Boton Salir 
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace Trabajo_Integrador.Ventanas
 
       
     
-        private Boolean controlBoton()
+        private Boolean controlBoton() //Metodo que controla lo que se ingresa por pantalla 
         {
 
             Boolean aceptado;
@@ -80,8 +80,6 @@ namespace Trabajo_Integrador.Ventanas
 
             return aceptado;
         }
-
-      
 
         private Boolean esAceptado(string nombreUsuario, string contrasenia)
         {

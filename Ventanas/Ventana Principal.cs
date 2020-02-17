@@ -23,18 +23,13 @@ namespace Trabajo_Integrador.Ventanas
             
         }
 
-        private void verRanking_Click(object sender, EventArgs e)
-        {
-            VentanaRanking ranking = new VentanaRanking(iNombreUsuario);
-            ranking.ShowDialog();
+       
 
-
-        }
 
         private void comenzarExamen_Click(object sender, EventArgs e)
         {
-            configurarExamen ex = new configurarExamen(iNombreUsuario);
-            ex.ShowDialog();
+            configurarExamen examen = new configurarExamen(iNombreUsuario);
+            examen.ShowDialog();
                 
 
         }
@@ -45,11 +40,18 @@ namespace Trabajo_Integrador.Ventanas
 
         }
 
-        private void CerrarSesion_Click(object sender, EventArgs e)
-        {
-            Close();
+        
 
+        private void cerrarSesion_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            
         }
 
+        private void verRanking_Click(object sender, EventArgs e)
+        {
+            VentanaRanking ranking = new VentanaRanking(iNombreUsuario);
+            ranking.ShowDialog();
+        }
     }
 }

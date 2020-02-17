@@ -34,7 +34,7 @@
             this.user = new System.Windows.Forms.Label();
             this.cerrarSesion = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Opciones = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comenzarExamen
@@ -90,16 +90,16 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Qué desea hacer?";
             // 
-            // button1
+            // Opciones
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(543, 234);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 47);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Opciones";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Opciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Opciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Opciones.Location = new System.Drawing.Point(543, 234);
+            this.Opciones.Name = "Opciones";
+            this.Opciones.Size = new System.Drawing.Size(140, 47);
+            this.Opciones.TabIndex = 7;
+            this.Opciones.Text = "Opciones";
+            this.Opciones.UseVisualStyleBackColor = false;
             // 
             // Ventana_Principal_Admi
             // 
@@ -108,7 +108,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Opciones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cerrarSesion);
             this.Controls.Add(this.user);
@@ -129,6 +129,6 @@
         private System.Windows.Forms.Label user;
         private System.Windows.Forms.Button cerrarSesion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Opciones;
     }
 }

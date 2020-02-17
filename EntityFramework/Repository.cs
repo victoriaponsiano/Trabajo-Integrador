@@ -33,7 +33,7 @@ namespace Trabajo_Integrador.EntityFramework
         {
            
                 iDBSet.Add(pEntity);
-                iDbContext.SaveChanges();
+                 iDbContext.SaveChanges();
            
           
         }

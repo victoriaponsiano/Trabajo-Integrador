@@ -15,7 +15,7 @@ namespace Trabajo_Integrador
         {
         }
 
-        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, string pCategoria)
+        public override List<Pregunta> getPreguntas(string pCantidad, string pConjunto,string pDificultad, CategoriaPregunta pCategoria)
         {
             throw new NotImplementedException();
         }

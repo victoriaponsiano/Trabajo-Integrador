@@ -47,9 +47,9 @@
             this.preg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preg.Location = new System.Drawing.Point(39, 54);
             this.preg.Name = "preg";
-            this.preg.Size = new System.Drawing.Size(16, 20);
-            this.preg.TabIndex = 0;
-            this.preg.Text = "*";
+            this.preg.Size = new System.Drawing.Size(21, 20);
+            this.preg.TabIndex = 4;
+            this.preg.Text = "* ";
             // 
             // opcionA
             // 
@@ -60,7 +60,8 @@
             this.opcionA.Size = new System.Drawing.Size(14, 13);
             this.opcionA.TabIndex = 1;
             this.opcionA.TabStop = true;
-            this.opcionA.UseVisualStyleBackColor = true;            // 
+            this.opcionA.UseVisualStyleBackColor = true;
+            // 
             // opcionB
             // 
             this.opcionB.AutoSize = true;
@@ -103,12 +104,13 @@
             this.siguiente.BackColor = System.Drawing.Color.LightCoral;
             this.siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siguiente.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.siguiente.Location = new System.Drawing.Point(666, 400);
+            this.siguiente.Location = new System.Drawing.Point(610, 303);
             this.siguiente.Name = "siguiente";
             this.siguiente.Size = new System.Drawing.Size(126, 38);
             this.siguiente.TabIndex = 5;
             this.siguiente.Text = "Siguiente";
             this.siguiente.UseVisualStyleBackColor = false;
+            this.siguiente.Click += new System.EventHandler(this.siguiente_Click);
             // 
             // time
             // 
@@ -116,21 +118,23 @@
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time.Location = new System.Drawing.Point(535, 20);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(65, 16);
+            this.time.Size = new System.Drawing.Size(69, 16);
             this.time.TabIndex = 6;
-            this.time.Text = "Tiempo:";
+            this.time.Text = "Tiempo: ";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.opcionB);
             this.groupBox1.Controls.Add(this.opcionA);
+            this.groupBox1.Controls.Add(this.siguiente);
             this.groupBox1.Controls.Add(this.opcionC);
             this.groupBox1.Controls.Add(this.opcionD);
             this.groupBox1.Location = new System.Drawing.Point(12, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(660, 303);
+            this.groupBox1.Size = new System.Drawing.Size(742, 347);
             this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;            // 
+            this.groupBox1.TabStop = false;
+            // 
             // VPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,11 +143,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.time);
-            this.Controls.Add(this.siguiente);
             this.Controls.Add(this.preg);
             this.Name = "VPreguntas";
             this.Text = "Pregunta";
-            this.Load += new System.EventHandler(this.Preguntas_Load);
+            this.Load += new System.EventHandler(this.VPreguntas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

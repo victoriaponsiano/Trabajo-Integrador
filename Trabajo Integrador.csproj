@@ -160,6 +160,42 @@
     <Compile Include="Ventanas\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\SetAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\SetAdministrador.Designer.cs">
+      <DependentUpon>SetAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Todas las Preguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Todas las Preguntas.Designer.cs">
+      <DependentUpon>Todas las Preguntas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Lista Examenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Lista Examenes.Designer.cs">
+      <DependentUpon>Ventana Lista Examenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Lista Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Lista Usuarios.Designer.cs">
+      <DependentUpon>Ventana Lista Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Modificar Tiempo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Modificar Tiempo.Designer.cs">
+      <DependentUpon>Ventana Modificar Tiempo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Opciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Opciones.Designer.cs">
+      <DependentUpon>Ventana Opciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VPreguntas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +264,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\SetAdministrador.resx">
+      <DependentUpon>SetAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Todas las Preguntas.resx">
+      <DependentUpon>Todas las Preguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Lista Examenes.resx">
+      <DependentUpon>Ventana Lista Examenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Lista Usuarios.resx">
+      <DependentUpon>Ventana Lista Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Modificar Tiempo.resx">
+      <DependentUpon>Ventana Modificar Tiempo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Opciones.resx">
+      <DependentUpon>Ventana Opciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventana Principal Admi.resx">
       <DependentUpon>Ventana Principal Admi.cs</DependentUpon>
