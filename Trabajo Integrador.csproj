@@ -130,6 +130,18 @@
     <Compile Include="Migrations\202002092213292_Inital.designer.cs">
       <DependentUpon>202002092213292_Inital.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002131743363_NuevaLogica.cs" />
+    <Compile Include="Migrations\202002131743363_NuevaLogica.designer.cs">
+      <DependentUpon>202002131743363_NuevaLogica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171337063_NuevaLogica2.cs" />
+    <Compile Include="Migrations\202002171337063_NuevaLogica2.designer.cs">
+      <DependentUpon>202002171337063_NuevaLogica2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171343047_NuevaLogica3.cs" />
+    <Compile Include="Migrations\202002171343047_NuevaLogica3.designer.cs">
+      <DependentUpon>202002171343047_NuevaLogica3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OpentDB.cs" />
     <Compile Include="Dominio\Pregunta.cs" />
@@ -212,6 +224,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002092213292_Inital.resx">
       <DependentUpon>202002092213292_Inital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002131743363_NuevaLogica.resx">
+      <DependentUpon>202002131743363_NuevaLogica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171337063_NuevaLogica2.resx">
+      <DependentUpon>202002171337063_NuevaLogica2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171343047_NuevaLogica3.resx">
+      <DependentUpon>202002171343047_NuevaLogica3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
