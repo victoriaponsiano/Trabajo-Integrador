@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Trabajo_Integrador.EntityFramework;
 using Trabajo_Integrador.Dominio;
+using System.Data.Entity.Migrations;
 
 namespace Trabajo_Integrador.Controladores
 {
@@ -61,6 +62,7 @@ namespace Trabajo_Integrador.Controladores
                               
         /// <summary>
         /// Dado un examen, una pregunta y una respuesta, devuelve verdadero si la respuesta es correcta.
+        /// Almacena el resultado de la respuesta
         /// </summary>
         /// <param name="pExamen"></param>
         /// <param name="pPregunta"></param>
@@ -106,6 +108,12 @@ namespace Trabajo_Integrador.Controladores
             {
                 using (var UoW = new UnitOfWork(db))
                 {
+                    foreach (var ep in pExamen.ExamenPreguntas)
+                    {
+                        ep.Pregunta = UoW.RepositorioPreguntas.Get(ep.Pregunta.Id);
+                    }
+
+
                     Usuario usr = UoW.RepositorioUsuarios.Get(pExamen.Usuario.Id);
                     if (usr == null)
                     {

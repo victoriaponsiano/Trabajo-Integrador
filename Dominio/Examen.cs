@@ -25,7 +25,7 @@ namespace Trabajo_Integrador.Dominio
         /// <summary>
         /// Tiempo limite en segundos
         /// </summary>
-        public float TiempoLimite { set; get; }
+        public float TiempoLimite { get { return CantidadPreguntas * ExamenPreguntas.First().Pregunta.Conjunto.TiempoEsperadoRespuesta; } }
 
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Trabajo_Integrador.Dominio
 
         public Usuario Usuario {get;set;}
 
-        public int CantidadPreguntas { get; set; }
+        public int CantidadPreguntas { get { return getPreguntas().Count; } }
 
 
 
@@ -120,14 +120,18 @@ namespace Trabajo_Integrador.Dominio
 
 
         /// <summary>
-        /// Dada una pregunta y una respuesta, dice si es correcta o no 
+        /// Dada una pregunta y una respuesta, dice si es correcta o no y guarda el resultado
         /// </summary>
         /// <param name="pPregunta"></param>
         /// <param name="pRespuesta"></param>
         /// <returns>Verdadero si respuesta es correcta</returns>
         public Boolean RespuestaCorrecta(Pregunta pPregunta, String pRespuesta)
         {
-            return pPregunta.RespuestaEsCorrecta(pRespuesta);
+            Boolean respuestaCorrecta = pPregunta.RespuestaEsCorrecta(pRespuesta);
+            ExamenPregunta ep = ExamenPreguntas.Find(e => e.Pregunta.Id == pPregunta.Id);
+            ep.OpcionElegida = pRespuesta;
+            return respuestaCorrecta;
+               
         }
 
 

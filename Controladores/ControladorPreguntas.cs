@@ -162,8 +162,7 @@ namespace Trabajo_Integrador.Controladores
         public List<Pregunta> GetPreguntasRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             List<Pregunta> preguntas = new List<Pregunta>();
-            try
-            {
+           
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -171,12 +170,10 @@ namespace Trabajo_Integrador.Controladores
                         preguntas = (List<Pregunta>)UoW.RepositorioPreguntas.GetRandom(pCantidad, pConjunto, pCategoria, pDificultad);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Entre en contPreg");
-                Bitacora.GuardarLog(ex.Message.ToString());
-            }
+            
+            
+               
+            
             return preguntas;
         }
 
