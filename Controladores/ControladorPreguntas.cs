@@ -117,7 +117,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
+        public void GetPreguntasOnline(string pCantidad,string pConjunto, CategoriaPregunta pCategoria, string pDificultad)
         {
             try
             {
@@ -137,114 +137,17 @@ namespace Trabajo_Integrador.Controladores
 
 
 
-        /// <summary>
-        /// Marca una respuesta en la base de datos como verdadera o falsa.
-        /// </summary>
-        /// <param name="pExamenId"></param>
-        /// <param name="pPregunta"></param>
-        /// <param name="pRespuesta"></param>
-        /// <param name="pEsCorrecto"></param>
-        public void MarcarRespuesta(int pExamenId, Pregunta pPregunta, String pRespuesta)
-        {
-            using (var db = new TrabajoDbContext())
-            {
-                using (var UoW = new UnitOfWork(db))
-                {
-                    ExamenPregunta preex = UoW.RepositorioPreguntasExamenes.Get(pExamenId, pPregunta.Id);
-                    preex.OpcionElegida = pRespuesta;
-                    UoW.Complete();
-                }
-            }
-        }
 
 
 
 
-        /// <summary>
-        /// Dado la ID de un examen, obtiene la cantidad de respuestas correctas.
-        /// </summary>
-        /// <param name="pExamenId"></param>
-        /// <returns></returns>
-        public int ObtenerCantidadRespuestasCorrectas(int pExamenId)
-        {
-            int aDevolver = 0;
-            List<Pregunta> preguntas = new List<Pregunta>();
-
-            using (var db = new TrabajoDbContext())
-            {
-                using (var UoW = new UnitOfWork(db))
-                {
-
-                    ///Busca todas las clases de asociacion
-                    List<ExamenPregunta> expr = db.PreguntasExamenes.Where(c => c.ExamenId == pExamenId).ToList();
-
-
-                    //Por cada una de las clases de asociacion, busca la pregunta y llama a es correcta.
-                    foreach (ExamenPregunta ex in expr)
-                    {
-                        if (UoW.RepositorioPreguntas.Get(ex.PreguntaId).RespuestaEsCorrecta(ex.OpcionElegida))
-                        {
-                            aDevolver++;
-                        }
-                    }
-
-
-                }
-
-            }
-            return aDevolver;
-        }
+       
 
 
 
-        /// <summary>
-        /// Crea la asociacion en la base de datos de preguntaexamen
-        /// </summary>
-        /// <param name="ExamenId"></param>
-        /// <param name="Preguntas"></param>
-        public void AsociarPreguntaExamen(int pExamenId,ICollection<Pregunta> pPreguntas) 
-        {
-            using (var db = new TrabajoDbContext())
-            {
-                using (var UoW = new UnitOfWork(db))
-                {
-                    foreach (Pregunta pre in pPreguntas) 
-                    {
-                        ExamenPregunta preguntaExamen = new ExamenPregunta();
-                        preguntaExamen.ExamenId = pExamenId;
-                        preguntaExamen.PreguntaId = pre.Id;
-                        UoW.RepositorioPreguntasExamenes.Add(preguntaExamen);
-                    }
-                    UoW.Complete();
-                }
-            }
-               
-        }
+        
 
-        /// <summary>
-        /// Obtiene las preguntas asociadas a un examen
-        /// </summary>
-        /// <returns></returns>
-        public List<Pregunta> ObtenerPreguntasDeExamen(int pExamenId) 
-        {
-            List<Pregunta> preguntas = new List<Pregunta>();
-            using (var db = new TrabajoDbContext())
-            {
-                using (var UoW = new UnitOfWork(db))
-                {
-                    //Primero busca los objetos de la clase de asociacion preguntaexamen
-                    List<ExamenPregunta> preguntaExamenes = db.PreguntasExamenes.Where(c => c.ExamenId == pExamenId).ToList<ExamenPregunta>();
-                    
-                    //Luego con los preguntaExamen obtiene las preguntas de un examen
-                    foreach (ExamenPregunta pe in preguntaExamenes) 
-                    {
-                        preguntas.Add(UoW.RepositorioPreguntas.Get(pe.PreguntaId));
-                    }
-                }
-            }
-            return preguntas;
-
-        }
+        
 
 
 
@@ -259,8 +162,7 @@ namespace Trabajo_Integrador.Controladores
         public List<Pregunta> GetPreguntasRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             List<Pregunta> preguntas = new List<Pregunta>();
-            try
-            {
+           
                 using (var db = new TrabajoDbContext())
                 {
                     using (var UoW = new UnitOfWork(db))
@@ -268,12 +170,10 @@ namespace Trabajo_Integrador.Controladores
                         preguntas = (List<Pregunta>)UoW.RepositorioPreguntas.GetRandom(pCantidad, pConjunto, pCategoria, pDificultad);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Entre en contPreg");
-                Bitacora.GuardarLog(ex.Message.ToString());
-            }
+            
+            
+               
+            
             return preguntas;
         }
 

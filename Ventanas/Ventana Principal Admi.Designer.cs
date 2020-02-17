@@ -1,6 +1,7 @@
 ﻿namespace Trabajo_Integrador.Ventanas
 {
-    partial class Ventana_Principal
+    partial class Ventana_Principal_Admi
+
     {
         /// <summary>
         /// Required designer variable.
@@ -28,57 +29,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana_Principal));
             this.comenzarExamen = new System.Windows.Forms.Button();
             this.verRanking = new System.Windows.Forms.Button();
             this.user = new System.Windows.Forms.Label();
             this.cerrarSesion = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comenzarExamen
             // 
             this.comenzarExamen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.comenzarExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comenzarExamen.Location = new System.Drawing.Point(471, 234);
+            this.comenzarExamen.Location = new System.Drawing.Point(327, 234);
             this.comenzarExamen.Name = "comenzarExamen";
             this.comenzarExamen.Size = new System.Drawing.Size(140, 47);
             this.comenzarExamen.TabIndex = 0;
             this.comenzarExamen.Text = "Comenzar Examen";
             this.comenzarExamen.UseVisualStyleBackColor = false;
-
-            this.comenzarExamen.Click += new System.EventHandler(this.comenzarExamen_Click);
-
             // 
             // verRanking
             // 
             this.verRanking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.verRanking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verRanking.Location = new System.Drawing.Point(182, 234);
+            this.verRanking.Location = new System.Drawing.Point(80, 235);
             this.verRanking.Name = "verRanking";
             this.verRanking.Size = new System.Drawing.Size(140, 47);
             this.verRanking.TabIndex = 1;
             this.verRanking.Text = "Ver Ranking";
             this.verRanking.UseVisualStyleBackColor = false;
-
-            // 
-            // admin
-            // 
-            this.admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.admin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(555, 308);
-            this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(140, 47);
-            this.admin.TabIndex = 2;
-            this.admin.Text = "Administrador";
-            this.admin.UseVisualStyleBackColor = false;
-
             // 
             // user
             // 
             this.user.AutoSize = true;
             this.user.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user.Image = ((System.Drawing.Image)(resources.GetObject("user.Image")));
             this.user.Location = new System.Drawing.Point(69, 32);
             this.user.Name = "user";
             this.user.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -95,7 +79,6 @@
             this.cerrarSesion.TabIndex = 4;
             this.cerrarSesion.Text = "Cerrar Sesión";
             this.cerrarSesion.UseVisualStyleBackColor = false;
-           
             // 
             // label2
             // 
@@ -107,19 +90,31 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Qué desea hacer?";
             // 
-            // Ventana_Principal
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(543, 234);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 47);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Opciones";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // Ventana_Principal_Admi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cerrarSesion);
             this.Controls.Add(this.user);
             this.Controls.Add(this.verRanking);
             this.Controls.Add(this.comenzarExamen);
-            this.Name = "Ventana_Principal";
+            this.Name = "Ventana_Principal_Admi";
             this.Text = "Examen Virtual";
             this.Load += new System.EventHandler(this.Ventana_Principal_Load);
             this.ResumeLayout(false);
@@ -134,5 +129,6 @@
         private System.Windows.Forms.Label user;
         private System.Windows.Forms.Button cerrarSesion;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

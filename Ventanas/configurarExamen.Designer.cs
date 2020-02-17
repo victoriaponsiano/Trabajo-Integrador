@@ -130,6 +130,11 @@
             // cantidadPreguntas
             // 
             this.cantidadPreguntas.Location = new System.Drawing.Point(433, 203);
+            this.cantidadPreguntas.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.cantidadPreguntas.Name = "cantidadPreguntas";
             this.cantidadPreguntas.Size = new System.Drawing.Size(189, 20);
             this.cantidadPreguntas.TabIndex = 10;

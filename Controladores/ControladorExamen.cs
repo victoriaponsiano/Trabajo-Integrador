@@ -5,11 +5,44 @@ using System.Text;
 using System.Threading.Tasks;
 using Trabajo_Integrador.EntityFramework;
 using Trabajo_Integrador.Dominio;
+using System.Data.Entity.Migrations;
 
 namespace Trabajo_Integrador.Controladores
 {
     public class ControladorExamen
     {
+
+        ////Atributos
+        ///
+
+        ControladorPreguntas iControladorPreguntas;
+
+
+
+
+
+
+
+        /// <summary>
+        /// Asocia un examen con la clase de asociacion.
+        /// </summary>
+        /// <param name="pExamen"></param>
+        /// <param name="pPregunta"></param>
+        private void AsociarExamenPregunta(Examen pExamen, List<Pregunta> pPreguntas)
+        {
+            List<ExamenPregunta> examenPreguntas = new List<ExamenPregunta>();
+            foreach (var pregunta in pPreguntas)
+            {
+                ExamenPregunta examenPregunta = new ExamenPregunta();
+                examenPregunta.Pregunta = pregunta;
+                examenPreguntas.Add(examenPregunta);
+
+            }
+            pExamen.ExamenPreguntas = examenPreguntas;
+        }
+
+
+
         /// <summary>
         /// Crea un nuevo examen no asociado a un usuario
         /// </summary>
@@ -17,28 +50,19 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pConjunto"></param>
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
-        public Examen InicializarExamen(int pCantidad, string pConjunto, string pCategoria, string pDificultad)
+        public Examen InicializarExamen(int pCantidad, ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
-            int id;
-            Dificultad dif = new Dificultad(pDificultad);
-            CategoriaPregunta cat = new CategoriaPregunta();
-            cat.Id = pCategoria;
-            ConjuntoPreguntas conj = new ConjuntoPreguntas(pConjunto);
-            using (var db = new TrabajoDbContext())
-            {
-                using (var UoW = new UnitOfWork(db))
-                {
-                    
-                    id = db.Examenes.Count()+1;
-                }
-            }
+            List<Pregunta> preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
+            Examen examen = new Examen();
+            this.AsociarExamenPregunta(examen, preguntas);
 
-            return new Examen(id,pCantidad, conj, cat, dif);
+            return examen;
         }
 
                               
         /// <summary>
         /// Dado un examen, una pregunta y una respuesta, devuelve verdadero si la respuesta es correcta.
+        /// Almacena el resultado de la respuesta
         /// </summary>
         /// <param name="pExamen"></param>
         /// <param name="pPregunta"></param>
@@ -84,6 +108,12 @@ namespace Trabajo_Integrador.Controladores
             {
                 using (var UoW = new UnitOfWork(db))
                 {
+                    foreach (var ep in pExamen.ExamenPreguntas)
+                    {
+                        ep.Pregunta = UoW.RepositorioPreguntas.Get(ep.Pregunta.Id);
+                    }
+
+
                     Usuario usr = UoW.RepositorioUsuarios.Get(pExamen.Usuario.Id);
                     if (usr == null)
                     {
@@ -118,6 +148,7 @@ namespace Trabajo_Integrador.Controladores
         }
         public ControladorExamen() 
         {
+            iControladorPreguntas = new ControladorPreguntas();
         }
     }
 }

@@ -36,16 +36,22 @@ namespace Trabajo_Integrador.Ventanas
 
         }
 
-        private void cerrar_Click(object sender, EventArgs e)
+        private void Cerrar_Click(object sender, EventArgs e)
         {
             Close();
             using (Inicio finalizado = new Inicio()) //Paso el examen a la proxima ventana 
                 finalizado.ShowDialog();
         }
 
-        private void ranking_Click(object sender, EventArgs e)
+        private void VolverInicio_Click(object sender, EventArgs e)
         {
-            //fachada.getRanking();
+            Ventana_Principal volver = new Ventana_Principal(iExamen.Usuario.Id);
+            volver.ShowDialog();
+        }
+
+        private void volverInicio_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

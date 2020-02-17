@@ -1,6 +1,6 @@
 ﻿namespace Trabajo_Integrador.Ventanas
 {
-    partial class Preguntas
+    partial class VPreguntas
     {
         /// <summary>
         /// Required designer variable.
@@ -60,8 +60,7 @@
             this.opcionA.Size = new System.Drawing.Size(14, 13);
             this.opcionA.TabIndex = 1;
             this.opcionA.TabStop = true;
-            this.opcionA.UseVisualStyleBackColor = true;
-            // 
+            this.opcionA.UseVisualStyleBackColor = true;            // 
             // opcionB
             // 
             this.opcionB.AutoSize = true;
@@ -110,7 +109,6 @@
             this.siguiente.TabIndex = 5;
             this.siguiente.Text = "Siguiente";
             this.siguiente.UseVisualStyleBackColor = false;
-
             // 
             // time
             // 
@@ -132,9 +130,8 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(660, 303);
             this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            // 
-            // Preguntas
+            this.groupBox1.TabStop = false;            // 
+            // VPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +141,7 @@
             this.Controls.Add(this.time);
             this.Controls.Add(this.siguiente);
             this.Controls.Add(this.preg);
-            this.Name = "Preguntas";
+            this.Name = "VPreguntas";
             this.Text = "Pregunta";
             this.Load += new System.EventHandler(this.Preguntas_Load);
             this.groupBox1.ResumeLayout(false);

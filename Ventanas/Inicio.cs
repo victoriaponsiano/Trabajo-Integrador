@@ -31,10 +31,17 @@ namespace Trabajo_Integrador.Ventanas
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             Boolean esAcepatado = controlBoton();
-            if (esAcepatado == true)
+            if (esAcepatado == true) 
             {
-                Ventana_Principal ppal = new Ventana_Principal(usuario.Text); //Le paso el usuario para que aparezca en la proxima ventana
+                if (esAdministrador(usuario.Text) == true)
+                {
+                    Ventana_Principal_Admi ppal_admin = new Ventana_Principal_Admi(usuario.Text);   
+                }
+                else
+                {
+                    Ventana_Principal ppal = new Ventana_Principal(usuario.Text); //Le paso el usuario para que aparezca en la proxima ventana
                     ppal.ShowDialog();
+                }
             }
             else
             {
@@ -44,11 +51,14 @@ namespace Trabajo_Integrador.Ventanas
 
         private void Inicio_Load(object sender, EventArgs e) //Se ejeecuta el codigo cuando el formulario se carga
         {
-            //btnIngresar.Enabled = false;
+            
         }
 
         //Trim saca espacios al texto ingresado
 
+
+      
+    
         private Boolean controlBoton()
         {
 
@@ -71,9 +81,16 @@ namespace Trabajo_Integrador.Ventanas
             return aceptado;
         }
 
+      
+
         private Boolean esAceptado(string nombreUsuario, string contrasenia)
         {
             return iFachada.UsuarioValido(nombreUsuario, contrasenia);
+        }
+
+        private Boolean esAdministrador(string nombreUsuario)
+        {
+            return iFachada.EsAdministrador( nombreUsuario);
         }
 
         private void crearUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

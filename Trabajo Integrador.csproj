@@ -130,6 +130,18 @@
     <Compile Include="Migrations\202002092213292_Inital.designer.cs">
       <DependentUpon>202002092213292_Inital.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002131743363_NuevaLogica.cs" />
+    <Compile Include="Migrations\202002131743363_NuevaLogica.designer.cs">
+      <DependentUpon>202002131743363_NuevaLogica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171337063_NuevaLogica2.cs" />
+    <Compile Include="Migrations\202002171337063_NuevaLogica2.designer.cs">
+      <DependentUpon>202002171337063_NuevaLogica2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171343047_NuevaLogica3.cs" />
+    <Compile Include="Migrations\202002171343047_NuevaLogica3.designer.cs">
+      <DependentUpon>202002171343047_NuevaLogica3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OpentDB.cs" />
     <Compile Include="Dominio\Pregunta.cs" />
@@ -160,17 +172,23 @@
     <Compile Include="Ventanas\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Preguntas.cs">
+    <Compile Include="Ventanas\VPreguntas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\Preguntas.Designer.cs">
-      <DependentUpon>Preguntas.cs</DependentUpon>
+    <Compile Include="Ventanas\VPreguntas.Designer.cs">
+      <DependentUpon>VPreguntas.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Registro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventanas\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Principal Admi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Principal Admi.Designer.cs">
+      <DependentUpon>Ventana Principal Admi.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Ventana Principal.cs">
       <SubType>Form</SubType>
@@ -207,6 +225,15 @@
     <EmbeddedResource Include="Migrations\202002092213292_Inital.resx">
       <DependentUpon>202002092213292_Inital.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002131743363_NuevaLogica.resx">
+      <DependentUpon>202002131743363_NuevaLogica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171337063_NuevaLogica2.resx">
+      <DependentUpon>202002171337063_NuevaLogica2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171343047_NuevaLogica3.resx">
+      <DependentUpon>202002171343047_NuevaLogica3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -223,11 +250,17 @@
     <EmbeddedResource Include="Ventanas\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Principal Admi.resx">
+      <DependentUpon>Ventana Principal Admi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventana Principal.resx">
       <DependentUpon>Ventana Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\VentanaRanking.resx">
       <DependentUpon>VentanaRanking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\VPreguntas.resx">
+      <DependentUpon>VPreguntas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

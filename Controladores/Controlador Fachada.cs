@@ -15,8 +15,8 @@ namespace Trabajo_Integrador.Controladores
         ///Atributos
         ControladorExamen controladorExamen;
         ControladorAdministrativo controladorAdministrativo;
-        
-        
+
+
         public ControladorFachada()
         {
             controladorAdministrativo = new ControladorAdministrativo();
@@ -33,18 +33,18 @@ namespace Trabajo_Integrador.Controladores
             return controladorExamen.GetTiempoLimite(unExamen);
         }
 
-       
 
 
 
-        
-        
+
+
+
         /// <summary>
         /// Da comienzo a un examen. Asocia el examen a un usuario
         /// </summary>
         /// <param name="pUsuario"></param>
         /// <param name="pExamen"></param>
-        public void InicarExamen(String pNombreUsuario,Examen pExamen)
+        public void InicarExamen(String pNombreUsuario, Examen pExamen)
         {
             Usuario usuario;
             using (var db = new TrabajoDbContext())
@@ -61,19 +61,47 @@ namespace Trabajo_Integrador.Controladores
 
 
 
+
+    
+
+
+
         /// <summary>
         /// Metodo que crea un examen sin asociarlo a un usuario
         /// </summary>
-        /// <param name="pCantidad"></param>
-        /// <param name="pConjunto"></param>
-        /// <param name="pCategoria"></param>
-        /// <param name="pDificultad"></param>
+        /// <param name="pCantidad">Cantidad de preguntas</param>
+        /// <param name="pConjunto">OpentDb</param>
+        /// <param name="pCategoria">Id Categoria</param>
+        /// <param name="pDificultad">Id Dificultad</param>
         /// <returns></returns>
         /// 
         public Examen InicializarExamen(int pCantidad, String pConjunto, string pCategoria, string pDificultad)
         {
-            return controladorExamen.InicializarExamen(pCantidad, pConjunto, pCategoria, pDificultad);
+            ConjuntoPreguntas conjunto;
+            CategoriaPregunta categoria;
+            Dificultad dificultad;
+
+            
+            
+         
+            
+
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    conjunto = UoW.RepositorioConjuntoPregunta.Get(pConjunto);
+                    categoria = UoW.RepositorioCategorias.Get(pCategoria);
+                    dificultad = UoW.RepositorioDificultades.Get(pDificultad);
+                }
+            }
+
+             return controladorExamen.InicializarExamen(pCantidad, conjunto, categoria, dificultad);
         }
+
+
+
+
         /// <summary>
         /// Metodo que finaliza un examen y lo guarda en la base de datos
         /// </summary>
@@ -157,8 +185,25 @@ namespace Trabajo_Integrador.Controladores
             }
         }
 
+        public Boolean EsAdministrador(string nombreUsuario)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    Usuario usrDb = UoW.RepositorioUsuarios.Get(nombreUsuario);
+                    if (usrDb.Administrador == true)
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
+            }
+        }
+
         /// <summary>
         /// Metodo que determina si una respuesta es correcta o no 
+        /// Almacena el resultado de la respuesta
         /// </summary>
         /// <param name="pExamen"></param>
         /// <param name="pPregunta"></param>
@@ -167,6 +212,26 @@ namespace Trabajo_Integrador.Controladores
         public Boolean RespuestaCorrecta(Examen pExamen, Pregunta pPregunta, String pRespuesta)
         {
             return controladorExamen.RespuestaCorrecta(pExamen, pPregunta, pRespuesta);
+        }
+
+        /// <summary>
+        /// Metodo que permite cargar preguntas desde una pagina de preguntas hacia la base de datos.
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        /// <param name="pConjunto"></param>
+        /// <param name="pCategoria"></param>
+        /// <param name="pDificultad"></param>
+        public void CargarPreguntas(string pCantidad,string pConjunto,string pCategoria,string pDificultad)
+        {
+            CategoriaPregunta categoria;
+            using (var db=new TrabajoDbContext())
+            {
+                using (var UoW=new UnitOfWork(db))
+                {
+                    categoria=UoW.RepositorioCategorias.Get(pCategoria);
+                }
+            }
+            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
         }
     }
 }
