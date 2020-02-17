@@ -26,16 +26,21 @@ namespace Trabajo_Integrador.EntityFramework
         public List<Pregunta> GetRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
 
-            
-            
+
+            Console.WriteLine(pConjunto.Id, pCategoria.Id, pDificultad.Id);
             List<Pregunta> preguntas = iDBSet.Include("Conjunto").Include("Dificultad").Where(p => ((p.Dificultad.Id == pDificultad.Id) && (p.Categoria.Id == pCategoria.Id) && (p.Conjunto.Id == pConjunto.Id))).ToList<Pregunta>();
 
-            List<Pregunta> ADevolver = new List<Pregunta>();
+            if (preguntas.Count <= pCantidad)
+            {
+                return preguntas;
+            }
+            else
+            {
+                return preguntas.OrderBy(x => Guid.NewGuid()).Take(pCantidad).ToList<Pregunta>();
+            }
 
 
-            return preguntas.OrderBy(x => Guid.NewGuid()).Take(pCantidad).ToList<Pregunta>();
 
-     
         }
     }
 }

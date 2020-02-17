@@ -16,13 +16,12 @@ namespace Trabajo_Integrador.Dominio
     /// </summary>
     public class ExamenPregunta
     {
-        [Key, Column(Order = 0)]
-        public int ExamenId { get; set; }
+        public int Id { get; set; }
         
-        [Key, Column(Order = 1)]
-        public string PreguntaId  { get; set; }
+        public Pregunta Pregunta  { get; set; }
         
         public virtual String OpcionElegida { get; set; }
+
 
     }
 }
