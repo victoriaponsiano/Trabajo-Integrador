@@ -41,7 +41,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(463, 338);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -77,6 +76,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Ventana_Lista_Usuarios";
             this.Text = "Ventana_Lista_Usuarios";
+            this.Load += new System.EventHandler(this.Ventana_Lista_Usuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

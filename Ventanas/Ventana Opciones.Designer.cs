@@ -34,6 +34,7 @@
             this.modificarTiempos = new System.Windows.Forms.Button();
             this.setAdministrador = new System.Windows.Forms.Button();
             this.verPreguntas = new System.Windows.Forms.Button();
+            this.volver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listaUsuarios
@@ -81,6 +82,7 @@
             this.modificarTiempos.TabIndex = 3;
             this.modificarTiempos.Text = "Modificar Tiempos ";
             this.modificarTiempos.UseVisualStyleBackColor = false;
+            this.modificarTiempos.Click += new System.EventHandler(this.modificarTiempos_Click);
             // 
             // setAdministrador
             // 
@@ -106,12 +108,25 @@
             this.verPreguntas.UseVisualStyleBackColor = false;
             this.verPreguntas.Click += new System.EventHandler(this.verPreguntas_Click);
             // 
+            // volver
+            // 
+            this.volver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.volver.Location = new System.Drawing.Point(686, 429);
+            this.volver.Name = "volver";
+            this.volver.Size = new System.Drawing.Size(83, 33);
+            this.volver.TabIndex = 9;
+            this.volver.Text = "Volver";
+            this.volver.UseVisualStyleBackColor = false;
+            this.volver.Click += new System.EventHandler(this.volver_Click_1);
+            // 
             // Ventana_Opciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 474);
+            this.Controls.Add(this.volver);
             this.Controls.Add(this.verPreguntas);
             this.Controls.Add(this.setAdministrador);
             this.Controls.Add(this.modificarTiempos);
@@ -132,5 +147,6 @@
         private System.Windows.Forms.Button modificarTiempos;
         private System.Windows.Forms.Button setAdministrador;
         private System.Windows.Forms.Button verPreguntas;
+        private System.Windows.Forms.Button volver;
     }
 }

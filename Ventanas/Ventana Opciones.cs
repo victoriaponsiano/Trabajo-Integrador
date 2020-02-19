@@ -23,13 +23,13 @@ namespace Trabajo_Integrador.Ventanas
         private void listaUsuarios_Click(object sender, EventArgs e)
         {
             Ventana_Lista_Usuarios listaUsuarios = new Ventana_Lista_Usuarios();
-            ShowDialog(listaUsuarios);
+            listaUsuarios.ShowDialog();
         }
 
         private void verExamenes_Click(object sender, EventArgs e)
         {
             Ventana_Lista_Examenes listaExamenes = new Ventana_Lista_Examenes();
-            ShowDialog(listaExamenes);
+            listaExamenes.ShowDialog();
         }
 
         //private void cargarExamenes_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace Trabajo_Integrador.Ventanas
         private void setAdministrador_Click(object sender, EventArgs e)
         {
             SetAdministrador setAdministrador = new SetAdministrador();
-            ShowDialog(setAdministrador);
+            setAdministrador.ShowDialog();
 
 
 
@@ -49,7 +49,21 @@ namespace Trabajo_Integrador.Ventanas
         private void verPreguntas_Click(object sender, EventArgs e)
         {
             Todas_las_Preguntas preguntas = new Todas_las_Preguntas();
-            ShowDialog(preguntas);
+            preguntas.ShowDialog();
+        }
+
+        private void modificarTiempos_Click(object sender, EventArgs e)
+        {
+            Ventana_Modificar_Tiempo tiempos = new Ventana_Modificar_Tiempo();
+            tiempos.ShowDialog();
+        }
+
+       
+
+        private void volver_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
 }

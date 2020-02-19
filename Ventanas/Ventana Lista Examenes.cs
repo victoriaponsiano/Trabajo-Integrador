@@ -24,10 +24,12 @@ namespace Trabajo_Integrador.Ventanas
 
         private void Volver_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void Ventana_Lista_Examenes_Load(object sender, EventArgs e)
         {
             List<Examen> listaExamenes = fachada.GetExamenes();
             DataTable dt = new DataTable();
@@ -38,7 +40,7 @@ namespace Trabajo_Integrador.Ventanas
 
             foreach (Examen examen in listaExamenes)
             {
-                dt.Rows.Add(new object[] { examen.Usuario ,examen.Fecha, examen.Puntaje, examen.TiempoUsado });
+                dt.Rows.Add(new object[] { examen.Usuario, examen.Fecha, examen.Puntaje, examen.TiempoUsado });
             }
 
             dataGridView1.DataSource = dt;

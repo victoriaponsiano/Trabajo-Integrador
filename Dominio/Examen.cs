@@ -125,6 +125,7 @@ namespace Trabajo_Integrador.Dominio
         /// <param name="pPregunta"></param>
         /// <param name="pRespuesta"></param>
         /// <returns>Verdadero si respuesta es correcta</returns>
+        /// 
         public Boolean RespuestaCorrecta(Pregunta pPregunta, String pRespuesta)
         {
             Boolean respuestaCorrecta = pPregunta.RespuestaEsCorrecta(pRespuesta);
@@ -133,13 +134,7 @@ namespace Trabajo_Integrador.Dominio
             return respuestaCorrecta;
                
         }
-
-
-
-
-
-    
-
+               
 
         /// <summary>
         /// Da fin a un examen

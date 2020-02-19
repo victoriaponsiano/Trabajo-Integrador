@@ -23,18 +23,14 @@ namespace Trabajo_Integrador.Ventanas
         ControladorFachada fachada = new ControladorFachada();
 
 
-        private void modificar_Click(object sender, EventArgs e)
-        {
+        //private void modificar_Click(object sender, EventArgs e)
+        //{
 
-            string conjuntoSeleccionado = ListaConjuntos.SelectedItem.ToString();
-            float tiempoIngresado = float.Parse(tiempo.SelectedText);
-            fachada.ModificarTiempo(conjuntoSeleccionado, tiempoIngresado);
-            MessageBox.Show("Tiempo modificado con Exito");
-        }
+        //}
 
         private void volver_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void Ventana_Modificar_Tiempo_Load(object sender, EventArgs e)
@@ -52,6 +48,7 @@ namespace Trabajo_Integrador.Ventanas
             foreach (ConjuntoPreguntas conjunto in conjuntos)
             {
                 listaConjuntos.Add(conjunto.Id);
+                
             }
 
             string[] conjuntosArray = listaConjuntos.ToArray();
@@ -59,10 +56,21 @@ namespace Trabajo_Integrador.Ventanas
             for (int i = 0; i < conjuntosArray.Length; i++)
             {
 
-                ListaConjuntos.Items.Add(conjuntos[i]); //Le asigno al combobox categoria el array categorias
+                ListaConjuntos.Items.Add(conjuntosArray[i]); //Le asigno al combobox categoria el array categorias
             }
         } //Muestra todos los conjuntos disponibles en el combobox ListaConjuntos
 
+        private void modificar_Click_1(object sender, EventArgs e)
+        {
+
+            string conjuntoSeleccionado = ListaConjuntos.SelectedItem.ToString();
+            string i =tiempo.SelectedText.ToString();
+            float tiempoIngresado = float.Parse(i, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
+            fachada.ModificarTiempo(conjuntoSeleccionado, tiempoIngresado);
+            MessageBox.Show("Tiempo modificado con Exito");
+        }
+
+       
     }
 }
 

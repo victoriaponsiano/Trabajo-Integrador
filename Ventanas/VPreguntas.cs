@@ -17,15 +17,18 @@ namespace Trabajo_Integrador.Ventanas
     {
         Examen iExamen;
         ControladorFachada fachada = new ControladorFachada();
-        
+      
+
         public VPreguntas(Examen unExamen)
         {
             InitializeComponent();
             iExamen = unExamen;
+            //iNumeroPreguntas = unExamen.CantidadPreguntas;
 
         }
 
         float tiempo;
+        
 
         public void mostrarPregunta(Pregunta unaPregunta) //Muestra una pregunta con sus opciones
         {
@@ -58,7 +61,7 @@ namespace Trabajo_Integrador.Ventanas
 
         }
 
-        public Boolean RecogerOpcion(Examen pExamen, Pregunta pPregunta) //Devuelve cual fue la opcion Seleccionada
+        public string RecogerOpcion(Examen pExamen, Pregunta pPregunta) //Devuelve cual fue la opcion Seleccionada
         {
          
                 string respuesta = string.Empty;
@@ -68,46 +71,60 @@ namespace Trabajo_Integrador.Ventanas
                 if (opcionC.Checked == true) { respuesta = "C"; }
                 if (opcionD.Checked == true) { respuesta= "D"; }
 
-                
 
-            return fachada.RespuestaCorrecta(pExamen, pPregunta, respuesta);
+
+            return respuesta;
         }
 
-        public void responderPreguntas() //mUESTRA LAS PREGUNTAS DEL EXAMEN
+        
+
+        public void responderPregunta() //mUESTRA LAS PREGUNTAS DEL EXAMEN
         {
             tiempo = iExamen.TiempoLimite;
             this.time.Text = tiempo.ToString();
-
             this.timer.Enabled = true;
 
-       
-            for (int i = 0; i > iExamen.CantidadPreguntas ; i++)
+            List<Pregunta> listaPreguntas = fachada.GetPreguntas();
+            foreach (Pregunta pregunta in listaPreguntas)
             {
-                Pregunta pregunta = obtienePregunta(i);
-                
                 mostrarPregunta(pregunta);
-                
-                Boolean respuesta = RecogerOpcion(iExamen, pregunta);
-               
+                string respuesta= RecogerOpcion(iExamen, pregunta);
+                fachada.RespuestaCorrecta(iExamen, pregunta, respuesta);
+                siguiente_Click(siguiente, EventArgs.Empty);
 
-                //siguiente.Click += siguiente_Click;
+                //Console.ReadKey();
+                //siguiente.PerformClick();
+
+
             }
-
-
-            fachada.FinalizarExamen(iExamen);
-
-
         }
 
-        public Pregunta obtienePregunta(int numeroPregunta)
-        {
-            List<Pregunta> listaPreguntas = iExamen.getPreguntas();
-            return listaPreguntas[numeroPregunta];
-        }
+
+
+            //}
+            //    Pregunta pregunta = obtienePregunta(pNumeroPregunta);
+
+            //    mostrarPregunta(pregunta);
+
+            //    Boolean respuesta = RecogerOpcion(iExamen, pregunta);
+            
+            //else
+            //{
+            //    fachada.FinalizarExamen(iExamen);
+            //}
+        
+                
+
+        //public Pregunta obtienePregunta(int numeroPregunta)
+        //{
+        //    List<Pregunta> listaPreguntas = iExamen.getPreguntas();
+        //    return listaPreguntas[numeroPregunta];
+        //}
 
 
         public void LimpiaControles() //Limpia todos los campos (textBox y checkBox)
         {
+            
             preg.Text = "*";
 
             opcionA.Text = String.Empty;
@@ -119,16 +136,9 @@ namespace Trabajo_Integrador.Ventanas
             opcionB.Checked = false;
             opcionC.Checked = false;
             opcionD.Checked = false;
+
         }
 
-        //private void VPreguntas_Load() //Se carga junto con la pantalla de Preguntas
-        //{
-        //    responderPreguntas();
-        //    tiempo = iExamen.TiempoLimite;
-        //    this.time.Text = tiempo.ToString();
-
-        //    this.timer.Enabled = true;
-        //}
 
         private void timer_Tick(object sender, EventArgs e) //Tiempo agotado
         {
@@ -145,18 +155,26 @@ namespace Trabajo_Integrador.Ventanas
 
         }
 
+
         private void siguiente_Click(object sender, EventArgs e)
         {
-            Button siguiente = (Button)sender;
+            //Button siguiente = (Button)sender;
             MessageBox.Show("Esta en click siguiente");
             LimpiaControles();
+
         }
+        
 
         private void VPreguntas_Load(object sender, EventArgs e)
         {
-            responderPreguntas();
+            tiempo = iExamen.TiempoLimite;
+            this.time.Text = tiempo.ToString();
+
+            responderPregunta();
             
         }
+
+      
     }
 
 

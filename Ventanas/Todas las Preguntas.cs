@@ -18,7 +18,9 @@ namespace Trabajo_Integrador.Ventanas
             InitializeComponent();
         }
         ControladorFachada fachada = new ControladorFachada();
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      
+
+        private void Todas_las_Preguntas_Load(object sender, EventArgs e)
         {
             List<Pregunta> listaPreguntas = fachada.GetPreguntas();
             DataTable dt = new DataTable();
@@ -31,10 +33,15 @@ namespace Trabajo_Integrador.Ventanas
 
             foreach (Pregunta pregunta in listaPreguntas)
             {
-                dt.Rows.Add(new object[] { pregunta.Id, pregunta.RespuestaCorrecta, pregunta.RespuestaIncorrecta1, pregunta.RespuestaIncorrecta2, pregunta.RespuestaIncorrecta3});
+                dt.Rows.Add(new object[] { pregunta.Id, pregunta.RespuestaCorrecta, pregunta.RespuestaIncorrecta1, pregunta.RespuestaIncorrecta2, pregunta.RespuestaIncorrecta3 });
             }
 
             dataGridView1.DataSource = dt;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

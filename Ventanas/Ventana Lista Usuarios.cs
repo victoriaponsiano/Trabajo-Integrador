@@ -21,26 +21,28 @@ namespace Trabajo_Integrador.Ventanas
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            List<Usuario> listaUsuarios= fachada.GetUsuarios();
-            DataTable dt = new DataTable();
-            //dt.Columns.Add("Usuario", typeof(string));
-            dt.Columns.Add("Nombre", typeof(string));
-            dt.Columns.Add("Contraseña", typeof(string));
-            //dt.Columns.Add("Tiempo", typeof(float));
-
-            foreach (Usuario usuario in listaUsuarios)
-            {
-                dt.Rows.Add(new object[] { usuario.Id, usuario.Contrasenia}) ;
-            }
-
-            dataGridView1.DataSource = dt;
-        }
+      
 
         private void Volver_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
+        }
+
+        private void Ventana_Lista_Usuarios_Load(object sender, EventArgs e)
+        {
+            List<Usuario> listaUsuarios = fachada.GetUsuarios();
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Nombre", typeof(string));
+            dt.Columns.Add("Contraseña", typeof(string));
+
+
+            foreach (Usuario usuario in listaUsuarios)
+            {
+                dt.Rows.Add(new object[] { usuario.Id, usuario.Contrasenia });
+            }
+
+            dataGridView1.DataSource = dt;
         }
     }
 }

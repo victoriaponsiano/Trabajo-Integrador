@@ -18,7 +18,7 @@ namespace Trabajo_Integrador.Controladores
 
 
         public ControladorFachada()
-        {
+        { 
             controladorAdministrativo = new ControladorAdministrativo();
             controladorExamen = new ControladorExamen();
         }
@@ -48,12 +48,7 @@ namespace Trabajo_Integrador.Controladores
             return controladorExamen.GetTiempoLimite(unExamen);
         }
 
-
-
-
-
-
-
+   
         /// <summary>
         /// Da comienzo a un examen. Asocia el examen a un usuario
         /// </summary>
@@ -73,11 +68,6 @@ namespace Trabajo_Integrador.Controladores
 
             controladorExamen.IniciarExamen(usuario, pExamen);
         }
-
-
-
-
-    
 
 
 
@@ -113,8 +103,6 @@ namespace Trabajo_Integrador.Controladores
 
              return controladorExamen.InicializarExamen(pCantidad, conjunto, categoria, dificultad);
         }
-
-
 
 
         /// <summary>
@@ -200,6 +188,23 @@ namespace Trabajo_Integrador.Controladores
             }
         }
 
+        public Boolean UsuarioValido(string pNombreUsuario)
+        {
+            using (var db = new TrabajoDbContext())
+            {
+                using (var UoW = new UnitOfWork(db))
+                {
+                    Usuario usrDb = UoW.RepositorioUsuarios.Get(pNombreUsuario);
+                    if (usrDb.Id== pNombreUsuario)
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
+            }
+
+        }
+
         public Boolean EsAdministrador(string nombreUsuario)
         {
             using (var db = new TrabajoDbContext())
@@ -249,10 +254,7 @@ namespace Trabajo_Integrador.Controladores
             controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
         }
 
-        public List<Examen> GetRanking(string pUsuario)
-        {
-            return controladorAdministrativo.GetRanking(pUsuario);
-        }
+     
 
         public List<Examen> GetExamenes()
         {
@@ -275,5 +277,7 @@ namespace Trabajo_Integrador.Controladores
         {
             return controladorAdministrativo.GetPreguntas();
         }
+
+     
     }
 }

@@ -35,7 +35,8 @@ namespace Trabajo_Integrador.Ventanas
             {
                 if (esAdministrador(usuario.Text) == true)
                 {
-                    Ventana_Principal_Admi ppal_admin = new Ventana_Principal_Admi(usuario.Text);   
+                    Ventana_Principal_Admi ppal_admin = new Ventana_Principal_Admi(usuario.Text);
+                    ppal_admin.ShowDialog();
                 }
                 else
                 {
@@ -71,7 +72,6 @@ namespace Trabajo_Integrador.Ventanas
             }
             else //Contraseña y/o usuario incorrectos y/o campos vacios
             {
-                btnIngresar.Enabled = false;    //Se deshabilita boton Ingresar
                 usuario.Focus();//Hace foco en el botón Usuario 
                 contrasenia.Focus();
                 errorProvider1.SetError(usuario, "Usuario y/o Contraseña incorrectos");

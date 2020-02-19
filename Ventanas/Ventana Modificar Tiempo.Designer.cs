@@ -92,6 +92,7 @@
             this.modificar.TabIndex = 5;
             this.modificar.Text = "Modificar";
             this.modificar.UseVisualStyleBackColor = false;
+            this.modificar.Click += new System.EventHandler(this.modificar_Click_1);
             // 
             // volver
             // 

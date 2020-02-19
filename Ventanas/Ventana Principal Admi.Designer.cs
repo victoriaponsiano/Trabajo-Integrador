@@ -47,6 +47,7 @@
             this.comenzarExamen.TabIndex = 0;
             this.comenzarExamen.Text = "Comenzar Examen";
             this.comenzarExamen.UseVisualStyleBackColor = false;
+            this.comenzarExamen.Click += new System.EventHandler(this.comenzarExamen_Click_1);
             // 
             // verRanking
             // 
@@ -58,6 +59,7 @@
             this.verRanking.TabIndex = 1;
             this.verRanking.Text = "Ver Ranking";
             this.verRanking.UseVisualStyleBackColor = false;
+            this.verRanking.Click += new System.EventHandler(this.verRanking_Click_1);
             // 
             // user
             // 
@@ -79,6 +81,7 @@
             this.cerrarSesion.TabIndex = 4;
             this.cerrarSesion.Text = "Cerrar Sesión";
             this.cerrarSesion.UseVisualStyleBackColor = false;
+            this.cerrarSesion.Click += new System.EventHandler(this.cerrarSesion_Click_1);
             // 
             // label2
             // 
@@ -100,6 +103,7 @@
             this.Opciones.TabIndex = 7;
             this.Opciones.Text = "Opciones";
             this.Opciones.UseVisualStyleBackColor = false;
+            this.Opciones.Click += new System.EventHandler(this.Opciones_Click);
             // 
             // Ventana_Principal_Admi
             // 
