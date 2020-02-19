@@ -130,6 +130,12 @@ namespace Trabajo_Integrador.Dominio
         {
             Boolean respuestaCorrecta = pPregunta.RespuestaEsCorrecta(pRespuesta);
             ExamenPregunta ep = ExamenPreguntas.Find(e => e.Pregunta.Id == pPregunta.Id);
+            Console.WriteLine(pPregunta.Id);
+            foreach (var examenpre in ExamenPreguntas)
+            {
+                Console.WriteLine(examenpre.Pregunta.Id);
+            }
+
             ep.OpcionElegida = pRespuesta;
             return respuestaCorrecta;
                

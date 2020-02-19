@@ -63,8 +63,8 @@ namespace Trabajo_Integrador.Ventanas
 
         public string RecogerOpcion(Examen pExamen, Pregunta pPregunta) //Devuelve cual fue la opcion Seleccionada
         {
-         
-                string respuesta = string.Empty;
+
+            string respuesta = "";
 
                 if (opcionA.Checked == true) { respuesta = "A"; }
                 if (opcionB.Checked == true) { respuesta = "B"; }
@@ -84,7 +84,8 @@ namespace Trabajo_Integrador.Ventanas
             this.time.Text = tiempo.ToString();
             this.timer.Enabled = true;
 
-            List<Pregunta> listaPreguntas = fachada.GetPreguntas();
+            List<Pregunta> listaPreguntas = iExamen.getPreguntas();
+
             foreach (Pregunta pregunta in listaPreguntas)
             {
                 mostrarPregunta(pregunta);
