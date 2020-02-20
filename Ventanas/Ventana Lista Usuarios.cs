@@ -16,15 +16,20 @@ namespace Trabajo_Integrador.Ventanas
     {
         ControladorFachada fachada = new ControladorFachada();
 
-        public Ventana_Lista_Usuarios()
+        string iNombre;
+        public Ventana_Lista_Usuarios(string pNombre)
         {
             InitializeComponent();
+            iNombre = pNombre;
         }
 
       
 
         private void Volver_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Ventana_Opciones vOpciones = new Ventana_Opciones(iNombre);
+            vOpciones.ShowDialog();
             this.Close();
         }
 

@@ -44,7 +44,10 @@ namespace Trabajo_Integrador.Ventanas
 
         private void listo_Click_1(object sender, EventArgs e)
         {
-            Close();
+            this.Hide();
+            Ventana_Opciones vOpciones = new Ventana_Opciones(iNombreUsuario);
+            vOpciones.ShowDialog();
+            this.Close();
         }
 
      

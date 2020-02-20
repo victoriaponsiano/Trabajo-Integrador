@@ -102,6 +102,15 @@ namespace Trabajo_Integrador.Ventanas
 
         private void volver_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            if (fachada.EsAdministrador(iNombreUsuario))
+            {
+                Ventana_Principal_Admi vAdmin = new Ventana_Principal_Admi(iNombreUsuario);
+                vAdmin.ShowDialog();
+            }
+            else { Ventana_Principal vPrinicpal = new Ventana_Principal(iNombreUsuario);
+                vPrinicpal.ShowDialog();
+            }
             this.Close();
         }
 
@@ -117,15 +126,16 @@ namespace Trabajo_Integrador.Ventanas
 
             int cantidadSeleccionada = Convert.ToInt32(cantidadPreguntas.Value); //Cantidad de preguntas a responder     
 
+            
 
             Examen nuevoExamen = fachada.InicializarExamen(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
             fachada.InicarExamen(iNombreUsuario, nuevoExamen);
 
-           
+            this.Hide();
 
             using (VPreguntas Vpreguntas = new VPreguntas(nuevoExamen)) 
                 Vpreguntas.ShowDialog();
-
+            this.Close();
 
         }
 

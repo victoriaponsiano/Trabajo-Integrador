@@ -14,9 +14,11 @@ namespace Trabajo_Integrador.Ventanas
 {
     public partial class Ventana_Modificar_Tiempo : Form
     {
-        public Ventana_Modificar_Tiempo()
+        string iNombre;
+        public Ventana_Modificar_Tiempo(string pNombre)
         {
             InitializeComponent();
+            iNombre = pNombre;
         }
 
         List<ConjuntoPreguntas> conjuntos;
@@ -30,6 +32,9 @@ namespace Trabajo_Integrador.Ventanas
 
         private void volver_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Ventana_Opciones vOpciones = new Ventana_Opciones(iNombre);
+            vOpciones.ShowDialog();
             this.Close();
         }
 

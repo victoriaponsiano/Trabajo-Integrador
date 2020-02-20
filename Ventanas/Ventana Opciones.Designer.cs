@@ -71,6 +71,7 @@
             this.cargarExamenes.TabIndex = 2;
             this.cargarExamenes.Text = "Cargar Examenes";
             this.cargarExamenes.UseVisualStyleBackColor = false;
+            this.cargarExamenes.Click += new System.EventHandler(this.cargarExamenes_Click);
             // 
             // modificarTiempos
             // 

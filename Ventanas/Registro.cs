@@ -24,6 +24,9 @@ namespace Trabajo_Integrador.Ventanas
 
         private void volver_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Inicio vInicio = new Inicio();
+            vInicio.ShowDialog();
             this.Close();
         }
 
@@ -54,6 +57,9 @@ namespace Trabajo_Integrador.Ventanas
 
             fachada.GuardarUsuario(nuevoUsuario.Text.Trim(), nuevaContrasenia.Text.Trim());
             MessageBox.Show("Usuaurio registrado correctamente");
+            this.Hide();
+            Inicio vInicio = new Inicio();
+            vInicio.ShowDialog();
             this.Close();
 
 

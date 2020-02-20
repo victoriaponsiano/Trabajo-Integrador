@@ -85,6 +85,7 @@
             this.cerrar.TabIndex = 4;
             this.cerrar.Text = "Cerrar Sesion";
             this.cerrar.UseVisualStyleBackColor = false;
+            this.cerrar.Click += new System.EventHandler(this.cerrar_Click_1);
             // 
             // volverInicio
             // 

@@ -95,6 +95,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SetAdministrador";
             this.Text = "Administrador";
+            this.Load += new System.EventHandler(this.SetAdministrador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

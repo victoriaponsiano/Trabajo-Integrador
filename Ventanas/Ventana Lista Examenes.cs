@@ -16,14 +16,19 @@ namespace Trabajo_Integrador.Ventanas
     public partial class Ventana_Lista_Examenes : Form
     {
         ControladorFachada fachada = new ControladorFachada();
+        string iNombreUsuario;
 
-        public Ventana_Lista_Examenes()
+        public Ventana_Lista_Examenes(string pNombreUsuario)
         {
             InitializeComponent();
+            iNombreUsuario = pNombreUsuario;
         }
 
         private void Volver_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Ventana_Opciones vOpciones = new Ventana_Opciones(iNombreUsuario);
+            vOpciones.ShowDialog();
             this.Close();
         }
 

@@ -28,8 +28,10 @@ namespace Trabajo_Integrador.Ventanas
 
         private void comenzarExamen_Click(object sender, EventArgs e)
         {
+            this.Hide();
             configurarExamen examen = new configurarExamen(iNombreUsuario);
             examen.ShowDialog();
+            this.Close();
                 
 
         }
@@ -44,14 +46,19 @@ namespace Trabajo_Integrador.Ventanas
 
         private void cerrarSesion_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
+            Inicio vInicio = new Inicio();
+            vInicio.ShowDialog();
             this.Close();
             
         }
 
         private void verRanking_Click(object sender, EventArgs e)
         {
+            this.Hide();
             VentanaRanking ranking = new VentanaRanking(iNombreUsuario);
             ranking.ShowDialog();
+            this.Close();
         }
     }
 }

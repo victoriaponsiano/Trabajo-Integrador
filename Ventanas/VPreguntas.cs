@@ -17,7 +17,9 @@ namespace Trabajo_Integrador.Ventanas
     {
         Examen iExamen;
         ControladorFachada fachada = new ControladorFachada();
-      
+        private int iNumeroPregunta = 0;
+
+
 
         public VPreguntas(Examen unExamen)
         {
@@ -61,7 +63,7 @@ namespace Trabajo_Integrador.Ventanas
 
         }
 
-        public string RecogerOpcion(Examen pExamen, Pregunta pPregunta) //Devuelve cual fue la opcion Seleccionada
+        public string RecogerOpcion() //Devuelve cual fue la opcion Seleccionada
         {
          
                 string respuesta = string.Empty;
@@ -76,50 +78,16 @@ namespace Trabajo_Integrador.Ventanas
             return respuesta;
         }
 
-        
+                       
 
-        public void responderPregunta() //mUESTRA LAS PREGUNTAS DEL EXAMEN
+        public Pregunta obtienePregunta(int numeroPregunta) //Muestra la pregunta iNumeroPregunta en la lista de preguntas del examen 
         {
-            tiempo = iExamen.TiempoLimite;
-            this.time.Text = tiempo.ToString();
-            this.timer.Enabled = true;
+            List<Pregunta> listaPreguntas = iExamen.getPreguntas();
+            mostrarPregunta(listaPreguntas[numeroPregunta]);
 
-            List<Pregunta> listaPreguntas = fachada.GetPreguntas();
-            foreach (Pregunta pregunta in listaPreguntas)
-            {
-                mostrarPregunta(pregunta);
-                string respuesta= RecogerOpcion(iExamen, pregunta);
-                fachada.RespuestaCorrecta(iExamen, pregunta, respuesta);
-                siguiente_Click(siguiente, EventArgs.Empty);
+            return listaPreguntas[numeroPregunta];
 
-                //Console.ReadKey();
-                //siguiente.PerformClick();
-
-
-            }
         }
-
-
-
-            //}
-            //    Pregunta pregunta = obtienePregunta(pNumeroPregunta);
-
-            //    mostrarPregunta(pregunta);
-
-            //    Boolean respuesta = RecogerOpcion(iExamen, pregunta);
-            
-            //else
-            //{
-            //    fachada.FinalizarExamen(iExamen);
-            //}
-        
-                
-
-        //public Pregunta obtienePregunta(int numeroPregunta)
-        //{
-        //    List<Pregunta> listaPreguntas = iExamen.getPreguntas();
-        //    return listaPreguntas[numeroPregunta];
-        //}
 
 
         public void LimpiaControles() //Limpia todos los campos (textBox y checkBox)
@@ -150,27 +118,61 @@ namespace Trabajo_Integrador.Ventanas
                 fachada.FinalizarExamen(iExamen);
                 using (ExamenTerminado finalizado = new ExamenTerminado(iExamen)) //Paso el examen a la proxima ventana 
                     finalizado.ShowDialog();
+                this.Close();
             }
 
 
         }
 
+        private Boolean ObtenerEstadoBotonSiguiente()
+        {
+            // default  false
+            Boolean resultado = false;
+
+            // Chquea que alguno de los radio buttons este seleccionado, si se cumple, true
+           
+            resultado = ((opcionA.Checked == true) || (opcionB.Checked == true) || (opcionC.Checked == true) || (opcionD.Checked == true));
+
+            return resultado;
+        }
 
         private void siguiente_Click(object sender, EventArgs e)
         {
-            //Button siguiente = (Button)sender;
-            MessageBox.Show("Esta en click siguiente");
-            LimpiaControles();
+            fachada.RespuestaCorrecta(iExamen, obtienePregunta(iNumeroPregunta), RecogerOpcion());
+            // Limpia todos los controles
+            
+            // Cambia el estado del boton siguiente
+            siguiente.Enabled = ObtenerEstadoBotonSiguiente();
 
+            LimpiaControles();
+            // incrementa contador numero pregunta
+            iNumeroPregunta++;
+            // obtiene nueva pregunta
+            if (iNumeroPregunta<=iExamen.CantidadPreguntas)
+            {
+                obtienePregunta(iNumeroPregunta);
+            }
+            else
+            {
+                using (ExamenTerminado finalizado = new ExamenTerminado(iExamen)) //Paso el examen a la proxima ventana 
+                    finalizado.ShowDialog();
+                this.Close();
+            }
         }
+
+        
         
 
         private void VPreguntas_Load(object sender, EventArgs e)
         {
             tiempo = iExamen.TiempoLimite;
             this.time.Text = tiempo.ToString();
+            this.timer.Enabled = true;
 
-            responderPregunta();
+            tiempo = iExamen.TiempoLimite;
+            this.time.Text = tiempo.ToString();
+            ///siguiente.Enabled = ObtenerEstadoBotonSiguiente();
+            obtienePregunta(iNumeroPregunta);
             
         }
 

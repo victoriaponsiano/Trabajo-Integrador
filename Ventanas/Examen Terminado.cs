@@ -36,22 +36,33 @@ namespace Trabajo_Integrador.Ventanas
 
         }
 
-        private void Cerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-            using (Inicio finalizado = new Inicio()) //Paso el examen a la proxima ventana 
-                finalizado.ShowDialog();
-        }
+       
 
-        private void VolverInicio_Click(object sender, EventArgs e)
-        {
-            Ventana_Principal volver = new Ventana_Principal(iExamen.Usuario.Id);
-            volver.ShowDialog();
-        }
+      
 
         private void volverInicio_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
+            if (fachada.EsAdministrador(iExamen.Usuario.Id))
+            {
+                Ventana_Principal_Admi vAdmin = new Ventana_Principal_Admi(iExamen.Usuario.Id);
+                vAdmin.ShowDialog();
+            }
+            else
+            {
+                Ventana_Principal volver = new Ventana_Principal(iExamen.Usuario.Id);
+                volver.ShowDialog();
+            }
+            this.Close();
+        }
 
+        private void cerrar_Click_1(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            using (Inicio vInicio = new Inicio()) //Paso el examen a la proxima ventana 
+                vInicio.ShowDialog();
+            this.Close();
         }
     }
 }

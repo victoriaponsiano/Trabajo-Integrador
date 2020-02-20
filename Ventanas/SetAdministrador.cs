@@ -22,14 +22,13 @@ namespace Trabajo_Integrador.Ventanas
         }
 
         string nombreUsuario;
-        //private void setAdmin_Click(object sender, EventArgs e)
-        //{
-            
-            
-        //}
+       
 
         private void Volver_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Ventana_Opciones vOpciones = new Ventana_Opciones(nombreUsuario);
+            vOpciones.ShowDialog();
             this.Close();
         }
 
@@ -43,6 +42,11 @@ namespace Trabajo_Integrador.Ventanas
                 errorProvider1.SetError(usuario, "");
             }
             else errorProvider1.SetError(usuario, "El nombre de usuario ingresado no existe");
+        }
+
+        private void SetAdministrador_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

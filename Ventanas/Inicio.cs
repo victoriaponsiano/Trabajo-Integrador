@@ -35,13 +35,19 @@ namespace Trabajo_Integrador.Ventanas
             {
                 if (esAdministrador(usuario.Text) == true)
                 {
+                    this.Hide();
+
                     Ventana_Principal_Admi ppal_admin = new Ventana_Principal_Admi(usuario.Text);
                     ppal_admin.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
+                    this.Hide();
                     Ventana_Principal ppal = new Ventana_Principal(usuario.Text); //Le paso el usuario para que aparezca en la proxima ventana
+                    
                     ppal.ShowDialog();
+                    this.Close();
                 }
             }
             else
@@ -93,8 +99,11 @@ namespace Trabajo_Integrador.Ventanas
 
         private void crearUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
+
             using (Registro registro = new Registro()) //Le paso el usuario para que aparezca en la proxima ventana
                 registro.ShowDialog();
+            this.Close();
         }
     }
 }

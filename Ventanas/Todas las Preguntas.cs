@@ -13,9 +13,11 @@ namespace Trabajo_Integrador.Ventanas
 {
     public partial class Todas_las_Preguntas : Form
     {
-        public Todas_las_Preguntas()
+        string iNombre;
+        public Todas_las_Preguntas(string pNombre)
         {
             InitializeComponent();
+            iNombre = pNombre;
         }
         ControladorFachada fachada = new ControladorFachada();
       
@@ -41,6 +43,9 @@ namespace Trabajo_Integrador.Ventanas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Ventana_Opciones vOpciones = new Ventana_Opciones(iNombre);
+            vOpciones.ShowDialog();
             this.Close();
         }
     }

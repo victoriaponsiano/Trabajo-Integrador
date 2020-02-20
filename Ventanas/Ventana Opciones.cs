@@ -14,21 +14,22 @@ namespace Trabajo_Integrador.Ventanas
 {
     public partial class Ventana_Opciones : Form
     {
-
-        public Ventana_Opciones()
+        string iNombreUsuario;
+        public Ventana_Opciones(string pNombreUsusario)
         {
             InitializeComponent();
+            iNombreUsuario = pNombreUsusario;
         }
 
         private void listaUsuarios_Click(object sender, EventArgs e)
         {
-            Ventana_Lista_Usuarios listaUsuarios = new Ventana_Lista_Usuarios();
+            Ventana_Lista_Usuarios listaUsuarios = new Ventana_Lista_Usuarios(iNombreUsuario);
             listaUsuarios.ShowDialog();
         }
 
         private void verExamenes_Click(object sender, EventArgs e)
         {
-            Ventana_Lista_Examenes listaExamenes = new Ventana_Lista_Examenes();
+            Ventana_Lista_Examenes listaExamenes = new Ventana_Lista_Examenes(iNombreUsuario);
             listaExamenes.ShowDialog();
         }
 
@@ -48,13 +49,13 @@ namespace Trabajo_Integrador.Ventanas
 
         private void verPreguntas_Click(object sender, EventArgs e)
         {
-            Todas_las_Preguntas preguntas = new Todas_las_Preguntas();
+            Todas_las_Preguntas preguntas = new Todas_las_Preguntas(iNombreUsuario);
             preguntas.ShowDialog();
         }
 
         private void modificarTiempos_Click(object sender, EventArgs e)
         {
-            Ventana_Modificar_Tiempo tiempos = new Ventana_Modificar_Tiempo();
+            Ventana_Modificar_Tiempo tiempos = new Ventana_Modificar_Tiempo(iNombreUsuario);
             tiempos.ShowDialog();
         }
 
@@ -62,7 +63,14 @@ namespace Trabajo_Integrador.Ventanas
 
         private void volver_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
+            Ventana_Principal_Admi vAdmin = new Ventana_Principal_Admi(iNombreUsuario);
+            vAdmin.ShowDialog();
             this.Close();
+        }
+
+        private void cargarExamenes_Click(object sender, EventArgs e)
+        {
 
         }
     }

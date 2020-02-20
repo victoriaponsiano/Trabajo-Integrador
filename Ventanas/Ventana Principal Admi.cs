@@ -30,25 +30,38 @@ namespace Trabajo_Integrador.Ventanas
 
         private void comenzarExamen_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
             configurarExamen ex = new configurarExamen(iUsuario);
             ex.ShowDialog();
+            this.Close();
+            
         }
 
         private void Opciones_Click(object sender, EventArgs e)
         {
-            Ventana_Opciones vopciones = new Ventana_Opciones();
+            this.Hide();
+            Ventana_Opciones vopciones = new Ventana_Opciones(iUsuario);
             vopciones.ShowDialog();
+            this.Close();
+            
         }
 
         private void verRanking_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
             VentanaRanking ranking = new VentanaRanking(iUsuario);
             ranking.ShowDialog();
+            this.Close();
+
         }
 
         private void cerrarSesion_Click_1(object sender, EventArgs e)
         {
+            this.Hide();
+            Inicio vInicio = new Inicio();
+            vInicio.ShowDialog();
             this.Close();
+
         }
     }
     }
