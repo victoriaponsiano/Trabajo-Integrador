@@ -31,6 +31,12 @@ namespace Trabajo_Integrador.Controladores
 
             return listaUsuarios;
         }
+
+
+        /// <summary>
+        /// Obtiene todas las preguntas de la base de datos
+        /// </summary>
+        /// <returns></returns>
         public List<Pregunta> GetPreguntas()
         {
             List<Pregunta> listaPreguntas = new List<Pregunta>();

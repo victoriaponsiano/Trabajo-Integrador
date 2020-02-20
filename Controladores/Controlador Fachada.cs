@@ -273,6 +273,11 @@ namespace Trabajo_Integrador.Controladores
             controladorAdministrativo.SetAdministrador(pUsuario);
         }
 
+        
+        /// <summary>
+        /// Obtiene todas las preguntas de la base de datos
+        /// </summary>
+        /// <returns></returns>
         public List<Pregunta> GetPreguntas()
         {
             return controladorAdministrativo.GetPreguntas();
