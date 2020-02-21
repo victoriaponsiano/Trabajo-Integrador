@@ -276,11 +276,6 @@ namespace Trabajo_Integrador.Controladores
             return controladorAdministrativo.GetPreguntas();
         }
 
-        public void GetPreguntasOnline(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
-        {
-          controladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
-        }
-
         public List<Pregunta> GetPreguntasRandom(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
             return controladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
