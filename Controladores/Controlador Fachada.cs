@@ -88,10 +88,6 @@ namespace Trabajo_Integrador.Controladores
             CategoriaPregunta categoria;
             Dificultad dificultad;
 
-            
-            
-         
-            
 
             using (var db = new TrabajoDbContext())
             {
@@ -289,9 +285,15 @@ namespace Trabajo_Integrador.Controladores
           controladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
         }
 
-        public List<Pregunta> GetPreguntasRandom(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
+        public List<Pregunta> GetPreguntasRandom(int pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
-            return controladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
+            ConjuntoPreguntas conjunto = new ConjuntoPreguntas();
+            conjunto.Id = pConjunto;
+            CategoriaPregunta categoria = new CategoriaPregunta();
+            categoria.Id = pCategoria;
+            Dificultad dificultad = new Dificultad();
+            dificultad.Id = pDificultad;
+            return controladorPreguntas.GetPreguntasRandom(pCantidad, conjunto, categoria, dificultad);
         }
 
 

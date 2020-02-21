@@ -167,7 +167,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public List<Pregunta> GetPreguntasRandom(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
+        public List<Pregunta> GetPreguntasRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
             List<Pregunta> preguntas = new List<Pregunta>();
            
