@@ -88,6 +88,10 @@ namespace Trabajo_Integrador.Controladores
             CategoriaPregunta categoria;
             Dificultad dificultad;
 
+            
+            
+         
+            
 
             using (var db = new TrabajoDbContext())
             {
@@ -241,15 +245,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pDificultad"></param>
         public void CargarPreguntas(string pCantidad,string pConjunto,string pCategoria,string pDificultad)
         {
-            CategoriaPregunta categoria;
-            using (var db=new TrabajoDbContext())
-            {
-                using (var UoW=new UnitOfWork(db))
-                {
-                    categoria=UoW.RepositorioCategorias.Get(pCategoria);
-                }
-            }
-            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
+            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, pCategoria, pDificultad);
         }
 
 
@@ -280,20 +276,9 @@ namespace Trabajo_Integrador.Controladores
             return controladorAdministrativo.GetPreguntas();
         }
 
-        public void GetPreguntasOnline(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
+        public List<Pregunta> GetPreguntasRandom(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
-          controladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
-        }
-
-        public List<Pregunta> GetPreguntasRandom(int pCantidad, string pConjunto, string pCategoria, string pDificultad)
-        {
-            ConjuntoPreguntas conjunto = new ConjuntoPreguntas();
-            conjunto.Id = pConjunto;
-            CategoriaPregunta categoria = new CategoriaPregunta();
-            categoria.Id = pCategoria;
-            Dificultad dificultad = new Dificultad();
-            dificultad.Id = pDificultad;
-            return controladorPreguntas.GetPreguntasRandom(pCantidad, conjunto, categoria, dificultad);
+            return controladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
         }
 
 

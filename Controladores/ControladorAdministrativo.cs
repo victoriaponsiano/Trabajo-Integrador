@@ -14,15 +14,10 @@ namespace Trabajo_Integrador.Controladores
     public class ControladorAdministrativo
     {
         ControladorPreguntas iControladorPreguntas = new ControladorPreguntas();
-        
-        
-        public void CargarPreguntas(string pCantidad, string pConjunto, CategoriaPregunta pCategoria, string pDificultad)
+        public void CargarPreguntas(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
-            iControladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria.Id, pDificultad);
+            iControladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
         }
-        
-        
-        
         public List<Usuario> GetUsuarios()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();
