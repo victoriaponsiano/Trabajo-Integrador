@@ -117,12 +117,20 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public void GetPreguntasOnline(string pCantidad,string pConjunto, CategoriaPregunta pCategoria, string pDificultad)
+        public void GetPreguntasOnline(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
             try
             {
+                CategoriaPregunta categoria;
+                using (var db = new TrabajoDbContext())
+                {
+                    using (var UoW = new UnitOfWork(db))
+                    {
+                        categoria = db.Categorias.Find(pCategoria);
+                    }
+                }
                 IEstrategiaObtenerPreguntas estrategia = this.GetEstrategia(pConjunto);
-                List<Pregunta> preguntas = estrategia.getPreguntas(pCantidad, pConjunto, pDificultad, pCategoria);
+                List<Pregunta> preguntas = estrategia.getPreguntas(pCantidad, pConjunto, pDificultad, categoria);
                 CargarPreguntas(preguntas);
             }
             catch (NotImplementedException ex)
@@ -159,7 +167,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
         /// <returns></returns>
-        public List<Pregunta> GetPreguntasRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
+        public List<Pregunta> GetPreguntasRandom(string pCantidad,string pConjunto, string pCategoria, string pDificultad)
         {
             List<Pregunta> preguntas = new List<Pregunta>();
            
