@@ -245,15 +245,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pDificultad"></param>
         public void CargarPreguntas(string pCantidad,string pConjunto,string pCategoria,string pDificultad)
         {
-            CategoriaPregunta categoria;
-            using (var db=new TrabajoDbContext())
-            {
-                using (var UoW=new UnitOfWork(db))
-                {
-                    categoria=UoW.RepositorioCategorias.Get(pCategoria);
-                }
-            }
-            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, categoria, pDificultad);
+            controladorAdministrativo.CargarPreguntas(pCantidad, pConjunto, pCategoria, pDificultad);
         }
 
 
