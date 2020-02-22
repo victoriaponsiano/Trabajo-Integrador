@@ -15,6 +15,7 @@ namespace Trabajo_Integrador.Controladores
         ///Atributos
         ControladorExamen controladorExamen;
         ControladorAdministrativo controladorAdministrativo;
+        ControladorPreguntas controladorPreguntas;
 
 
         public ControladorFachada()
@@ -283,6 +284,12 @@ namespace Trabajo_Integrador.Controladores
             return controladorAdministrativo.GetPreguntas();
         }
 
-     
+        public void GetPreguntasOnline(string pCantidad, string pConjunto, CategoriaPregunta pCategoria, string pDificultad)
+        {
+            controladorPreguntas.GetPreguntasOnline(pCantidad, pConjunto, pCategoria, pDificultad);
+        }
+
+
+
     }
 }

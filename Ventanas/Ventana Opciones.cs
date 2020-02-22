@@ -33,10 +33,7 @@ namespace Trabajo_Integrador.Ventanas
             listaExamenes.ShowDialog();
         }
 
-        //private void cargarExamenes_Click(object sender, EventArgs e)
-        //{
-        //    fachada.CargarPreguntas();
-        //}
+      
 
         private void setAdministrador_Click(object sender, EventArgs e)
         {
@@ -49,14 +46,14 @@ namespace Trabajo_Integrador.Ventanas
 
         private void verPreguntas_Click(object sender, EventArgs e)
         {
-            Todas_las_Preguntas preguntas = new Todas_las_Preguntas(iNombreUsuario);
-            preguntas.ShowDialog();
+            Todas_las_Preguntas vPreguntas = new Todas_las_Preguntas(iNombreUsuario);
+            vPreguntas.ShowDialog();
         }
 
         private void modificarTiempos_Click(object sender, EventArgs e)
         {
-            Ventana_Modificar_Tiempo tiempos = new Ventana_Modificar_Tiempo(iNombreUsuario);
-            tiempos.ShowDialog();
+            Ventana_Modificar_Tiempo vTiempos = new Ventana_Modificar_Tiempo(iNombreUsuario);
+            vTiempos.ShowDialog();
         }
 
        
@@ -71,6 +68,8 @@ namespace Trabajo_Integrador.Ventanas
 
         private void cargarExamenes_Click(object sender, EventArgs e)
         {
+            Ventana_Cargar_Examen vCargarExamen = new Ventana_Cargar_Examen(iNombreUsuario);
+            vCargarExamen.ShowDialog();
 
         }
     }

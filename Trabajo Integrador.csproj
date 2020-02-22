@@ -184,6 +184,12 @@
     <Compile Include="Ventanas\Todas las Preguntas.Designer.cs">
       <DependentUpon>Todas las Preguntas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Ventana Cargar Examen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Cargar Examen.Designer.cs">
+      <DependentUpon>Ventana Cargar Examen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Ventana Lista Examenes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Todas las Preguntas.resx">
       <DependentUpon>Todas las Preguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Cargar Examen.resx">
+      <DependentUpon>Ventana Cargar Examen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventana Lista Examenes.resx">
       <DependentUpon>Ventana Lista Examenes.cs</DependentUpon>
