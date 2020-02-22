@@ -91,7 +91,7 @@ namespace Trabajo_Integrador.Ventanas
 
         private void cargaExamen_Click(object sender, EventArgs e)
         {
-            ///string categoriaSeleccionada = categoria.SelectedItem.ToString(); //Asigno el valor ingresado a clase Categoria
+            string categoriaSeleccionada = categoria.SelectedItem.ToString(); //Asigno el valor ingresado a clase Categoria
 
             string dificultadSeleccionada = dificultad.SelectedItem.ToString(); //Asigno el valor ingresado a clase Dificultad
 
@@ -99,7 +99,7 @@ namespace Trabajo_Integrador.Ventanas
 
             string cantidadSeleccionada = cantidad.Value.ToString();
 
-            CategoriaPregunta categoriaSeleccionada = new CategoriaPregunta();
+            
 
             fachada.GetPreguntasOnline(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
 
