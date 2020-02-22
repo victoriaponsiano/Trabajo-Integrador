@@ -112,16 +112,7 @@ namespace Trabajo_Integrador.Ventanas
         {
             tiempo--;
             this.time.Text = tiempo.ToString();
-            if (tiempo == 0) //Termino el tiempo limite
-            {
-                this.timer.Enabled = false;
-                fachada.FinalizarExamen(iExamen);
-                using (ExamenTerminado finalizado = new ExamenTerminado(iExamen)) //Paso el examen a la proxima ventana 
-                    finalizado.ShowDialog();
-                this.Close();
-            }
-
-
+            
         }
 
         private Boolean ObtenerEstadoBotonSiguiente()
@@ -148,12 +139,13 @@ namespace Trabajo_Integrador.Ventanas
             // incrementa contador numero pregunta
             iNumeroPregunta++;
             // obtiene nueva pregunta
-            if (iNumeroPregunta < iExamen.CantidadPreguntas)
+            if ((iNumeroPregunta < iExamen.CantidadPreguntas) && (tiempo != 0)) //Termino el tiempo limite
             {
                 obtienePregunta(iNumeroPregunta);
-            }
-            else
+            } //Si hay más preguntas y no termminó el timepo
+            else //Se acabaron las preguntas y/o se terminó el tiempo
             {
+                this.timer.Enabled = false;
                 using (ExamenTerminado finalizado = new ExamenTerminado(iExamen)) //Paso el examen a la proxima ventana 
                     finalizado.ShowDialog();
                 this.Close();

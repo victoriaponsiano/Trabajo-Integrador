@@ -101,7 +101,7 @@ namespace Trabajo_Integrador.Ventanas
 
             
 
-            fachada.GetPreguntasOnline(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
+            //fachada.GetPreguntasOnline(cantidadSeleccionada, conjuntoSeleccionado, categoriaSeleccionada, dificultadSeleccionada);
 
             MessageBox.Show("El Examen se cargó correctamente");
         }
