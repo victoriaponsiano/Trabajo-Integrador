@@ -25,9 +25,7 @@ namespace Trabajo_Integrador.EntityFramework
         /// <returns>Una Lista de preguntas</returns>
         public List<Pregunta> GetRandom(int pCantidad,ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
         {
-
-
-            Console.WriteLine(pConjunto.Id, pCategoria.Id, pDificultad.Id);
+            
             List<Pregunta> preguntas = iDBSet.Include("Conjunto").Include("Dificultad").Where(p => ((p.Dificultad.Id == pDificultad.Id) && (p.Categoria.Id == pCategoria.Id) && (p.Conjunto.Id == pConjunto.Id))).ToList<Pregunta>();
 
             if (preguntas.Count <= pCantidad)

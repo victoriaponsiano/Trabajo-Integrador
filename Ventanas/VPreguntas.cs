@@ -148,7 +148,7 @@ namespace Trabajo_Integrador.Ventanas
             // incrementa contador numero pregunta
             iNumeroPregunta++;
             // obtiene nueva pregunta
-            if (iNumeroPregunta <= iExamen.getPreguntas().Count())
+            if (iNumeroPregunta < iExamen.CantidadPreguntas)
             {
                 obtienePregunta(iNumeroPregunta);
             }
