@@ -50,10 +50,7 @@ namespace Trabajo_Integrador.Ventanas
                     this.Close();
                 }
             }
-            else
-            {
-                errorProvider1.SetError(usuario, "El usuario y/o contraseña son incorrectos"); //Cartel de Error }
-            }
+          
         }
 
         private void Inicio_Load(object sender, EventArgs e) //Se ejeecuta el codigo cuando el formulario se carga
@@ -68,25 +65,40 @@ namespace Trabajo_Integrador.Ventanas
     
         private Boolean controlBoton() //Metodo que controla lo que se ingresa por pantalla 
         {
-
             Boolean aceptado;
-            if ((usuario.Text.Trim() != string.Empty) && (esAceptado(usuario.Text.Trim(), contrasenia.Text.Trim()))) //Se verifica que el ususario y pswd sean correctos y el campo usuario no sea vacio
+            try
             {
-                btnIngresar.Enabled = true; //Se habilita en boton Ingresar
-                errorProvider1.SetError(usuario, ""); //No hubo error
-                aceptado = true;
+                
+                if ((usuario.Text.Trim() != string.Empty) && (esAceptado(usuario.Text.Trim(), contrasenia.Text.Trim()))) //Se verifica que el ususario y pswd sean correctos y el campo usuario no sea vacio
+                {
+                    btnIngresar.Enabled = true; //Se habilita en boton Ingresar
+                    errorProvider1.SetError(usuario, ""); //No hubo error
+                    aceptado = true;
+                }
+                else //Contraseña y/o usuario incorrectos y/o campos vacios
+                {
+                    usuario.Focus();//Hace foco en el botón Usuario 
+                    contrasenia.Focus();
+                    errorProvider1.SetError(usuario, "Usuario y/o Contraseña incorrectos");
+                    aceptado = false;
+                }
             }
-            else //Contraseña y/o usuario incorrectos y/o campos vacios
+            catch (Exception ex)
             {
-                usuario.Focus();//Hace foco en el botón Usuario 
-                contrasenia.Focus();
-                errorProvider1.SetError(usuario, "Usuario y/o Contraseña incorrectos");
+                errorProvider1.SetError(usuario, "No hay conexion");
                 aceptado = false;
             }
 
             return aceptado;
         }
 
+
+        /// <summary>
+        /// Chequea si un usuario y contrasenia son aceptados
+        /// </summary>
+        /// <param name="nombreUsuario"></param>
+        /// <param name="contrasenia"></param>
+        /// <returns></returns>
         private Boolean esAceptado(string nombreUsuario, string contrasenia)
         {
             return iFachada.UsuarioValido(nombreUsuario, contrasenia);
