@@ -50,7 +50,7 @@ namespace Trabajo_Integrador.Controladores
         /// <param name="pConjunto"></param>
         /// <param name="pCategoria"></param>
         /// <param name="pDificultad"></param>
-        public Examen InicializarExamen(int pCantidad, ConjuntoPreguntas pConjunto, CategoriaPregunta pCategoria, Dificultad pDificultad)
+        public Examen InicializarExamen(string pCantidad, string pConjunto, string pCategoria, string pDificultad)
         {
             List<Pregunta> preguntas = iControladorPreguntas.GetPreguntasRandom(pCantidad, pConjunto, pCategoria, pDificultad);
             Examen examen = new Examen();

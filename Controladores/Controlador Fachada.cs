@@ -88,11 +88,6 @@ namespace Trabajo_Integrador.Controladores
             CategoriaPregunta categoria;
             Dificultad dificultad;
 
-            
-            
-         
-            
-
             using (var db = new TrabajoDbContext())
             {
                 using (var UoW = new UnitOfWork(db))
@@ -103,7 +98,7 @@ namespace Trabajo_Integrador.Controladores
                 }
             }
 
-             return controladorExamen.InicializarExamen(pCantidad, conjunto, categoria, dificultad);
+             return controladorExamen.InicializarExamen(pCantidad.ToString(), conjunto.Id, categoria.Id, dificultad.Id);
         }
 
 
