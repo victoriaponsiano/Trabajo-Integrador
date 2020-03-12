@@ -45,6 +45,7 @@ namespace Trabajo_Integrador.Ventanas
         private void listo_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+
             Ventana_Principal_Admi vAdmin = new Ventana_Principal_Admi(iNombreUsuario);
             vAdmin.ShowDialog();
             this.Close();
